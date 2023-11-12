@@ -1,4 +1,5 @@
 export default {
+  ssr: true,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'sbernpf.frontend',
@@ -17,11 +18,19 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+
+  // css: ['vue-slider-component/dist-css/vue-slider-component.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {
+      src: '~plugins/vue-slider-component.js',
+      ssr: false
+    },
+    {
+      src: '~plugins/vue-select.js',
+      ssr: false
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -37,7 +46,11 @@ export default {
   modules: [
   ],
 
+  env: {
+    API_URL: process.env.API_URL
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
-}
+};
