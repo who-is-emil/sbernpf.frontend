@@ -1,0 +1,81 @@
+$animation-duration: 0.75s !default;
+$animation-delay: 0.2s !default;
+$animation-offset-Y: #{rem(16)} !default;
+$animation-offset-X: #{rem(16)} !default;
+$animation-scale: 1.05 !default;
+
+[data-animate] {
+  opacity: 0;
+
+  &[data-fade-up] {
+    transform: translateY($animation-offset-Y);
+  }
+
+  &[data-fade-left] {
+    transform: translateX($animation-offset-X);
+  }
+
+  &[data-scale] {
+    transform: scale($animation-scale);
+  }
+
+  @at-root .is-loaded & {
+    transition-delay: $animation-delay;
+    transition-duration: $animation-duration;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.61, 1, 0.88, 1);
+
+    &[data-animate-delay="0.1"] {
+      transition-delay: 0.1s;
+    }
+
+    &[data-animate-delay="0.2"] {
+      transition-delay: 0.2s;
+    }
+
+    &[data-animate-delay="0.3"] {
+      transition-delay: 0.3s;
+    }
+
+    &[data-animate-delay="0.4"] {
+      transition-delay: 0.4s;
+    }
+
+    &[data-animate-delay="0.5"] {
+      transition-delay: 0.5s;
+    }
+
+    &[data-animate-delay="0.6"] {
+      transition-delay: 0.6s;
+    }
+
+    &[data-animate-delay="0.7"] {
+      transition-delay: 0.7s;
+    }
+
+    &[data-animate-delay="0.8"] {
+      transition-delay: 0.8s;
+    }
+
+    &[data-animate-delay="0.9"] {
+      transition-delay: 0.9s;
+    }
+
+    &[data-animate-delay="1"] {
+      transition-delay: 1s;
+    }
+
+    &[data-animate-delay="1.1"] {
+      transition-delay: 1.1s;
+    }
+
+    &[data-animate-delay="1.2"] {
+      transition-delay: 1.2s;
+    }
+  }
+
+  &.animate {
+    transform: none;
+    opacity: 1;
+  }
+}
