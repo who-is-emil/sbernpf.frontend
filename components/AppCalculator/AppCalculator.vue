@@ -10,9 +10,7 @@
       </div>
 
       <form class="app-calculator__form">
-        <client-only>
-          <AppSwitch v-model="switchValue" :data="fieldSwitch" />
-        </client-only>
+        <AppSwitch v-model="switchValue" :data="fieldSwitch" />
 
         <AppInput v-model="sum" :data="sumField" />
         <AppSelect v-model="incomeValue" :data="incomeField" />
@@ -25,6 +23,7 @@
 import AppSwitch from '~/components/FormFields/AppSwitch/AppSwitch';
 import AppInput from '~/components/FormFields/AppInput/AppInput';
 import AppSelect from '~/components/FormFields/AppSelect/AppSelect';
+
 export default {
   name: 'AppCalculator',
   components: { AppSelect, AppInput, AppSwitch },
