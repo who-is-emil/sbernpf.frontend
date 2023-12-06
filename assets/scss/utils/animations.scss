@@ -1,7 +1,7 @@
 $animation-duration: 0.75s !default;
 $animation-delay: 0.2s !default;
-$animation-offset-Y: #{rem(16)} !default;
-$animation-offset-X: #{rem(16)} !default;
+$animation-offset-Y: #{toRem(16)} !default;
+$animation-offset-X: #{toRem(16)} !default;
 $animation-scale: 1.05 !default;
 
 [data-animate] {

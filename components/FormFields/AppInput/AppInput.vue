@@ -1,0 +1,53 @@
+<template>
+  <div class="app-input">
+    <input
+      type="text"
+      :class="['app-input__input', focusClass]"
+      :placeholder="placeholder"
+      :value="value"
+      @focusin="focusIn"
+      @focusout="focusOut"
+      @input="input"
+    >
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'AppInput',
+  props: {
+    data: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      focusClass: ''
+    };
+  },
+  computed: {
+    placeholder () {
+      return this.data.placeholder || '';
+    },
+    value () {
+      return this.data.value || '';
+    }
+  },
+  methods: {
+    input (e) {
+      this.$emit('input', e.target.value);
+    },
+    focusIn () {
+      this.focusClass = 'focusin';
+    },
+    focusOut () {
+      this.focusClass = '';
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import "AppInput";
+</style>

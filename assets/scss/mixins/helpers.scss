@@ -57,10 +57,8 @@
 }
 
 @mixin defaultTransition($args...) {
-  @at-root .content-loaded & {
-    transition-timing-function: $easing;
-    transition-duration: $timing;
-    transition-property: $args;
-  }
+  transition-timing-function: $easing;
+  transition-duration: $timing;
+  transition-property: $args;
 }
 

@@ -1,13 +1,14 @@
 <template>
   <div class="app">
-    <AppForm />
+    <AppCalculator />
   </div>
 </template>
 
 <script>
-import AppForm from '~/components/AppForm/AppForm';
+import AppCalculator from '~/components/AppCalculator/AppCalculator';
+
 export default {
   name: 'App',
-  components: { AppForm }
+  components: { AppCalculator }
 };
 </script>

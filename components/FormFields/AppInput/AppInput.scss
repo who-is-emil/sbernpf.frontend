@@ -1,0 +1,42 @@
+.app-input {
+  $root: &;
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: toRem(50);
+    padding: 0 toRem(24);
+    font-size: toRem(14);
+    line-height: 1;
+    background-color: $color-dark-grey;
+    color: $color-white;
+    border: 0;
+    border-radius: toRem(80);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    @include defaultTransition(background-color, color);
+
+    @include media-breakpoint-up(md) {
+      height: toRem(80);
+      padding: 0 toRem(32);
+    }
+
+    &:disabled {
+      color: rgba($color-white, 0.2);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    @include hover {
+      background-color: $color-dark-grey-hover;
+    }
+
+    &.focusin {
+      background-color: $color-dark-grey-hover;
+    }
+  }
+}

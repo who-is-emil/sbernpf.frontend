@@ -7,13 +7,13 @@ export default {
       lang: 'en'
     },
     meta: [
-      {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: ''},
-      {name: 'format-detection', content: 'telephone=no'}
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
@@ -28,16 +28,17 @@ export default {
     ]
   },
 
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {
       src: '~plugins/vue-slider-component.js',
-      ssr: false
+      ssr: false,
+      mode: 'client'
     },
     {
       src: '~plugins/vue-select.js',
-      ssr: false
+      ssr: false,
+      mode: 'client'
     }
   ],
 
@@ -48,11 +49,25 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    // '@nuxtjs/svg'
+    'nuxt-svg-loader'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
+
+  svg: {
+    vueSvgLoader: {
+      // options
+    },
+    svgSpriteLoader: {
+      // options
+    },
+    fileLoader: {
+      // options
+    }
+  },
 
   env: {
     API_URL: process.env.API_URL

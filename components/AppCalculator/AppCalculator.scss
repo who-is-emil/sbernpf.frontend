@@ -1,0 +1,30 @@
+.app-calculator {
+  $root: &;
+
+  background-color: $color-black;
+  color: $color-white;
+  padding: toRem(56) 0;
+
+  @include media-breakpoint-up(lg) {
+    padding: toRem(80) 0 toRem(64);
+  }
+  @include media-breakpoint-only(md) {
+    padding: toRem(80) 0;
+  }
+
+  &__title {
+    margin-bottom: toRem(32);
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: toRem(56);
+    }
+
+    span {
+      display: block;
+
+      &:not(:first-child) {
+        font-weight: 300;
+      }
+    }
+  }
+}

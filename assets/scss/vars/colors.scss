@@ -5,8 +5,10 @@ $color-green: #00D900;
 $color-main: #21A038;
 $color-grey-light: #F0F6F8;
 $color-grey: #889AA6;
+$color-dark-grey: #343441;
+$color-dark-grey-hover: #454552;
 
-$shadow: 0 0 rem(88) 0 rgba(109, 140, 155, 0.15);
+$shadow: 0 0 toRem(88) 0 rgba(109, 140, 155, 0.15);
 
 $colors: (
   "white": $color-white,
@@ -16,4 +18,5 @@ $colors: (
   "color-main": $color-main,
   "color-grey-light": $color-grey-light,
   "color-grey": $color-grey,
+  "color-dark-grey": $color-dark-grey,
 );

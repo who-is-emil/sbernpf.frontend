@@ -6,22 +6,22 @@
       @each $size, $length in $spacers {
         .#{$abbrev}t#{$infix}-#{$size},
         .#{$abbrev}y#{$infix}-#{$size} {
-          #{$prop}-top: rem($length) !important;
+          #{$prop}-top: toRem($length) !important;
         }
 
         .#{$abbrev}r#{$infix}-#{$size},
         .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-right: rem($length) !important;
+          #{$prop}-right: toRem($length) !important;
         }
 
         .#{$abbrev}b#{$infix}-#{$size},
         .#{$abbrev}y#{$infix}-#{$size} {
-          #{$prop}-bottom: rem($length) !important;
+          #{$prop}-bottom: toRem($length) !important;
         }
 
         .#{$abbrev}l#{$infix}-#{$size},
         .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-left: rem($length) !important;
+          #{$prop}-left: toRem($length) !important;
         }
       }
     }

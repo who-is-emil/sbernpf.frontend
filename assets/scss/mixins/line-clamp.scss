@@ -5,8 +5,8 @@
 ) {
   display: block;
   display: -webkit-box;
-  font-size: rem($font-size);
-  max-height: rem($font-size * $line-height * $lines-to-show);
+  font-size: toRem($font-size);
+  max-height: toRem($font-size * $line-height * $lines-to-show);
   line-height: $line-height;
   overflow: hidden;
   text-overflow: ellipsis;

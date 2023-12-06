@@ -1,0 +1,31 @@
+.app-select {
+  $root: &;
+
+  .v-select {
+    position: relative;
+  }
+
+  &::v-deep .vs {
+    &__dropdown-toggle {
+      display: flex;
+      align-items: center;
+      height: toRem(50);
+      padding: 0 toRem(24);
+      background-color: $color-dark-grey;
+      color: $color-white;
+      border-radius: toRem(80);
+    }
+
+    &__selected {
+      color: $color-white;
+      font-size: toRem(14);
+      line-height: 1.26;
+      letter-spacing: -0.112px;
+
+      @include media-breakpoint-up(md) {
+        font-size: toRem(18);
+        letter-spacing: -0.144px;
+      }
+    }
+  }
+}
