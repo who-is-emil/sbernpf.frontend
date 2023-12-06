@@ -79,6 +79,10 @@ export default {
   build: {},
 
   router: {
-    base: './'
+    base: '/'
+  },
+
+  generate: {
+    dir: 'dist'
   }
 };

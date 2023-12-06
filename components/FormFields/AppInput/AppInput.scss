@@ -25,6 +25,7 @@
 
     &:disabled {
       color: rgba($color-white, 0.2);
+      cursor: not-allowed;
     }
 
     &:focus {
@@ -32,11 +33,15 @@
     }
 
     @include hover {
-      background-color: $color-dark-grey-hover;
+      &:not(:disabled) {
+        background-color: $color-dark-grey-hover;
+      }
     }
 
     &.focusin {
-      background-color: $color-dark-grey-hover;
+      &:not(:disabled) {
+        background-color: $color-dark-grey-hover;
+      }
     }
   }
 }

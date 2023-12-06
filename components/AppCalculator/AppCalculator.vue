@@ -11,7 +11,6 @@
 
       <form class="app-calculator__form">
         <AppSwitch v-model="switchValue" :data="fieldSwitch" />
-
         <AppInput v-model="sum" :data="sumField" />
         <AppSelect v-model="incomeValue" :data="incomeField" />
       </form>

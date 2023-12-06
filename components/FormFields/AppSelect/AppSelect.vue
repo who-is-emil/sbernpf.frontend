@@ -5,12 +5,17 @@
       :clearable="clearable"
       :options="options"
       :value="value"
+      :aria-label="label"
       @input="input"
     >
       <template #open-indicator="{ attributes }">
         <span v-bind="attributes">
           <AppIcon name="24/arrow" />
         </span>
+      </template>
+
+      <template #spinner>
+        <div class="vs__spinner" />
       </template>
     </v-select>
   </div>
@@ -41,6 +46,9 @@ export default {
     },
     options () {
       return this.data.options || [];
+    },
+    label () {
+      return this.data.label || '';
     }
   },
   methods: {

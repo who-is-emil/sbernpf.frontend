@@ -5,56 +5,138 @@
     position: relative;
   }
 
-  &::v-deep .vs {
-    $vs: &;
+  &::v-deep {
+    .vs {
+      $vs: &;
 
-    &__dropdown-toggle {
-      display: flex;
-      align-items: center;
-      height: toRem(50);
-      padding: 0 toRem(24);
-      background-color: $color-dark-grey;
-      color: $color-white;
-      border-radius: toRem(80);
+      &__dropdown-toggle {
+        display: flex;
+        align-items: center;
+        height: toRem(50);
+        padding: 0 toRem(24);
+        background-color: $color-dark-grey;
+        color: $color-white;
+        border-radius: toRem(80);
 
-      @include media-breakpoint-up(md) {
-        height: toRem(84);
+        @include defaultTransition(background-color);
+
+        @include media-breakpoint-up(lg) {
+          padding: 0 toRem(32);
+        }
+        @include media-breakpoint-up(md) {
+          height: toRem(84);
+        }
       }
-    }
 
-    &__selected {
-      color: $color-white;
-      font-size: toRem(14);
-      line-height: 1.26;
-      letter-spacing: -0.112px;
-
-      @include media-breakpoint-up(md) {
-        font-size: toRem(18);
-        letter-spacing: -0.144px;
+      &__selected-options {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-basis: 100%;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        padding: 0;
       }
-    }
 
-    &__dropdown-menu {
-      background-color: $color-dark-grey;
-      border-radius: toRem(40);
-      padding: toRem(16) toRem(24);
-
-      @include media-breakpoint-up(lg) {
-        padding: toRem(30);
+      &__search {
+        @include visually-hidden;
       }
-      @include media-breakpoint-only(md) {
-        padding: toRem(30) toRem(24);
+
+      &__selected {
+        color: $color-white;
+        font-size: toRem(14);
+        line-height: 1.26;
+        letter-spacing: -0.112px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        opacity: 1;
+
+        @include media-breakpoint-up(md) {
+          font-size: toRem(18);
+          letter-spacing: -0.144px;
+        }
       }
-    }
 
-    &__dropdown-option {
-      color: $color-white;
+      &__dropdown-menu {
+        background-color: $color-dark-grey;
+        border-radius: toRem(40);
+        padding: toRem(16) toRem(24);
 
-      @include defaultTransition(color);
+        @include media-breakpoint-up(lg) {
+          padding: toRem(30) toRem(32);
+        }
+        @include media-breakpoint-only(md) {
+          padding: toRem(30) toRem(24);
+        }
+      }
 
-      &--highlight {
+      &__dropdown-option {
+        font-size: toRem(14);
+        line-height: 1.26;
+        letter-spacing: -0.112px;
+        color: $color-white;
+        padding: 0;
+
+        &:not(:last-child) {
+          margin-bottom: toRem(12);
+        }
+
+        @include media-breakpoint-up(md) {
+          font-size: toRem(18);
+          letter-spacing: -0.144px;
+
+          &:not(:last-child) {
+            margin-bottom: toRem(16);
+          }
+        }
+
+        @include defaultTransition(color);
+
+        &--highlight {
+          background-color: transparent;
+          color: $color-grey;
+        }
+
+        &--selected {
+          color: $color-grey;
+          cursor: default;
+        }
+      }
+
+      &__open-indicator {
         background-color: transparent;
-        color: $color-grey;
+        color: $color-white;
+      }
+
+      &__actions {
+        padding: 0;
+      }
+
+      &__spinner {
+        display: none;
+      }
+    }
+
+    .vs--disabled {
+      .vs__dropdown-toggle {
+        cursor: not-allowed;
+      }
+
+      .vs__selected {
+        color: rgba($color-white, 0.2);
+      }
+
+      .vs__open-indicator {
+        color: rgba($color-white, 0.2);
+      }
+    }
+
+    .v-select:not(.vs--disabled) {
+      .vs__dropdown-toggle {
+        @include hover {
+          background-color: $color-dark-grey-hover;
+        }
       }
     }
   }
