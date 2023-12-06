@@ -1,5 +1,7 @@
 export default {
-  ssr: true,
+  ssr: false,
+  target: 'static',
+  // mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'sbernpf.frontend',

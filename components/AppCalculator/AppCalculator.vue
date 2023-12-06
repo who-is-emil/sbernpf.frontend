@@ -10,7 +10,10 @@
       </div>
 
       <form class="app-calculator__form">
-        <AppSwitch v-model="switchValue" :data="fieldSwitch" />
+        <client-only>
+          <AppSwitch v-model="switchValue" :data="fieldSwitch" />
+        </client-only>
+
         <AppInput v-model="sum" :data="sumField" />
         <AppSelect v-model="incomeValue" :data="incomeField" />
       </form>

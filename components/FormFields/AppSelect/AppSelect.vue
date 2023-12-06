@@ -1,20 +1,18 @@
 <template>
   <div class="app-select">
-    <client-only>
-      <v-select
-        :searchable="searchable"
-        :clearable="clearable"
-        :options="options"
-        :value="value"
-        @input="input"
-      >
-        <template #open-indicator="{ attributes }">
-          <span v-bind="attributes">
-            <AppIcon name="24/arrow" />
-          </span>
-        </template>
-      </v-select>
-    </client-only>
+    <v-select
+      :searchable="searchable"
+      :clearable="clearable"
+      :options="options"
+      :value="value"
+      @input="input"
+    >
+      <template #open-indicator="{ attributes }">
+        <span v-bind="attributes">
+          <AppIcon name="24/arrow" />
+        </span>
+      </template>
+    </v-select>
   </div>
 </template>
 

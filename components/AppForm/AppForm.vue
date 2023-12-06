@@ -4,14 +4,12 @@
       <div class="mb-40">
         Официальный доход
 
-        <client-only>
-          <v-select
-            v-model="incomeValue"
-            :searchable="false"
-            :clearable="false"
-            :options="incomeArray"
-          />
-        </client-only>
+        <v-select
+          v-model="incomeValue"
+          :searchable="false"
+          :clearable="false"
+          :options="incomeArray"
+        />
       </div>
 
       <div class="mb-40">

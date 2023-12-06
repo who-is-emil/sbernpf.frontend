@@ -6,6 +6,8 @@
   }
 
   &::v-deep .vs {
+    $vs: &;
+
     &__dropdown-toggle {
       display: flex;
       align-items: center;
@@ -14,6 +16,10 @@
       background-color: $color-dark-grey;
       color: $color-white;
       border-radius: toRem(80);
+
+      @include media-breakpoint-up(md) {
+        height: toRem(84);
+      }
     }
 
     &__selected {
@@ -25,6 +31,30 @@
       @include media-breakpoint-up(md) {
         font-size: toRem(18);
         letter-spacing: -0.144px;
+      }
+    }
+
+    &__dropdown-menu {
+      background-color: $color-dark-grey;
+      border-radius: toRem(40);
+      padding: toRem(16) toRem(24);
+
+      @include media-breakpoint-up(lg) {
+        padding: toRem(30);
+      }
+      @include media-breakpoint-only(md) {
+        padding: toRem(30) toRem(24);
+      }
+    }
+
+    &__dropdown-option {
+      color: $color-white;
+
+      @include defaultTransition(color);
+
+      &--highlight {
+        background-color: transparent;
+        color: $color-grey;
       }
     }
   }
