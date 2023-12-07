@@ -24,7 +24,7 @@
           padding: 0 toRem(32);
         }
         @include media-breakpoint-up(md) {
-          height: toRem(84);
+          height: toRem(80);
         }
       }
 
@@ -44,18 +44,12 @@
 
       &__selected {
         color: $color-white;
-        font-size: toRem(14);
-        line-height: 1.26;
-        letter-spacing: -0.112px;
         margin: 0;
         padding: 0;
         border: 0;
         opacity: 1;
 
-        @include media-breakpoint-up(md) {
-          font-size: toRem(18);
-          letter-spacing: -0.144px;
-        }
+        @include text-input;
       }
 
       &__dropdown-menu {
@@ -72,20 +66,16 @@
       }
 
       &__dropdown-option {
-        font-size: toRem(14);
-        line-height: 1.26;
-        letter-spacing: -0.112px;
         color: $color-white;
         padding: 0;
+
+        @include text-input;
 
         &:not(:last-child) {
           margin-bottom: toRem(12);
         }
 
         @include media-breakpoint-up(md) {
-          font-size: toRem(18);
-          letter-spacing: -0.144px;
-
           &:not(:last-child) {
             margin-bottom: toRem(16);
           }

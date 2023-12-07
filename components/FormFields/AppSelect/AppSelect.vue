@@ -1,6 +1,7 @@
 <template>
   <div class="app-select">
     <v-select
+      :id="id"
       :searchable="searchable"
       :clearable="clearable"
       :options="options"
@@ -38,6 +39,9 @@ export default {
     }
   },
   computed: {
+    id () {
+      return this.data.id;
+    },
     searchable () {
       return this.data.searchable || false;
     },

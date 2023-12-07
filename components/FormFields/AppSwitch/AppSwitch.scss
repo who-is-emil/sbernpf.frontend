@@ -3,6 +3,7 @@
 
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 
   &__input {
     @include visually-hidden;

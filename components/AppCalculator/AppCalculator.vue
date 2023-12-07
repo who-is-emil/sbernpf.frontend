@@ -10,114 +10,67 @@
       </div>
 
       <form class="app-calculator__form">
-        <AppSwitch v-model="switchValue" :data="fieldSwitch" />
-        <AppInput v-model="sum" :data="sumField" />
-        <AppSelect v-model="incomeValue" :data="incomeField" />
+        <div class="app-calculator__items">
+          <div class="app-calculator__item">
+            <div class="app-calculator__field app-calculator__field--switch">
+              <AppField v-model="genderValue" :data="genderField" />
+            </div>
+
+            <div class="app-calculator__field">
+              <AppField v-model="incomeValue" :data="incomeField" />
+            </div>
+          </div>
+
+          <div class="app-calculator__item">
+            <div class="app-calculator__field">
+              <AppField v-model="ageValue" :data="ageField" />
+            </div>
+          </div>
+
+          <div class="app-calculator__item">
+            <div class="app-calculator__field">
+              <AppField v-model="ageEndValue" :data="ageEndField" />
+            </div>
+          </div>
+
+          <div class="app-calculator__item">
+            <div class="app-calculator__field">
+              <AppField v-model="sumValue" :data="sumField" />
+            </div>
+          </div>
+
+          <div class="app-calculator__item">
+            <div class="app-calculator__field">
+              <AppField v-model="ageValue" :data="ageField" />
+            </div>
+          </div>
+
+          <div class="app-calculator__item">
+            <div class="app-calculator__field">
+              <AppField v-model="ageValue" :data="ageField" />
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import AppSwitch from '~/components/FormFields/AppSwitch/AppSwitch';
-import AppInput from '~/components/FormFields/AppInput/AppInput';
-import AppSelect from '~/components/FormFields/AppSelect/AppSelect';
+import AppField from '~/components/FormFields/AppField/AppField';
 
 export default {
   name: 'AppCalculator',
-  components: { AppSelect, AppInput, AppSwitch },
+  components: { AppField },
   data () {
     return {
       title: ['Рассчитайте', 'ваш будущий доход'],
-      fields: [
-        {
-          name: 'switch',
-          type: 'switch',
-          label: 'Ваш пол',
-          values: [
-            {
-              text: 'М',
-              value: 'm',
-              active: true
-            },
-            {
-              text: 'Ж',
-              value: 'w'
-            }
-          ]
-        },
-        {
-          type: 'select',
-          label: 'Ежемесячный доход',
-          items: [
-            {
-              label: 'до 80 000 ₽',
-              value: 'val_1',
-              selected: true
-            },
-            {
-              label: 'от 80 000 ₽ до 150 000 ₽',
-              value: 'val_2'
-            },
-            {
-              label: 'более 150 000 ₽',
-              value: 'val_3'
-            }
-          ]
-        },
-        {
-          type: 'range',
-          label: 'Текущий возраст',
-          from: 18,
-          to: 100,
-          value: 35,
-          fromText: '18 лет',
-          toText: '100 лет'
-        },
-        {
-          type: 'range',
-          label: 'Возраст окончания участия в программе',
-          from: 50,
-          to: 100,
-          value: 60,
-          fromText: '50 лет',
-          toText: '100 лет'
-        },
-        {
-          type: 'text',
-          label: 'Сумма взноса в месяц',
-          value: 10000,
-          suffix: '₽',
-          text: '500 ₽',
-          placeholder: ''
-        },
-        {
-          type: 'range',
-          label: 'Срок ежемесячных выплат',
-          from: 5,
-          to: 30,
-          value: 10,
-          fromText: '5 лет',
-          toText: '30 лет'
-        },
-        {
-          type: 'text',
-          label: 'Сумма со счета ОПС',
-          value: 10000,
-          suffix: '₽',
-          placeholder: ''
-        },
-        {
-          type: 'checkbox',
-          text: 'Учитывать накопление ОПС',
-          checked: true
-        }
-      ],
 
       // Ваш пол
-      fieldSwitch: {
-        name: 'switch',
+      genderField: {
+        id: 'gender',
         type: 'switch',
+        name: 'gender',
         label: 'Ваш пол',
         values: [
           {
@@ -132,19 +85,14 @@ export default {
           }
         ]
       },
-      switchValue: 'm',
+      genderValue: 'm',
 
-      sumField: {
-        type: 'text',
-        label: 'Сумма взноса в месяц',
-        value: 10000,
-        suffix: '₽',
-        text: '500 ₽',
-        placeholder: ''
-      },
-      sum: 10000,
-
+      // Ежемесячный доход
       incomeField: {
+        id: 'income',
+        type: 'select',
+        name: 'income',
+        label: 'Ежемесячный доход',
         options: [
           {
             label: 'до 80 000 ₽',
@@ -164,6 +112,41 @@ export default {
         label: 'до 80 000 ₽',
         value: 'val_1'
       },
+
+      // Текущий возраст
+      ageField: {
+        id: 'age',
+        type: 'range',
+        label: 'Текущий возраст',
+        min: 18,
+        max: 100,
+        textLeft: '18 лет',
+        textRight: '100 лет'
+      },
+      ageValue: 35,
+
+      // Возраст окончания участия в программе
+      ageEndField: {
+        id: 'endAge',
+        type: 'range',
+        label: 'Возраст окончания участия в программе',
+        min: 50,
+        max: 100,
+        textLeft: '50 лет',
+        textRight: '100 лет'
+      },
+      ageEndValue: 60,
+
+      // Сумма взноса в месяц
+      sumField: {
+        id: 'sum',
+        type: 'text',
+        label: 'Сумма взноса в месяц',
+        value: 10000,
+        suffix: '₽',
+        textLeft: '500 ₽'
+      },
+      sumValue: 10000,
 
       actions: [
         {

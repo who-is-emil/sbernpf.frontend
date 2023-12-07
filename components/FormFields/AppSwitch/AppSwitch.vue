@@ -2,7 +2,7 @@
   <div class="app-switch">
     <div v-for="(item, index) in items" :key="index" class="app-switch__button">
       <input
-        :id="`${item.name}-${index}`"
+        :id="item.id"
         v-model="selectedOption"
         :value="item.value"
         :name="name"
@@ -11,7 +11,7 @@
         @change="input"
       >
       <label
-        :for="`${item.name}-${index}`"
+        :for="item.id"
         class="app-switch__label"
         :aria-label="item.label"
       >
@@ -40,11 +40,19 @@ export default {
     };
   },
   computed: {
+    id () {
+      return this.data.id;
+    },
     name () {
       return this.data.name;
     },
     items () {
-      return this.data.values;
+      return (this.data.values || []).map((item, idx) => {
+        return {
+          ...item,
+          id: idx === 0 ? this.id : `${this.id}-${idx}`
+        };
+      });
     }
   },
   methods: {

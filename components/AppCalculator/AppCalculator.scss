@@ -6,7 +6,7 @@
   padding: toRem(56) 0;
 
   @include media-breakpoint-up(lg) {
-    padding: toRem(80) 0 toRem(64);
+    padding: toRem(80) toRem(32) toRem(64);
   }
   @include media-breakpoint-only(md) {
     padding: toRem(80) 0;
@@ -25,6 +25,44 @@
       &:not(:first-child) {
         font-weight: 300;
       }
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__items {
+    @include media-breakpoint-up(lg) {
+      margin-left: toRem(-20);
+      margin-right: toRem(-20);
+    }
+  }
+
+  &__item {
+    display: flex;
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      padding: 0 toRem(20);
+      margin-bottom: toRem(64);
+
+      @include last-row(2) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__field {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-right: toRem(16);
+    }
+
+    &--switch {
+      width: auto;
     }
   }
 }

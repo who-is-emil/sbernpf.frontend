@@ -72,3 +72,14 @@
     letter-spacing: -0.42px;
   }
 }
+
+@mixin text-input {
+  font-size: toRem(14);
+  line-height: 1.26;
+  letter-spacing: -0.112px;
+
+  @include media-breakpoint-up(md) {
+    font-size: toRem(18);
+    letter-spacing: -0.144px;
+  }
+}

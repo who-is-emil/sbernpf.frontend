@@ -1,6 +1,7 @@
 <template>
   <div class="app-input">
     <input
+      :id="id"
       type="text"
       :class="['app-input__input', focusClass]"
       :placeholder="placeholder"
@@ -27,6 +28,9 @@ export default {
     };
   },
   computed: {
+    id () {
+      return this.data.id;
+    },
     placeholder () {
       return this.data.placeholder || '';
     },
