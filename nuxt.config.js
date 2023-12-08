@@ -79,7 +79,7 @@ export default {
   build: {},
 
   router: {
-    base: './sbernpf.frontend/dist/'
+    base: './'
   },
 
   generate: {
