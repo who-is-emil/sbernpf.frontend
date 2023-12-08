@@ -3,13 +3,16 @@
 
   background-color: $color-black;
   color: $color-white;
-  padding: toRem(56) 0;
 
-  @include media-breakpoint-up(lg) {
-    padding: toRem(80) toRem(32) toRem(64);
-  }
-  @include media-breakpoint-only(md) {
-    padding: toRem(80) 0;
+  &__content {
+    padding: toRem(56) 0;
+
+    @include media-breakpoint-up(lg) {
+      padding: toRem(80) toRem(32) toRem(64);
+    }
+    @include media-breakpoint-only(md) {
+      padding: toRem(80) 0;
+    }
   }
 
   &__title {
@@ -29,8 +32,10 @@
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   &__items {
@@ -38,19 +43,29 @@
       margin-left: toRem(-20);
       margin-right: toRem(-20);
     }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__item {
-    display: flex;
+    margin-bottom: toRem(64);
 
     @include media-breakpoint-up(lg) {
       width: 50%;
       padding: 0 toRem(20);
-      margin-bottom: toRem(64);
 
       @include last-row(2) {
         margin-bottom: 0;
       }
+    }
+    @include media-breakpoint-up(md) {
+      display: flex;
+    }
+
+    &--has-checkbox {
+      position: relative;
     }
   }
 
@@ -63,6 +78,73 @@
 
     &--switch {
       width: auto;
+
+      @include media-breakpoint-down(sm) {
+        margin-bottom: toRem(32);
+      }
+    }
+
+    &--checkbox {
+      position: absolute;
+      top: calc(100% + #{toRem(12)});
+      left: 0;
+
+      @include media-breakpoint-up(lg) {
+        left: toRem(20);
+      }
+    }
+  }
+
+  &__actions {
+    margin-top: toRem(88);
+
+    @include media-breakpoint-up(lg) {
+      margin-top: toRem(80);
+    }
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: center;
+      gap: toRem(16);
+    }
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(96);
+    }
+  }
+
+  &__action {
+    width: 100%;
+
+    .app-button {
+      width: 100%;
+    }
+
+    @include media-breakpoint-up(md) {
+      width: toRem(220);
+    }
+    @include media-breakpoint-down(sm) {
+      &:not(:last-child) {
+        margin-bottom: toRem(16);
+      }
+    }
+  }
+
+  &__text {
+    color: $color-grey;
+    margin-top: toRem(48);
+
+    @include text-small;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: toRem(40);
+    }
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(56);
+    }
+  }
+
+  &__result {
+    @include media-breakpoint-up(lg) {
+      padding: 0 toRem(32);
     }
   }
 }

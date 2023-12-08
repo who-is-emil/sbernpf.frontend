@@ -1,0 +1,43 @@
+.app-button {
+  $root: &;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: toRem(48);
+  min-width: toRem(120);
+  padding: 0 toRem(24);
+  background-color: $color-grey-light;
+  color: $color-black;
+  border: 0;
+  border-radius: toRem(50);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  appearance: none;
+
+  @include text-button;
+  @include defaultTransition(background-color, color);
+
+  @include media-breakpoint-up(md) {
+    height: toRem(64);
+    padding: 0 toRem(30);
+  }
+
+  @include hover {
+    background-color: $color-green;
+    color: $color-white;
+  }
+
+  &--green {
+    background-color: $color-green;
+    color: $color-white;
+
+    @include hover {
+      background-color: $color-grey-light;
+      color: $color-black;
+    }
+  }
+}

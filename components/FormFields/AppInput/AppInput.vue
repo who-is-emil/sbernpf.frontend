@@ -20,6 +20,10 @@ export default {
     data: {
       type: Object,
       required: true
+    },
+    value: {
+      type: [String, Number],
+      default: ''
     }
   },
   data () {
@@ -33,9 +37,6 @@ export default {
     },
     placeholder () {
       return this.data.placeholder || '';
-    },
-    value () {
-      return this.data.value || '';
     }
   },
   methods: {

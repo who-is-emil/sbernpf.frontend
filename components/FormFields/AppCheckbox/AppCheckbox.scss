@@ -1,0 +1,71 @@
+.app-checkbox {
+  $root: &;
+
+  position: relative;
+  display: inline-block;
+  min-height: toRem(24);
+  min-width: toRem(24);
+  cursor: pointer;
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  @include hover {
+    #{$root}__input:not(:disabled) ~ #{$root}__box {
+      //border-color: $color-red;
+    }
+  }
+
+  &__input {
+    @include visually-hidden;
+  }
+
+  &__box {
+    position: absolute;
+    top: toRem(3);
+    left: toRem(3);
+    display: block;
+    height: toRem(24);
+    width: toRem(24);
+    background-color: transparent;
+    border: 1px solid rgba($color-white, 0.4);
+    border-radius: toRem(6);
+
+    @include defaultTransition(background-color, border-color);
+
+    &:after {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      width: toRem(11);
+      height: toRem(6);
+      border-style: solid;
+      border-color: $color-white;
+      border-width: 0 0 2px 2px;
+      content: "";
+      opacity: 0;
+
+      @include defaultTransition(opacity);
+    }
+
+    #{$root}__input:checked ~ & {
+      border-color: $color-green;
+      background-color: $color-green;
+
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__text {
+    display: block;
+    padding-top: 1px;
+    padding-left: toRem(40);
+    color: rgba($color-white, 0.4);
+
+    @include text-button;
+  }
+}

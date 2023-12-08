@@ -1,6 +1,6 @@
 <template>
   <div class="app-switch">
-    <div v-for="(item, index) in items" :key="index" class="app-switch__button">
+    <div v-for="(item, idx) in items" :key="idx" class="app-switch__button">
       <input
         :id="item.id"
         v-model="selectedOption"

@@ -58,6 +58,8 @@
 
   &::v-deep {
     .vue-slider {
+      cursor: pointer;
+
       &-process {
         background-color: $color-green;
         border-radius: 0;

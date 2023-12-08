@@ -6,6 +6,7 @@
         :value="value"
         :min="min"
         :max="max"
+        :disabled="disabled"
         type="number"
         class="app-range__input"
         @focusin="focusIn"
@@ -22,6 +23,7 @@
         :max="max"
         :height="3"
         :dot-size="20"
+        :disabled="disabled"
         @change="change"
       >
         <template #tooltip>
@@ -55,6 +57,9 @@ export default {
     max () {
       return this.data.max || 100;
     },
+    disabled () {
+      return this.data.disabled;
+    },
     textLeft () {
       return this.data.textLeft || '';
     },
@@ -64,11 +69,15 @@ export default {
   },
   methods: {
     input (e) {
+      if (this.disabled) { return; }
+
       const value = this.valueCheck(e.target.value);
 
       this.$refs.slider.setValue(value);
     },
     change (e) {
+      if (this.disabled) { return; }
+
       this.$emit('input', +e);
     },
     valueCheck (value) {

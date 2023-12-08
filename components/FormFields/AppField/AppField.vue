@@ -20,6 +20,10 @@
       <AppRange :data="data" :value="value" @input="input" />
     </template>
 
+    <template v-if="type === 'checkbox'">
+      <AppCheckbox :data="data" :value="value" @input="input" />
+    </template>
+
     <div v-if="textLeft || textRight" class="app-field__bottom">
       <span v-if="textLeft" class="app-field__text app-field__text--left">
         {{ textLeft }}
@@ -36,17 +40,18 @@ import AppSwitch from '~/components/FormFields/AppSwitch/AppSwitch';
 import AppInput from '~/components/FormFields/AppInput/AppInput';
 import AppSelect from '~/components/FormFields/AppSelect/AppSelect';
 import AppRange from '~/components/FormFields/AppRange/AppRange';
+import AppCheckbox from '~/components/FormFields/AppCheckbox/AppCheckbox';
 
 export default {
   name: 'AppField',
-  components: { AppRange, AppSelect, AppInput, AppSwitch },
+  components: { AppCheckbox, AppRange, AppSelect, AppInput, AppSwitch },
   props: {
     data: {
       type: Object,
       required: true
     },
     value: {
-      type: [String, Number, Object],
+      type: [String, Number, Object, Boolean],
       default: null
     }
   },

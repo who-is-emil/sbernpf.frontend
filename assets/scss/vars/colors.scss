@@ -10,6 +10,9 @@ $color-dark-grey-hover: #454552;
 
 $shadow: 0 0 toRem(88) 0 rgba(109, 140, 155, 0.15);
 
+$gradient-first: linear-gradient(254deg, #FAED00 -61.26%, #A0E720 5.39%, #00D900 41.48%, #00ADEE 91.03%, #008AD0 187.98%);
+$gradient-second: linear-gradient(251deg, #FAED00 2.15%, #A0E720 17.27%, #00D900 47.35%, #00ADEE 77.64%, #008AD0 90.79%);
+
 $colors: (
   "white": $color-white,
   "black": $color-black,
