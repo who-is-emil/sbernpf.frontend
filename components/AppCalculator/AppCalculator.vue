@@ -68,7 +68,7 @@
       </div>
 
       <pre>
-        {{ ageEndField }}
+        {{ result }}
       </pre>
 
       <div v-if="false" class="app-calculator__result">
@@ -89,6 +89,9 @@ export default {
   components: { AppResult, AppButton, AppField },
   data () {
     return {
+      // Процент доходности
+      percent: 8,
+
       title: ['Рассчитайте', 'ваш будущий доход'],
 
       // Ваш пол
@@ -222,8 +225,137 @@ export default {
     };
   },
   computed: {
+    // Промежуточные значения:
+    // Сумма взноса в год = Сумма взносов в месяц * 12
+    sumPerYear () {
+      return this.sumValue * 12;
+    },
+
+    // Период участия = Возраст начала получения выплат - Ваш возраст
+    period () {
+      return this.ageEndValue - this.ageValue;
+    },
+
+    // Софинансирование в год = Меньшее(36 000 ; Сумма взноса в год * коэффициент софинансирования государством)
+    cofinancing () {
+      const maxPerYear = 36000;
+      const calcMinValue = this.sumPerYear * this.cofinancingRatio;
+
+      return Math.min(maxPerYear, calcMinValue);
+    },
+
+    // Значение аннуитета для пожилых лиц = значение в таблице аннуитета, определяется по пересечению значений поля Пол и Возраст начала получения выплат
+    cofinancingRatio () {
+      if (this.incomeValue.value === 'val_1') {
+        return 1; // до 80 000 = 1,
+      } else if (this.incomeValue.value === 'val_2') {
+        return 0.5; // от 80 000 до 150 000 = 0.5
+      }
+
+      return 0.25; // более 150 000 = 0.25
+    },
+
+    // Второй экран калькулятора:
+
+    // Личные взносы = (Сумма взноса в год * Период участия)
+    personalContributions () {
+      return this.sumPerYear * this.period;
+    },
+
+    periodMinCalc () {
+      return Math.min(3, this.period);
+    },
+    periodAboveZeroCalc () {
+      return this.period - 4 < 0 ? 0 : this.period - 4;
+    },
+    // Софинансирование государства =
+    // = Меньшее(36 000 || Сумма взноса в год * коэффициент софинансирования государством) * Меньшее(3 || Период участия).
+    stateCofinancing () {
+      return this.cofinancing * this.periodMinCalc;
+    },
+    // Перевод пенсионных накоплений
+    // 0, если чекбокс “Учитывать накопление ОПС” не активен.
+    // Перенос средств ОПС, если чекбокс “Учитывать накопление ОПС” активен.
+    pensionTransfer () {
+      if (!this.OPSValue) {
+        return 0;
+      }
+
+      return this.sumAccountValue;
+    },
+    // Инвестиционный доход
+    investmentIncome () {
+      const first = this.sumPerYear;
+      const second = ((Math.pow((1 + this.percent), this.period) - 1) / ((1 + this.percent) - 1));
+      const third = (1 + this.percent);
+      const fourth = this.cofinancing;
+      const fifth = ((Math.pow((1 + this.percent), this.periodMinCalc) - 1) / (((1 + this.percent) - 1) * (1 + this.percent)));
+      const sixth = (Math.pow((1 + this.percent), this.periodAboveZeroCalc));
+      const seventh = this.pensionTransfer;
+      const eighth = (Math.pow((1 + this.percent), this.period));
+
+      console.log('this.period: ', this.period);
+      console.log('this.percent: ', this.percent);
+      const test = ((Math.pow((1 + this.percent), this.period)) - 1) / ((1 + this.percent) - 1);
+      console.log('test: ', test);
+
+      console.log(first);
+      console.log(second);
+      console.log(third);
+      console.log(fourth);
+      console.log(fifth);
+      console.log(sixth);
+      console.log(seventh);
+      console.log(eighth);
+
+      return (first * second * third) + (fourth * fifth * sixth + seventh * eighth);
+    },
+    // Налоговые вычеты
+    //  (Меньшее( 400 000 ; “Сумма взноса в год”) * 0,13) * (“Период участия”)
+    taxDeductions () {
+      return (Math.min(400000, this.sumPerYear) * 0.13) * this.period;
+    },
+    // Итоговая сумма
+    // Личные взносы + Софинансирование государства + Перевод пенсионных накоплений + Инвестиционный доход
+    totalAmount () {
+      return this.personalContributions + this.stateCofinancing + this.pensionTransfer + this.investmentIncome;
+    },
+
+    // Виды выплат:
+    // Срочная выплата = Округленное вниз значение (“Итоговая сумма” / ( “Период участия”*12)
+    urgentPayment () {
+      return Math.floor((this.totalAmount / this.period * 12));
+    },
+    // Единовременная = Итоговая сумма
+    oneTime () {
+      return this.totalAmount;
+    },
+    // “Пожизненная”.
+    // Округленное вниз значение (“Итоговая сумма”/”Значение аннуитета по таблице аннуитета для пожилых лиц”)
+    lifetime () {
+      // TODO не работает
+      return Math.floor(this.totalAmount / 300);
+    },
+
     result () {
-      return {};
+      return {
+        // Итоговая сумма накоплений в программе
+        totalAmount: this.totalAmount,
+        // Ваши личные взносы
+        personalContributions: this.personalContributions,
+        // Перевод пенсионных накоплений (ОПС)
+        pensionTransfer: this.pensionTransfer,
+        // Софинансирование от государства
+        stateCofinancing: this.stateCofinancing,
+        // Инвестиционный доход
+        investmentIncome: this.investmentIncome,
+        // Срочная
+        urgentPayment: this.urgentPayment,
+        // Единовременная
+        oneTime: this.oneTime,
+        // Пожизненная
+        lifetime: this.lifetime
+      };
     }
   },
   watch: {
