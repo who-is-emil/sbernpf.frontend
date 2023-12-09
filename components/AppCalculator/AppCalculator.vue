@@ -9,7 +9,7 @@
             </span>
           </h2>
         </div>
-        <form class="app-calculator__form">
+        <div class="app-calculator__form">
           <div class="app-calculator__items">
             <div class="app-calculator__item">
               <div class="app-calculator__field app-calculator__field--switch">
@@ -35,7 +35,7 @@
 
             <div class="app-calculator__item">
               <div class="app-calculator__field">
-                <AppField v-model="sumValue" :data="sumField" />
+                <AppField v-model.lazy="sumValue" v-money="money" :data="sumField" />
               </div>
             </div>
 
@@ -47,7 +47,7 @@
 
             <div class="app-calculator__item app-calculator__item--has-checkbox">
               <div class="app-calculator__field">
-                <AppField v-model="sumAccountValue" :data="sumAccountField" />
+                <AppField v-model.lazy="sumAccountValue" v-money="money" :data="sumAccountField" />
               </div>
 
               <div class="app-calculator__field app-calculator__field--checkbox">
@@ -55,23 +55,19 @@
               </div>
             </div>
           </div>
-
           <div class="app-calculator__actions">
             <div v-for="(action, idx) in actions" :key="idx" class="app-calculator__action">
-              <AppButton :data="action" />
+              <template v-if="action.name === 'calculate'">
+                <AppButton :data="action" @click="getResult" />
+              </template>
             </div>
           </div>
-        </form>
+        </div>
         <div v-if="text" class="app-calculator__text">
           <p>{{ text }}</p>
         </div>
       </div>
-
-      <pre>
-        {{ result }}
-      </pre>
-
-      <div v-if="false" class="app-calculator__result">
+      <div v-if="showResult" class="app-calculator__result">
         <AppResult :data="result" />
       </div>
     </div>
@@ -80,17 +76,28 @@
 
 <script>
 import _debounce from 'lodash.debounce';
+import { VMoney } from 'v-money';
 import AppField from '~/components/FormFields/AppField/AppField';
 import AppButton from '~/components/AppButton/AppButton';
 import AppResult from '~/components/AppResult/AppResult';
+import annuityData from '~/components/AppCalculator/annuityData';
 
 export default {
   name: 'AppCalculator',
   components: { AppResult, AppButton, AppField },
+  directives: { money: VMoney },
   data () {
     return {
+      money: {
+        decimal: '.',
+        thousands: ' ',
+        suffix: ' ₽',
+        precision: 0
+      },
+
+      showResult: false,
       // Процент доходности
-      percent: 8,
+      percent: 7,
 
       title: ['Рассчитайте', 'ваш будущий доход'],
 
@@ -170,7 +177,6 @@ export default {
         id: 'sum',
         type: 'text',
         label: 'Сумма взноса в месяц',
-        suffix: '₽',
         textLeft: '500 ₽'
       },
       sumValue: 10000,
@@ -192,7 +198,8 @@ export default {
         id: 'sumAccount',
         type: 'text',
         label: 'Сумма со счета ОПС',
-        suffix: '₽'
+        suffix: '₽',
+        currency: true
       },
       sumAccountValue: 10000,
 
@@ -227,8 +234,14 @@ export default {
   computed: {
     // Промежуточные значения:
     // Сумма взноса в год = Сумма взносов в месяц * 12
+
+    calcPercent () {
+      return this.percent / 100;
+    },
+
     sumPerYear () {
-      return this.sumValue * 12;
+      const formattedValue = parseInt(this.sumValue.toString().replace(/\s/g, ''), 10);
+      return formattedValue * 12;
     },
 
     // Период участия = Возраст начала получения выплат - Ваш возраст
@@ -261,7 +274,6 @@ export default {
     personalContributions () {
       return this.sumPerYear * this.period;
     },
-
     periodMinCalc () {
       return Math.min(3, this.period);
     },
@@ -281,32 +293,18 @@ export default {
         return 0;
       }
 
-      return this.sumAccountValue;
+      return parseInt(this.sumAccountValue.toString().replace(/\s/g, ''), 10);
     },
     // Инвестиционный доход
     investmentIncome () {
       const first = this.sumPerYear;
-      const second = ((Math.pow((1 + this.percent), this.period) - 1) / ((1 + this.percent) - 1));
-      const third = (1 + this.percent);
+      const second = ((Math.pow((1 + this.calcPercent), this.period) - 1) / ((1 + this.calcPercent) - 1));
+      const third = (1 + this.calcPercent);
       const fourth = this.cofinancing;
-      const fifth = ((Math.pow((1 + this.percent), this.periodMinCalc) - 1) / (((1 + this.percent) - 1) * (1 + this.percent)));
-      const sixth = (Math.pow((1 + this.percent), this.periodAboveZeroCalc));
+      const fifth = ((Math.pow((1 + this.calcPercent), this.periodMinCalc) - 1) / (((1 + this.calcPercent) - 1) * (1 + this.calcPercent)));
+      const sixth = (Math.pow((1 + this.calcPercent), this.periodAboveZeroCalc));
       const seventh = this.pensionTransfer;
-      const eighth = (Math.pow((1 + this.percent), this.period));
-
-      console.log('this.period: ', this.period);
-      console.log('this.percent: ', this.percent);
-      const test = ((Math.pow((1 + this.percent), this.period)) - 1) / ((1 + this.percent) - 1);
-      console.log('test: ', test);
-
-      console.log(first);
-      console.log(second);
-      console.log(third);
-      console.log(fourth);
-      console.log(fifth);
-      console.log(sixth);
-      console.log(seventh);
-      console.log(eighth);
+      const eighth = (Math.pow((1 + this.calcPercent), this.period));
 
       return (first * second * third) + (fourth * fifth * sixth + seventh * eighth);
     },
@@ -320,7 +318,6 @@ export default {
     totalAmount () {
       return this.personalContributions + this.stateCofinancing + this.pensionTransfer + this.investmentIncome;
     },
-
     // Виды выплат:
     // Срочная выплата = Округленное вниз значение (“Итоговая сумма” / ( “Период участия”*12)
     urgentPayment () {
@@ -330,31 +327,32 @@ export default {
     oneTime () {
       return this.totalAmount;
     },
-    // “Пожизненная”.
-    // Округленное вниз значение (“Итоговая сумма”/”Значение аннуитета по таблице аннуитета для пожилых лиц”)
-    lifetime () {
-      // TODO не работает
-      return Math.floor(this.totalAmount / 300);
+    annuityValue () {
+      return annuityData[this.ageValue][this.genderValue];
     },
-
+    // “Пожизненная”.
+    // Округленное вниз значение (Итоговая сумма / Значение аннуитета по таблице аннуитета для пожилых лиц)
+    lifetime () {
+      return Math.floor(this.totalAmount / this.annuityValue);
+    },
     result () {
       return {
         // Итоговая сумма накоплений в программе
-        totalAmount: this.totalAmount,
+        totalAmount: this.formatNumberToCurrency(this.totalAmount),
         // Ваши личные взносы
-        personalContributions: this.personalContributions,
+        personalContributions: this.formatNumberToCurrency(this.personalContributions),
         // Перевод пенсионных накоплений (ОПС)
-        pensionTransfer: this.pensionTransfer,
+        pensionTransfer: this.formatNumberToCurrency(this.pensionTransfer),
         // Софинансирование от государства
-        stateCofinancing: this.stateCofinancing,
+        stateCofinancing: this.formatNumberToCurrency(this.stateCofinancing),
         // Инвестиционный доход
-        investmentIncome: this.investmentIncome,
+        investmentIncome: this.formatNumberToCurrency(this.investmentIncome),
         // Срочная
-        urgentPayment: this.urgentPayment,
+        urgentPayment: this.formatNumberToCurrency(this.urgentPayment),
         // Единовременная
-        oneTime: this.oneTime,
+        oneTime: this.formatNumberToCurrency(this.oneTime),
         // Пожизненная
-        lifetime: this.lifetime
+        lifetime: this.formatNumberToCurrency(this.lifetime)
       };
     }
   },
@@ -407,6 +405,22 @@ export default {
         });
       }
     }, 500)
+  },
+  methods: {
+    getResult () {
+      this.showResult = true;
+    },
+    formatNumberToCurrency (number, locale = 'ru-RU', currency = 'RUB') {
+      const formatter = new Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency,
+        useGrouping: true,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+
+      return formatter.format(number);
+    }
   }
 };
 </script>

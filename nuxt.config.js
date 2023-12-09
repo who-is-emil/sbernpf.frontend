@@ -1,6 +1,6 @@
 export default {
-  ssr: true,
-  // target: 'static',
+  ssr: false,
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -79,7 +79,8 @@ export default {
   build: {},
 
   router: {
-    base: '/sbernpf.frontend/dist/'
+    // base: '/sbernpf.frontend/dist/'
+    base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
   },
 
   generate: {

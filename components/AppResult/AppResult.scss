@@ -166,12 +166,13 @@
   }
 
   &__card-text {
-    max-width: toRem(196);
-
     @include text-body;
 
     @include media-breakpoint-only(md) {
       max-width: toRem(492);
+    }
+    @include media-breakpoint-down(sm) {
+      max-width: toRem(196);
     }
   }
 

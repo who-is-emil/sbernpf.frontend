@@ -7,7 +7,7 @@
     <div class="app-result__base">
       <div class="app-result__total">
         <p class="app-result__value app-result__value--big">
-          7 334 680 ₽
+          {{ totalAmount }}
         </p>
 
         <p class="app-result__total-text">
@@ -31,7 +31,7 @@
             Ваши личные взносы
           </p>
           <p class="app-result__item-value h4">
-            2 500 000 ₽
+            {{ personalContributions }}
           </p>
         </div>
         <div class="app-result__item">
@@ -39,7 +39,7 @@
             Перевод пенсионных накоплений (ОПС)
           </p>
           <p class="app-result__item-value h4">
-            10 000 ₽
+            {{ pensionTransfer }}
           </p>
         </div>
         <div class="app-result__item">
@@ -47,7 +47,7 @@
             Софинансирование от государства
           </p>
           <p class="app-result__item-value h4">
-            108 000 ₽
+            {{ stateCofinancing }}
           </p>
         </div>
         <div class="app-result__item">
@@ -55,7 +55,7 @@
             Инвестиционный доход
           </p>
           <p class="app-result__item-value h4">
-            4 716 680 ₽
+            {{ investmentIncome }}
           </p>
         </div>
       </div>
@@ -73,7 +73,7 @@
           </p>
 
           <p class="app-result__value">
-            61 122 ₽
+            {{ urgentPayment }}
           </p>
 
           <p class="app-result__card-text">
@@ -86,7 +86,7 @@
           </p>
 
           <p class="app-result__value">
-            7 334 680 ₽
+            {{ oneTime }}
           </p>
 
           <p class="app-result__card-text">
@@ -100,7 +100,7 @@
           </p>
 
           <p class="app-result__value">
-            32 170 ₽
+            {{ lifetime }}
           </p>
 
           <p class="app-result__card-text">
@@ -151,6 +151,33 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    // Итоговая сумма накоплений в программе
+    totalAmount () {
+      return this.data.totalAmount;
+    },
+    personalContributions () {
+      return this.data.personalContributions;
+    },
+    pensionTransfer () {
+      return this.data.pensionTransfer;
+    },
+    stateCofinancing () {
+      return this.data.stateCofinancing;
+    },
+    investmentIncome () {
+      return this.data.investmentIncome;
+    },
+    urgentPayment () {
+      return this.data.urgentPayment;
+    },
+    oneTime () {
+      return this.data.oneTime;
+    },
+    lifetime () {
+      return this.data.lifetime;
+    }
   }
 };
 </script>
