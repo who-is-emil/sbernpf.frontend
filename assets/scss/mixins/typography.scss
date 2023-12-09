@@ -99,6 +99,12 @@
   }
 }
 
+@mixin text-button-small {
+  font-size: toRem(16);
+  letter-spacing: -0.128px;
+  line-height: 1.26;
+}
+
 @mixin text-number {
   font-size: toRem(28);
   line-height: 1.2;

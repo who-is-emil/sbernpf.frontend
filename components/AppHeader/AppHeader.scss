@@ -1,0 +1,117 @@
+.app-header {
+  $root: &;
+
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-white;
+  box-shadow: none;
+
+  @include defaultTransition(box-shadow);
+
+  &.fixed {
+    position: fixed;
+    box-shadow: 0 0 toRem(88) 0 rgba(109, 140, 155, 0.15);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: toRem(72);
+
+    @include media-breakpoint-up(lg) {
+      padding: 0 toRem(32) toRem(16);
+    }
+    @include media-breakpoint-up(md) {
+      height: toRem(88);
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    height: toRem(25);
+    width: toRem(145);
+    margin-right: toRem(58);
+    margin-top: toRem(4);
+  }
+
+  &__nav {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: toRem(22);
+  }
+
+  &__link {
+    font-size: toRem(16);
+    line-height: 1.26;
+    color: $color-black;
+
+    @include hover {
+      color: $color-green;
+    }
+
+    @include defaultTransition(color);
+  }
+
+  &__action {
+    margin-left: auto;
+
+    @include media-breakpoint-only(md) {
+      margin-right: toRem(32);
+    }
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+
+  &__burger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: toRem(32);
+    width: toRem(32);
+    background-color: transparent;
+    color: $color-black;
+    border: 0;
+    padding: 0;
+    gap: toRem(8);
+
+    @include hover {
+      color: rgba($color-black, 0.6);
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+
+    span {
+      height: 2px;
+      width: toRem(32);
+      background-color: currentColor;
+
+      @include defaultTransition(transform, color);
+    }
+
+    @at-root .menu-opened & {
+      span {
+        &:first-child {
+          transform: rotate(45deg) translateX(#{toRem(5)}) translateY(#{toRem(3)});
+        }
+
+        &:last-child {
+          transform: rotate(-45deg) translateX(#{toRem(3)}) translateY(#{toRem(-3)});
+        }
+      }
+    }
+  }
+}

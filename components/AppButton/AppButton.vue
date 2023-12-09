@@ -1,7 +1,7 @@
 <template>
   <button
     :type="type"
-    :class="['app-button', theme]"
+    :class="['app-button', theme, size]"
     :title="title"
     @click="click"
   >
@@ -31,6 +31,11 @@ export default {
     theme () {
       return this.data.theme
         ? `app-button--${this.data.theme}`
+        : '';
+    },
+    size () {
+      return this.data.size
+        ? `app-button--${this.data.size}`
         : '';
     }
   },

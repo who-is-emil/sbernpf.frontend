@@ -17,18 +17,28 @@
   white-space: nowrap;
   text-decoration: none;
   appearance: none;
+  overflow: hidden;
 
   @include text-button;
   @include defaultTransition(background-color, color);
 
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: $gradient-first;
+    opacity: 0;
+    pointer-events: none;
+
+    @include defaultTransition(opacity);
+  }
+
   @include media-breakpoint-up(md) {
     height: toRem(64);
     padding: 0 toRem(30);
-  }
-
-  @include hover {
-    background-color: $color-green;
-    color: $color-white;
   }
 
   &--green {
@@ -39,5 +49,27 @@
       background-color: $color-grey-light;
       color: $color-black;
     }
+  }
+
+  &--black {
+    background-color: $color-black;
+    color: $color-white;
+
+    @include hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--small {
+    padding: 0 toRem(18);
+    height: toRem(44);
+
+    @include text-button-small;
+  }
+
+  &__text {
+    position: relative;
   }
 }
