@@ -16,20 +16,22 @@
     </div>
 
     <div class="app-range__slider">
-      <vue-slider
-        ref="slider"
-        :value="value"
-        :min="min"
-        :max="max"
-        :height="3"
-        :dot-size="20"
-        :disabled="disabled"
-        @change="change"
-      >
-        <template #tooltip>
-          <div class="vue-slider-tootltip" />
-        </template>
-      </vue-slider>
+      <client-only>
+        <vue-slider
+          ref="slider"
+          :value="value"
+          :min="min"
+          :max="max"
+          :height="3"
+          :dot-size="20"
+          :disabled="disabled"
+          @change="change"
+        >
+          <template #tooltip>
+            <div class="vue-slider-tootltip" />
+          </template>
+        </vue-slider>
+      </client-only>
     </div>
   </div>
 </template>
