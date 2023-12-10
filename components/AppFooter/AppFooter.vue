@@ -47,34 +47,6 @@ export default {
   components: { AppIcon },
   data () {
     return {
-      title: ['Вопросы', 'ответы'],
-      action: {
-        title: 'Оставить заявку',
-        text: 'Оставить заявку',
-        href: '#!'
-      },
-      items: [
-        {
-          title: 'Что такое программа долгосрочных сбережений?',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nostrum odit sunt! Blanditiis consequuntur impedit ipsum magnam natus nemo optio quisquam soluta veritatis voluptatem. Doloremque eveniet magnam mollitia quae repudiandae!'
-        },
-        {
-          title: 'Когда стартует программа долгосрочных сбережений?',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nostrum odit sunt! Blanditiis consequuntur impedit ipsum magnam natus nemo optio quisquam soluta veritatis voluptatem. Doloremque eveniet magnam mollitia quae repudiandae!'
-        },
-        {
-          title: 'Кто может участвовать в программе?',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nostrum odit sunt! Blanditiis consequuntur impedit ipsum magnam natus nemo optio quisquam soluta veritatis voluptatem. Doloremque eveniet magnam mollitia quae repudiandae!'
-        },
-        {
-          title: 'Как формируются долгосрочные сбережения?',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nostrum odit sunt! Blanditiis consequuntur impedit ipsum magnam natus nemo optio quisquam soluta veritatis voluptatem. Doloremque eveniet magnam mollitia quae repudiandae!'
-        },
-        {
-          title: 'Почему выгодно вступить в программу?',
-          content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque nostrum odit sunt! Blanditiis consequuntur impedit ipsum magnam natus nemo optio quisquam soluta veritatis voluptatem. Doloremque eveniet magnam mollitia quae repudiandae!'
-        }
-      ],
       contacts: [
         {
           text: '+7 (495) 500-55-50',

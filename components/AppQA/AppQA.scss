@@ -1,0 +1,36 @@
+.app-qa {
+  $root: &;
+
+  position: relative;
+  background-color: $color-black;
+  color: $color-white;
+
+  &__side {
+
+  }
+
+  &__title {
+    span {
+      &:not(:first-child) {
+        font-weight: 400;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: toRem(36);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(32);
+    }
+  }
+
+  &__action {
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+
+      .app-button {
+        width: 100%;
+      }
+    }
+  }
+}
