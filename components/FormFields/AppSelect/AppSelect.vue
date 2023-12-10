@@ -1,24 +1,26 @@
 <template>
   <div class="app-select">
-    <v-select
-      :id="id"
-      :searchable="searchable"
-      :clearable="clearable"
-      :options="options"
-      :value="value"
-      :aria-label="label"
-      @input="input"
-    >
-      <template #open-indicator="{ attributes }">
-        <span v-bind="attributes">
-          <AppIcon name="24/arrow" />
-        </span>
-      </template>
+    <client-only>
+      <v-select
+        :id="id"
+        :searchable="searchable"
+        :clearable="clearable"
+        :options="options"
+        :value="value"
+        :aria-label="label"
+        @input="input"
+      >
+        <template #open-indicator="{ attributes }">
+          <span v-bind="attributes">
+            <AppIcon name="24/arrow" />
+          </span>
+        </template>
 
-      <template #spinner>
-        <div class="vs__spinner" />
-      </template>
-    </v-select>
+        <template #spinner>
+          <div class="vs__spinner" />
+        </template>
+      </v-select>
+    </client-only>
   </div>
 </template>
 

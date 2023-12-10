@@ -6,7 +6,7 @@ export default {
   head: {
     title: 'СберНПФ (НПФ Сбербанка)',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ru'
     },
     meta: [
       { charset: 'utf-8' },
@@ -34,13 +34,11 @@ export default {
   plugins: [
     {
       src: '~plugins/vue-slider-component.js',
-      ssr: false,
-      mode: 'client'
+      ssr: false
     },
     {
       src: '~plugins/vue-select.js',
-      ssr: false,
-      mode: 'client'
+      ssr: false
     }
   ],
 
