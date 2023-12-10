@@ -1,0 +1,7 @@
+.app {
+  padding-top: toRem(72);
+
+  @include media-breakpoint-up(md) {
+    padding-top: toRem(88);
+  }
+}
