@@ -1,3 +1,101 @@
 .app-accordion {
   $root: &;
+
+  position: relative;
+  border-radius: toRem(40);
+  background-color: rgba($color-white, 0.1);
+  backdrop-filter: blur(#{toRem(33)});
+
+  &__button {
+    position: relative;
+    display: block;
+    width: 100%;
+    border: 0;
+    text-align: left;
+    padding: toRem(16) toRem(64) toRem(16) toRem(24);
+    background-color: rgba($color-white, 0.1);
+    border-radius: toRem(40);
+    color: $color-white;
+
+    @include text-body;
+    @include defaultTransition(background-color, color);
+
+    @include hover {
+      background-color: rgba($color-white, 0.2);
+    }
+
+    #{$root}--active & {
+      background-color: transparent;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 50%;
+      right: toRem(24);
+      width: toRem(16);
+      height: 1px;
+      background-color: $color-white;
+      transform: translateY(-50%);
+      content: "";
+
+      @include defaultTransition(opacity);
+    }
+
+    &:after {
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    #{$root}--active & {
+      &:after {
+        opacity: 0;
+      }
+
+      @include hover {
+        color: rgba($color-white, 0.6);
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: toRem(24) toRem(80) toRem(24) toRem(40);
+
+      &:before,
+      &:after {
+        right: toRem(45);
+      }
+    }
+    @include media-breakpoint-only(md) {
+      padding: toRem(24) toRem(80) toRem(24) toRem(32);
+
+      &:before,
+      &:after {
+        right: toRem(45);
+      }
+    }
+  }
+
+  &__content {
+    padding: 0 toRem(24);
+
+    @include media-breakpoint-up(lg) {
+      padding: 0 toRem(40);
+    }
+    @include media-breakpoint-only(md) {
+      padding: 0 toRem(32);
+    }
+  }
+
+  &__text {
+    padding-bottom: toRem(16);
+
+    @include media-breakpoint-up(lg) {
+      max-width: toRem(827);
+    }
+    @include media-breakpoint-only(md) {
+      max-width: toRem(580);
+    }
+    @include media-breakpoint-up(md) {
+      padding-bottom: toRem(24);
+    }
+  }
 }

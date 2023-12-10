@@ -98,6 +98,11 @@
       &__open-indicator {
         background-color: transparent;
         color: $color-white;
+
+        .app-icon {
+          width: toRem(24);
+          height: toRem(24);
+        }
       }
 
       &__actions {

@@ -1,22 +1,35 @@
 <template>
-  <div class="aap-accordion">
-    <button class="aap-accordion__header" @click="toggleItem">
-      button
+  <div
+    class="app-accordion"
+    :class="{'app-accordion--active' : active}"
+  >
+    <button
+      type="button"
+      class="app-accordion__button"
+      @click="toggle"
+    >
+      {{ title }}
     </button>
-    <transition name="height">
-      <div v-show="isOpen" ref="content" class="aap-accordion__content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error ipsum laboriosam nemo non perspiciatis.
-        Consectetur cupiditate dolores labore nostrum numquam obcaecati quidem rem soluta, voluptate voluptatem. Dolorum
-        laborum sunt tempora!
+    <collapse-transition>
+      <div
+        v-show="active"
+        class="app-accordion__content"
+      >
+        <div
+          class="app-accordion__text user-text"
+          v-html="text"
+        />
       </div>
-    </transition>
+    </collapse-transition>
   </div>
 </template>
 
 <script>
+import { CollapseTransition } from '@ivanv/vue-collapse-transition';
 
 export default {
   name: 'AppAccordion',
+  components: { CollapseTransition },
   props: {
     data: {
       type: Object,
@@ -25,25 +38,20 @@ export default {
   },
   data () {
     return {
-      isOpen: false
+      active: false
     };
   },
+  computed: {
+    title () {
+      return this.data.title || '';
+    },
+    text () {
+      return this.data.text || '';
+    }
+  },
   methods: {
-    toggleItem () {
-      const contentElement = this.$refs.content;
-      contentElement.style.height = contentElement.scrollHeight + 'px';
-
-      console.log(contentElement.scrollHeight);
-
-      this.$nextTick(() => {
-        this.isOpen = !this.isOpen;
-
-        if (this.isOpen) {
-          contentElement.style.height = 'auto';
-        } else {
-          contentElement.style.height = '';
-        }
-      });
+    toggle () {
+      this.active = !this.active;
     }
   }
 };

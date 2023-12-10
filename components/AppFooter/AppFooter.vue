@@ -1,50 +1,58 @@
 <template>
   <footer class="app-footer" role="contentinfo">
-    <div class="app-footer__container container">
-      <div class="app-footer__top">
-        <div class="app-footer__logos">
-          <div class="app-footer__logo">
-            <AppIcon name="logos/logo-sber" />
-          </div>
-          <div class="app-footer__logo">
-            <AppIcon name="logos/logo-npf" />
-          </div>
-        </div>
-
-        <div class="app-footer__contacts">
-          <div v-for="(item, idx) in contacts" :key="idx" class="app-footer__contact">
-            <a :href="item.href" class="app-footer__link">
-              {{ item.text }}
-            </a>
-
-            <p v-if="item.description" class="app-footer__description">
-              {{ item.description }}
-            </p>
-          </div>
-        </div>
+    <div class="app-footer__content">
+      <div class="app-footer__qa">
+        <AppQA />
       </div>
+      <div class="app-footer__container container">
+        <div class="app-footer__top">
+          <div class="app-footer__logos">
+            <div class="app-footer__logo">
+              <AppIcon name="logos/logo-sber" />
+            </div>
+            <div class="app-footer__logo">
+              <AppIcon name="logos/logo-npf" />
+            </div>
+          </div>
 
-      <div class="app-footer__bottom">
-        <div class="app-footer__policy">
-          <a :href="policy.href" class="app-footer__policy-link">
-            {{ policy.text }}
-          </a>
+          <div class="app-footer__contacts">
+            <div v-for="(item, idx) in contacts" :key="idx" class="app-footer__contact">
+              <a :href="item.href" class="app-footer__link">
+                {{ item.text }}
+              </a>
+
+              <p v-if="item.description" class="app-footer__description">
+                {{ item.description }}
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div class="app-footer__text">
-          <p v-html="text" />
+        <div class="app-footer__bottom">
+          <div class="app-footer__policy">
+            <a :href="policy.href" class="app-footer__policy-link">
+              {{ policy.text }}
+            </a>
+          </div>
+
+          <div class="app-footer__text">
+            <p v-html="text" />
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="app-footer__background" />
   </footer>
 </template>
 
 <script>
 import AppIcon from '~/components/AppIcon/AppIcon';
+import AppQA from '~/components/AppQA/AppQA';
 
 export default {
   name: 'AppFooter',
-  components: { AppIcon },
+  components: { AppQA, AppIcon },
   data () {
     return {
       contacts: [

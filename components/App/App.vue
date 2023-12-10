@@ -3,7 +3,18 @@
     <AppHeader />
     <AppCategories />
     <AppCalculator />
-    <AppQA />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <AppFooter />
   </div>
 </template>
@@ -13,11 +24,10 @@ import AppCalculator from '~/components/AppCalculator/AppCalculator';
 import AppCategories from '~/components/AppCategories/AppCategories';
 import AppHeader from '~/components/AppHeader/AppHeader';
 import AppFooter from '~/components/AppFooter/AppFooter';
-import AppQA from '~/components/AppQA/AppQA';
 
 export default {
   name: 'App',
-  components: { AppQA, AppFooter, AppHeader, AppCategories, AppCalculator },
+  components: { AppFooter, AppHeader, AppCategories, AppCalculator },
   mounted () {
     this.resizeCheck();
   },
