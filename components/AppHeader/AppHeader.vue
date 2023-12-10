@@ -33,6 +33,8 @@
         </button>
       </div>
     </div>
+
+    <div class="app-header__overlay" @click="menuStateToggle" />
   </header>
 </template>
 
