@@ -77,7 +77,8 @@ export default {
   build: {},
 
   router: {
-    base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
+    // base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : './'
+    base: './'
   },
 
   generate: {
