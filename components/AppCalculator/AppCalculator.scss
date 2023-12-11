@@ -143,8 +143,13 @@
   }
 
   &__result {
+    padding: 0 toRem(56);
+
     @include media-breakpoint-up(lg) {
-      padding: 0 toRem(32);
+      padding: toRem(80) toRem(32) toRem(72);
+    }
+    @include media-breakpoint-only(md) {
+      padding: 0 toRem(80);
     }
   }
 }

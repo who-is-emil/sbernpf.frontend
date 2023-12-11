@@ -115,7 +115,13 @@
     <div class="app-result__bottom">
       <div class="app-result__actions">
         <div v-for="(item, idx) in actions" :key="idx" class="app-result__action">
-          <AppButton :data="item" />
+          <template v-if="item.name === 'request'">
+            <AppButton :data="item" />
+          </template>
+
+          <template v-if="item.name === 'edit'">
+            <AppButton :data="item" @click="edit" />
+          </template>
         </div>
       </div>
     </div>
@@ -139,13 +145,13 @@ export default {
       title: 'Результаты расчета',
       actions: [
         {
-          name: 'calculate',
+          name: 'request',
           text: 'Оставить заявку*',
           title: 'Оставить заявку*',
-          theme: 'green'
+          theme: 'gradient'
         },
         {
-          name: 'submit',
+          name: 'edit',
           text: 'Изменить параметры расчета',
           title: 'Изменить параметры расчета'
         }
@@ -177,6 +183,11 @@ export default {
     },
     lifetime () {
       return this.data.lifetime;
+    }
+  },
+  methods: {
+    edit () {
+      this.$emit('edit');
     }
   }
 };

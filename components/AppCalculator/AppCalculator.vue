@@ -1,7 +1,10 @@
 <template>
   <div class="app-calculator">
     <div class="app-calculator__container container">
-      <div class="app-calculator__content">
+      <div v-if="showResult" class="app-calculator__result">
+        <AppResult :data="result" @edit="resultToggle" />
+      </div>
+      <div v-else class="app-calculator__content">
         <div class="app-calculator__top">
           <h2 class="app-calculator__title">
             <span v-for="(item, idx) in title" :key="idx">
@@ -58,7 +61,11 @@
           <div class="app-calculator__actions">
             <div v-for="(action, idx) in actions" :key="idx" class="app-calculator__action">
               <template v-if="action.name === 'calculate'">
-                <AppButton :data="action" @click="getResult" />
+                <AppButton :data="action" @click="resultToggle" />
+              </template>
+
+              <template v-if="action.name === 'request'">
+                <AppButton :data="action" />
               </template>
             </div>
           </div>
@@ -66,9 +73,6 @@
         <div v-if="text" class="app-calculator__text">
           <p>{{ text }}</p>
         </div>
-      </div>
-      <div v-if="showResult" class="app-calculator__result">
-        <AppResult :data="result" />
       </div>
     </div>
   </div>
@@ -217,12 +221,13 @@ export default {
           name: 'calculate',
           text: 'Рассчитать',
           title: 'Рассчитать',
-          theme: 'green'
+          theme: 'gradient'
         },
         {
-          name: 'submit',
+          name: 'request',
           text: 'Оставить заявку',
-          title: 'Оставить заявку'
+          title: 'Оставить заявку',
+          href: '#!'
         }
       ],
       text: 'Не является офертой и не гарантирует доходность в будущем. ' +
@@ -407,8 +412,8 @@ export default {
     }, 500)
   },
   methods: {
-    getResult () {
-      this.showResult = true;
+    resultToggle () {
+      this.showResult = !this.showResult;
     },
     formatNumberToCurrency (number, locale = 'ru-RU', currency = 'RUB') {
       const formatter = new Intl.NumberFormat(locale, {
