@@ -1,0 +1,89 @@
+.app-info-card {
+  $root: &;
+
+  position: relative;
+  display: block;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-white;
+    box-shadow: 0 0 toRem(88) 0 rgba(109, 140, 155, 0.1);
+    border-radius: toRem(40);
+    overflow: hidden;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: toRem(32) toRem(24) toRem(211);
+
+    @include media-breakpoint-up(lg) {
+      min-height: toRem(326);
+      padding: toRem(56) toRem(48);
+    }
+    @include media-breakpoint-only(md) {
+      padding: toRem(40) toRem(32) toRem(255);
+    }
+  }
+
+  &__image {
+    position: absolute;
+
+    @include media-breakpoint-up(lg) {
+      top: toRem(-76);
+      right: 0;
+      width: toRem(551);
+      height: toRem(460);
+    }
+    @include media-breakpoint-only(md) {
+      left: toRem(100);
+      bottom: toRem(-111);
+      width: toRem(440);
+      height: toRem(366);
+    }
+    @include media-breakpoint-down(sm) {
+      left: 50%;
+      bottom: toRem(-86);
+      transform: translateX(-50%);
+      width: toRem(328);
+      height: toRem(273);
+    }
+  }
+
+  &__title {
+    margin-bottom: toRem(32);
+
+    @include media-breakpoint-up(lg) {
+      max-width: toRem(802);
+    }
+    @include media-breakpoint-only(md) {
+      max-width: toRem(640);
+    }
+
+    span {
+      &:not(:first-child) {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__actions {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: center;
+      gap: toRem(24);
+    }
+  }
+
+  &__action {
+    @include media-breakpoint-down(sm) {
+      &:not(:last-child) {
+        margin-bottom: toRem(16);
+      }
+    }
+  }
+}

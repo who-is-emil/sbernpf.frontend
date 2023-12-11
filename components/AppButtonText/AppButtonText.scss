@@ -1,0 +1,47 @@
+.app-button-text {
+  $root: &;
+
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  color: $color-main;
+
+  @include hover {
+    color: $color-green;
+  }
+
+  &:disabled {
+    color: rgba(#333F48, 0.4);
+    cursor: not-allowed;
+  }
+
+  &--white {
+    color: $color-white;
+
+    @include hover {
+      color: $color-grey;
+    }
+
+    &:disabled {
+      color: rgba($color-white, 0.4);
+    }
+  }
+
+  &__text {
+    display: block;
+
+    @include text-button;
+    @include defaultTransition(color);
+  }
+
+  &__icon {
+    display: block;
+    width: toRem(24);
+    height: toRem(24);
+    margin-left: toRem(8);
+
+    @include defaultTransition(color, transform);
+  }
+}

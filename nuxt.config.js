@@ -1,5 +1,5 @@
 export default {
-  ssr: false,
+  ssr: true,
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -34,6 +34,10 @@ export default {
   plugins: [
     {
       src: '~plugins/vue-slider-component.js',
+      ssr: false
+    },
+    {
+      src: '~plugins/vue-select.js',
       ssr: false
     },
     {
@@ -77,8 +81,8 @@ export default {
   build: {},
 
   router: {
-    // base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : './'
-    base: '/'
+    base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
+    // base: './'
   },
 
   generate: {

@@ -71,14 +71,18 @@ export default {
   },
   methods: {
     input (e) {
-      if (this.disabled) { return; }
+      if (this.disabled) {
+        return;
+      }
 
       const value = this.valueCheck(e.target.value);
 
       this.$refs.slider.setValue(value);
     },
     change (e) {
-      if (this.disabled) { return; }
+      if (this.disabled) {
+        return;
+      }
 
       this.$emit('input', +e);
     },

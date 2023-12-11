@@ -1,0 +1,215 @@
+.app-info {
+  $root: &;
+
+  position: relative;
+  padding-bottom: toRem(80);
+
+  @include media-breakpoint-up(lg) {
+    padding-bottom: toRem(112);
+  }
+  @include media-breakpoint-only(md) {
+    padding-bottom: toRem(96);
+  }
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    border-radius: 1440px;
+    width: toRem(1440);
+    height: toRem(352);
+    background: #56FF43;
+    filter: blur(150px);
+    transform: translateY(50%);
+    will-change: transform;
+    content: "";
+  }
+
+  @include media-breakpoint-down(sm) {
+    &:after {
+      width: toRem(540);
+      height: toRem(200);
+      bottom: toRem(100);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__base {
+    margin-bottom: toRem(56);
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: toRem(88);
+    }
+  }
+
+  &__title {
+    span {
+      display: block;
+
+      &:not(:first-child) {
+        font-weight: 300;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+      padding-right: toRem(40);
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(40);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(32);
+    }
+  }
+
+  &__col {
+    position: relative;
+
+    & > :first-child {
+      padding-top: 0;
+    }
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: toRem(-25);
+      width: toRem(2);
+      height: 100%;
+      background: linear-gradient(180deg, #00D900 0%, rgba(255, 255, 255, 0.00) 131.77%);
+      content: "";
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: 50%;
+    }
+    @include media-breakpoint-only(md) {
+      margin-left: toRem(32);
+    }
+  }
+
+  &__item-title {
+    position: relative;
+    margin-bottom: toRem(16);
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: toRem(32);
+    }
+    @include media-breakpoint-only(md) {
+      max-width: toRem(550);
+    }
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: toRem(-32);
+      width: toRem(16);
+      height: toRem(16);
+      border-radius: 50%;
+      content: "";
+      background-color: $color-green;
+    }
+  }
+
+  &__item-text {
+    @include media-breakpoint-only(md) {
+      max-width: toRem(480);
+    }
+  }
+
+  &__toggle {
+    margin-top: toRem(16);
+
+    @include media-breakpoint-up(md) {
+      margin-top: toRem(24);
+    }
+
+    &--show {
+      &::v-deep .app-button-text__icon {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__items {
+    & > :last-child {
+      margin-bottom: 0;
+    }
+
+    padding-top: toRem(32);
+
+    @include media-breakpoint-up(md) {
+      padding-top: toRem(56);
+    }
+  }
+
+  &__item {
+    margin-bottom: toRem(32);
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: toRem(56);
+    }
+  }
+
+  &__row {
+    padding-top: toRem(24);
+    border-top: 1px solid $color-white;
+
+    &:not(:last-child) {
+      margin-bottom: toRem(32);
+    }
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+    }
+    @include media-breakpoint-up(md) {
+      padding-top: toRem(32);
+    }
+    @include media-breakpoint-only(md) {
+      &:not(:last-child) {
+        margin-bottom: toRem(40);
+      }
+    }
+  }
+
+  &__cell {
+    @include media-breakpoint-up(lg) {
+      &:first-child:not(:last-child) {
+        width: 33.3333%;
+        margin-right: 16.6666%;
+      }
+
+      &:last-child:not(:first-child) {
+        width: 50%;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(md) {
+        margin-bottom: toRem(16);
+      }
+    }
+  }
+
+  &__row-title {
+    @include media-breakpoint-only(md) {
+      max-width: toRem(380);
+    }
+  }
+
+  &__row-text {
+    @include media-breakpoint-up(lg) {
+      max-width: toRem(454);
+    }
+    @include media-breakpoint-only(md) {
+      max-width: toRem(400);
+    }
+  }
+}
