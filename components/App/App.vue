@@ -4,6 +4,11 @@
     <div class="mb-lg-128 mb-md-144 mb-112">
       <AppCategories />
     </div>
+    <div class="mb-lg-112 mb-md-96 mb-80">
+      <div class="container">
+        <AppCardRequest />
+      </div>
+    </div>
     <div class="mb-lg-128 mb-md-96 mb-80">
       <AppCalculator />
     </div>
@@ -36,10 +41,11 @@ import AppInfoCard from '~/components/AppInfoCard/AppInfoCard';
 import AppInfo from '~/components/AppInfo/AppInfo';
 import AppSteps from '~/components/AppSteps/AppSteps';
 import AppProgramCard from '~/components/AppProgramCard/AppProgramCard';
+import AppCardRequest from '~/components/AppCardRequest/AppCardRequest';
 
 export default {
   name: 'App',
-  components: { AppProgramCard, AppSteps, AppInfo, AppInfoCard, AppFooter, AppHeader, AppCategories, AppCalculator },
+  components: { AppCardRequest, AppProgramCard, AppSteps, AppInfo, AppInfoCard, AppFooter, AppHeader, AppCategories, AppCalculator },
   mounted () {
     this.resizeCheck();
   },

@@ -54,7 +54,6 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
-    // '@nuxtjs/svg'
     'nuxt-svg-loader'
   ],
 
@@ -78,7 +77,27 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          },
+          js: {
+            name: 'js',
+            test: /\.js$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    }
+  },
 
   router: {
     base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'

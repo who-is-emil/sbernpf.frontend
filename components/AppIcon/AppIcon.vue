@@ -1,7 +1,7 @@
 <template>
-  <div class="app-icon" :class="className">
+  <span class="app-icon" :class="className">
     <component :is="svgComponent" />
-  </div>
+  </span>
 </template>
 
 <script>
