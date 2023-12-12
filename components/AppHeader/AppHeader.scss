@@ -173,6 +173,10 @@
   &__action {
     margin-left: auto;
 
+    .app-button {
+      min-width: auto;
+    }
+
     @include media-breakpoint-only(md) {
       margin-right: toRem(32);
     }

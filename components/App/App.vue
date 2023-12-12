@@ -5,6 +5,11 @@
     <div class="mb-lg-128 mb-md-96 mb-80">
       <AppCalculator />
     </div>
+    <div class="mb-lg-176 mb-md-96 mb-80">
+      <div class="container">
+        <AppSteps />
+      </div>
+    </div>
     <br>
     <br>
     <AppInfo />
@@ -26,10 +31,11 @@ import AppHeader from '~/components/AppHeader/AppHeader';
 import AppFooter from '~/components/AppFooter/AppFooter';
 import AppInfoCard from '~/components/AppInfoCard/AppInfoCard';
 import AppInfo from '~/components/AppInfo/AppInfo';
+import AppSteps from '~/components/AppSteps/AppSteps';
 
 export default {
   name: 'App',
-  components: { AppInfo, AppInfoCard, AppFooter, AppHeader, AppCategories, AppCalculator },
+  components: { AppSteps, AppInfo, AppInfoCard, AppFooter, AppHeader, AppCategories, AppCalculator },
   mounted () {
     this.resizeCheck();
   },
@@ -40,6 +46,7 @@ export default {
       function start () {
         document.body.classList.add('resizing');
       }
+
       function stop () {
         document.body.classList.remove('resizing');
       }

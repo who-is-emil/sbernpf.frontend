@@ -28,19 +28,9 @@
             </div>
           </collapse-transition>
 
-          <button
-            type="button"
-            class="app-qa__toggle"
-            :class="{'app-qa__toggle--show' : restItemsShow}"
-            :aria-label="toggleText"
-            @click="toggle"
-          >
-            {{ toggleText }}
-
-            <span class="app-qa__toggle-icon">
-              <AppIcon name="16/chevron" />
-            </span>
-          </button>
+          <div class="app-qa__toggle" :class="{'app-qa__toggle--show' : restItemsShow}">
+            <AppButtonText :data="toggleAction" @click="toggle" />
+          </div>
         </template>
       </div>
     </div>
@@ -51,11 +41,11 @@
 import { CollapseTransition } from '@ivanv/vue-collapse-transition';
 import AppButton from '~/components/AppButton/AppButton';
 import AppAccordion from '~/components/AppAccordion/AppAccordion';
-import AppIcon from '~/components/AppIcon/AppIcon';
+import AppButtonText from '~/components/AppButtonText/AppButtonText';
 
 export default {
   name: 'AppQA',
-  components: { CollapseTransition, AppIcon, AppAccordion, AppButton },
+  components: { AppButtonText, CollapseTransition, AppAccordion, AppButton },
   data () {
     return {
       title: ['Вопросы', 'ответы'],
@@ -237,6 +227,14 @@ export default {
     },
     toggleText () {
       return this.restItemsShow ? this.hideText : this.showMoreText;
+    },
+    toggleAction () {
+      return {
+        text: this.toggleText,
+        title: this.toggleText,
+        icon: '24/circle-arrow-down',
+        theme: 'white'
+      };
     }
   },
   methods: {

@@ -1,0 +1,185 @@
+.app-steps {
+  $root: &;
+
+  counter-reset: number;
+
+  &__content {
+    @include media-breakpoint-up(lg) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      grid-template-areas: "title title title title title title . . action action action action" "items items items items items items items items items items items items";
+    }
+  }
+
+  &__title {
+    margin-bottom: toRem(32g);
+
+    @include media-breakpoint-up(lg) {
+      padding-left: toRem(32);
+      padding-right: toRem(16);
+      margin-bottom: toRem(60);
+      grid-area: title;
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(40);
+      max-width: toRem(640);
+    }
+
+    span {
+      &:first-child {
+        display: block;
+      }
+
+      &:not(:first-child) {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__action {
+    margin-top: toRem(48);
+
+    @include media-breakpoint-up(lg) {
+      margin-top: toRem(30);
+      margin-bottom: toRem(60);
+      grid-area: action;
+    }
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(52);
+    }
+  }
+
+  &__caption {
+    margin-bottom: toRem(24);
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: toRem(32);
+    }
+  }
+
+  &__items {
+    position: relative;
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+      grid-area: items;
+
+      &:before {
+        position: absolute;
+        top: toRem(31);
+        left: 0;
+        width: 100%;
+        height: toRem(2);
+        background-color: rgba(#70EC2D, 0.2);
+        content: "";
+      }
+    }
+    @include media-breakpoint-only(md) {
+
+    }
+  }
+
+  &__item {
+    position: relative;
+    counter-increment: number;
+
+    @include media-breakpoint-up(lg) {
+      width: 33.3333%;
+    }
+    @include media-breakpoint-only(md) {
+      &:not(:last-child) {
+        padding-bottom: toRem(40);
+
+        &:before {
+          position: absolute;
+          top: 0;
+          left: toRem(27);
+          width: toRem(2);
+          height: 100%;
+          background-color: rgba(#70EC2D, 0.2);
+          content: "";
+        }
+      }
+    }
+    @include media-breakpoint-down(md) {
+      display: flex;
+      align-items: flex-start;
+    }
+    @include media-breakpoint-down(sm) {
+      &:not(:last-child) {
+        padding-bottom: toRem(32);
+
+        &:before {
+          position: absolute;
+          top: 0;
+          left: toRem(22);
+          width: toRem(2);
+          height: 100%;
+          background-color: rgba(#70EC2D, 0.2);
+          content: "";
+        }
+      }
+    }
+  }
+
+  &__counter {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: toRem(46);
+    height: toRem(46);
+    border-radius: 50%;
+    background: $gradient-first;
+    color: $color-white;
+    flex-shrink: 0;
+
+    &:before {
+      content: counters(number, ".", decimal-leading-zero)
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: toRem(64);
+      height: toRem(64);
+      margin-bottom: toRem(24);
+      margin-left: toRem(20);
+    }
+    @include media-breakpoint-only(md) {
+      width: toRem(56);
+      height: toRem(56);
+      margin-right: toRem(30);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-right: toRem(16);
+    }
+
+    #{$root}__item:first-child & {
+      @include media-breakpoint-up(lg) {
+        margin-left: toRem(10);
+      }
+    }
+  }
+
+  &__text {
+    @include media-breakpoint-up(lg) {
+      max-width: toRem(300);
+      margin-left: toRem(40);
+    }
+    @include media-breakpoint-only(md) {
+      max-width: toRem(360);
+      padding-top: toRem(6);
+    }
+    @include media-breakpoint-down(sm) {
+      padding-top: toRem(15);
+    }
+
+    #{$root}__item:first-child & {
+      @include media-breakpoint-up(lg) {
+        margin-left: toRem(32);
+      }
+    }
+  }
+}

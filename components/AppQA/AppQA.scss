@@ -77,12 +77,6 @@
   }
 
   &__toggle {
-    display: inline-flex;
-    align-items: center;
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    color: $color-white;
     margin-top: toRem(32);
     margin-left: toRem(24);
 
@@ -93,13 +87,13 @@
       margin-left: toRem(32);
     }
 
-    @include text-button;
-    @include defaultTransition(color);
-
-    @include hover {
-      color: $color-grey;
+    &--show {
+      &::v-deep .app-button-text__icon {
+        transform: rotate(180deg);
+      }
     }
   }
+
 
   &__toggle-icon {
     display: flex;

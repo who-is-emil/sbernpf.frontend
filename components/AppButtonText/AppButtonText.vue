@@ -16,6 +16,7 @@
 
 <script>
 import AppIcon from '~/components/AppIcon/AppIcon';
+
 export default {
   name: 'AppButtonText',
   components: { AppIcon },
@@ -30,7 +31,7 @@ export default {
       return this.data.class || '';
     },
     theme () {
-      return this.data.theme || '';
+      return !this.data.theme ? '' : `app-button-text--${this.data.theme}`;
     },
     text () {
       return this.data.text || '';
