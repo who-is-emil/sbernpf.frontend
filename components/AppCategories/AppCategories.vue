@@ -9,18 +9,17 @@
       <div class="app-categories__swiper">
         <div ref="slider" class="swiper-container">
           <div class="app-categories__items swiper-wrapper">
-            <div v-for="(item, idx) in items" :key="idx" class="app-categories__item swiper-slide">
+            <div
+              v-for="(item, idx) in items"
+              :key="idx"
+              class="app-categories__item swiper-slide"
+            >
               <AppCardCategory :data="item" />
             </div>
           </div>
 
           <div class="app-categories__pagination">
-            <div
-              v-for="(_, idx) in items"
-              :key="idx"
-              class="app-categories__bullet"
-              :class="activeIndex === idx ? 'app-categories__bullet--active' : ''"
-            />
+            <AppSliderPagination :data="pagination" />
           </div>
         </div>
       </div>
@@ -31,10 +30,11 @@
 <script>
 import { Swiper } from 'swiper';
 import AppCardCategory from '~/components/AppCardCategory/AppCardCategory';
+import AppSliderPagination from '~/components/AppSliderPagination/AppSliderPagination';
 
 export default {
   name: 'AppCategories',
-  components: { AppCardCategory },
+  components: { AppSliderPagination, AppCardCategory },
   data () {
     return {
       title: ['Кому', 'это подходит'],
@@ -70,6 +70,14 @@ export default {
       sliderInstance: null,
       activeIndex: 0
     };
+  },
+  computed: {
+    pagination () {
+      return {
+        items: this.items.map((_, idx) => idx),
+        activeIndex: this.activeIndex
+      };
+    }
   },
   mounted () {
     this.initSwiper();

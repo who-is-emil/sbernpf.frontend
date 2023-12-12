@@ -1,0 +1,140 @@
+.app-card-layout {
+  $root: &;
+
+  position: relative;
+
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    width: toRem(1300);
+    height: toRem(370);
+    border-radius: toRem(1300);
+    background: #56FF43;
+    filter: blur(#{toRem(175)});
+    content: "";
+  }
+
+  @include media-breakpoint-only(md) {
+    &:before {
+      transform: translate(-50%, 0%);
+      width: toRem(1074);
+      height: toRem(192);
+      filter: blur(#{toRem(120)});
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    &:before {
+      transform: translate(-50%, 0%);
+      width: toRem(540);
+      height: toRem(200);
+      filter: blur(#{toRem(150)});
+    }
+  }
+
+  &__container {
+    overflow: hidden;
+  }
+
+  &__top {
+    margin-bottom: toRem(32);
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: toRem(64);
+      padding-top: toRem(74);
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(40);
+    }
+  }
+
+  &__title {
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(32);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(24);
+    }
+
+    span {
+      display: block;
+
+      &:not(:first-child) {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__text {
+    max-width: toRem(280);
+
+    @include media-breakpoint-up(lg) {
+      padding-top: toRem(28);
+    }
+    @include media-breakpoint-up(md) {
+      max-width: toRem(332);
+    }
+  }
+
+  &__swiper {
+    .swiper-container {
+      position: static;
+      overflow: visible !important;
+    }
+
+    .swiper-wrapper {
+      @include media-breakpoint-up(lg) {
+        transform: none !important;
+      }
+    }
+
+    @include media-breakpoint-only(md) {
+      width: 62.5%;
+    }
+  }
+
+  &__items {
+    margin-left: toRem(-16);
+    margin-right: toRem(-16);
+
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    padding-left: toRem(8);
+    padding-right: toRem(8);
+
+    @include media-breakpoint-up(lg) {
+      width: 33.3333% !important;
+
+      &:nth-child(2) {
+        margin-bottom: toRem(16);
+      }
+
+      &:nth-child(3) {
+        margin-left: 33.3333%;
+      }
+    }
+  }
+
+  &__pagination {
+    position: absolute;
+    top: calc(100% + #{toRem(40)});
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+    @include media-breakpoint-down(sm) {
+      top: calc(100% + #{toRem(24)});
+    }
+  }
+}

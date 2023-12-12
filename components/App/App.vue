@@ -9,7 +9,10 @@
         <AppCardRequest />
       </div>
     </div>
-    <div class="mb-lg-128 mb-md-96 mb-80">
+    <div class="mb-lg-120 mb-md-144 mb-112">
+      <AppCardLayout />
+    </div>
+    <div class="mb-lg-128 mb-md-96 mb-80 relative z-1">
       <AppCalculator />
     </div>
     <div class="mb-lg-176 mb-md-96 mb-80">
@@ -19,13 +22,13 @@
     </div>
     <div class="mb-lg-128 mb-md-96 mb-80">
       <div class="container">
-        <AppProgramCard />
+        <AppCardProgram />
       </div>
     </div>
     <AppInfo />
     <div class="mb-lg-128 mb-md-144 mb-56">
       <div class="container">
-        <AppInfoCard />
+        <AppCardInfo />
       </div>
     </div>
     <AppFooter />
@@ -37,15 +40,27 @@ import AppCalculator from '~/components/AppCalculator/AppCalculator';
 import AppCategories from '~/components/AppCategories/AppCategories';
 import AppHeader from '~/components/AppHeader/AppHeader';
 import AppFooter from '~/components/AppFooter/AppFooter';
-import AppInfoCard from '~/components/AppInfoCard/AppInfoCard';
 import AppInfo from '~/components/AppInfo/AppInfo';
 import AppSteps from '~/components/AppSteps/AppSteps';
-import AppProgramCard from '~/components/AppProgramCard/AppProgramCard';
 import AppCardRequest from '~/components/AppCardRequest/AppCardRequest';
+import AppCardProgram from '~/components/AppCardProgram/AppCardProgram';
+import AppCardInfo from '~/components/AppCardInfo/AppInfoCard';
+import AppCardLayout from '~/components/AppCardLayout/AppCardLayout';
 
 export default {
   name: 'App',
-  components: { AppCardRequest, AppProgramCard, AppSteps, AppInfo, AppInfoCard, AppFooter, AppHeader, AppCategories, AppCalculator },
+  components: {
+    AppCardLayout,
+    AppCardInfo,
+    AppCardProgram,
+    AppCardRequest,
+    AppSteps,
+    AppInfo,
+    AppFooter,
+    AppHeader,
+    AppCategories,
+    AppCalculator
+  },
   mounted () {
     this.resizeCheck();
   },

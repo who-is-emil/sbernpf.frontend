@@ -1,21 +1,21 @@
 <template>
-  <div class="app-info-card">
-    <div class="app-info-card__background" />
+  <div class="app-card-info">
+    <div class="app-card-info__background" />
 
-    <div class="app-info-card__content">
-      <h2 class="app-info-card__title">
+    <div class="app-card-info__content">
+      <h2 class="app-card-info__title">
         <span v-for="(item, idx) in title" :key="idx">
           {{ item }}
         </span>
       </h2>
 
-      <div class="app-info-card__actions">
-        <div v-for="(item, idx) in actions" :key="idx" class="app-info-card__action">
+      <div class="app-card-info__actions">
+        <div v-for="(item, idx) in actions" :key="idx" class="app-card-info__action">
           <AppButton :data="item" />
         </div>
       </div>
 
-      <div class="app-info-card__image">
+      <div class="app-card-info__image">
         <AppImage :data="image" />
       </div>
     </div>
@@ -26,7 +26,7 @@
 import AppButton from '~/components/AppButton/AppButton';
 import AppImage from '~/components/AppImage/AppImage';
 export default {
-  name: 'AppInfoCard',
+  name: 'AppCardInfo',
   components: { AppImage, AppButton },
   data () {
     return {
@@ -54,5 +54,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "AppInfoCard";
+@import "AppCardInfo";
 </style>

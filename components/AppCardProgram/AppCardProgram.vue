@@ -1,20 +1,20 @@
 <template>
-  <div class="app-program-card">
-    <div class="app-program-card__background" />
-    <div class="app-program-card__content">
-      <h2 class="app-program-card__title">
+  <div class="app-card-program">
+    <div class="app-card-program__background" />
+    <div class="app-card-program__content">
+      <h2 class="app-card-program__title">
         <span v-for="(item, idx) in title" :key="idx">
           {{ item }}
         </span>
       </h2>
-      <div class="app-program-card__action">
+      <div class="app-card-program__action">
         <AppButton :data="action" />
       </div>
-      <p v-if="caption" class="app-program-card__caption">
+      <p v-if="caption" class="app-card-program__caption">
         {{ caption }}
       </p>
     </div>
-    <div class="app-program-card__image">
+    <div class="app-card-program__image">
       <AppImage :data="image" />
     </div>
   </div>
@@ -24,7 +24,7 @@
 import AppButton from '~/components/AppButton/AppButton';
 import AppImage from '~/components/AppImage/AppImage';
 export default {
-  name: 'AppProgramCard',
+  name: 'AppCardProgram',
   components: { AppImage, AppButton },
   data () {
     return {
@@ -45,5 +45,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "AppProgramCard";
+@import "AppCardProgram";
 </style>

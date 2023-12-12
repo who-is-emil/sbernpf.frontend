@@ -1,0 +1,80 @@
+.app-card-feature {
+  $root: &;
+
+  display: block;
+  min-height: toRem(212);
+  padding: toRem(24);
+  background-color: $color-white;
+  color: $color-black;
+  border-radius: toRem(24);
+
+  @include text-body;
+  @include defaultTransition(opacity);
+
+  &.active {
+    opacity: 1;
+  }
+
+  &.inactive {
+    opacity: 0.6;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: toRem(336);
+    border-radius: toRem(32);
+    padding: toRem(32);
+
+    @include defaultTransition(opacity);
+
+    @include hover {
+
+    }
+  }
+  @include media-breakpoint-only(md) {
+    min-height: toRem(280);
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: toRem(24);
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: toRem(48);
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(44);
+    }
+  }
+
+  &__title {
+    max-width: toRem(200);
+
+    @include media-breakpoint-up(md) {
+      max-width: toRem(240);
+    }
+  }
+
+  &__icon {
+    width: toRem(56);
+    height: toRem(56);
+
+    @include media-breakpoint-up(md) {
+      width: toRem(80);
+      height: toRem(80);
+    }
+    @include media-breakpoint-down(md) {
+      margin-right: toRem(-8);
+    }
+  }
+
+  &__text {
+    width: 100%;
+  }
+}

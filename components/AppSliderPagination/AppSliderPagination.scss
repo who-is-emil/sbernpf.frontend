@@ -1,0 +1,22 @@
+.app-slider-pagination {
+  $root: &;
+
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+
+  &__bullet {
+    width: toRem(8);
+    height: toRem(8);
+    border-radius: 100%;
+    background-color: rgba($color-green, 0.2);
+
+    @include defaultTransition(background-color, width, border-radius);
+
+    &--active {
+      width: toRem(24);
+      border-radius: toRem(8);
+      background-color: $color-green;
+    }
+  }
+}

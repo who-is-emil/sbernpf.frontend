@@ -22,6 +22,12 @@
       overflow: visible !important;
     }
 
+    .swiper-wrapper {
+      @include media-breakpoint-up(lg) {
+        transform: none !important;
+      }
+    }
+
     @include media-breakpoint-only(md) {
       width: 62.5%;
     }
@@ -51,7 +57,6 @@
     @include media-breakpoint-up(lg) {
       display: flex;
       flex-wrap: wrap;
-      transform: none !important;
     }
     @include media-breakpoint-only(md) {
       margin-left: toRem(-8);
@@ -75,30 +80,12 @@
     top: calc(100% + #{toRem(40)});
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: toRem(8);
 
     @include media-breakpoint-up(lg) {
       display: none;
     }
     @include media-breakpoint-down(sm) {
       top: calc(100% + #{toRem(24)});
-    }
-  }
-
-  &__bullet {
-    width: toRem(8);
-    height: toRem(8);
-    border-radius: 100%;
-    background-color: rgba($color-green, 0.2);
-
-    @include defaultTransition(background-color, width, border-radius);
-
-    &--active {
-      width: toRem(24);
-      border-radius: toRem(8);
-      background-color: $color-green;
     }
   }
 }
