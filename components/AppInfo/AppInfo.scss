@@ -17,7 +17,7 @@
     border-radius: 1440px;
     width: toRem(1440);
     height: toRem(352);
-    background: #56FF43;
+    background-color: $color-green-bright;
     filter: blur(150px);
     transform: translateY(50%);
     will-change: transform;

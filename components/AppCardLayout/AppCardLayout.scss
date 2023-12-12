@@ -11,7 +11,7 @@
     width: toRem(1300);
     height: toRem(370);
     border-radius: toRem(1300);
-    background: #56FF43;
+    background-color: $color-green-bright;
     filter: blur(#{toRem(175)});
     content: "";
   }

@@ -1,6 +1,11 @@
 <template>
   <div class="app">
     <AppHeader />
+    <div class="mb-lg-132 mb-md-64 mb-80">
+      <div class="container">
+        <AppHero />
+      </div>
+    </div>
     <div class="mb-lg-128 mb-md-144 mb-112">
       <AppCategories />
     </div>
@@ -46,10 +51,12 @@ import AppCardRequest from '~/components/AppCardRequest/AppCardRequest';
 import AppCardProgram from '~/components/AppCardProgram/AppCardProgram';
 import AppCardInfo from '~/components/AppCardInfo/AppInfoCard';
 import AppCardLayout from '~/components/AppCardLayout/AppCardLayout';
+import AppHero from '~/components/AppHero/AppHero';
 
 export default {
   name: 'App',
   components: {
+    AppHero,
     AppCardLayout,
     AppCardInfo,
     AppCardProgram,

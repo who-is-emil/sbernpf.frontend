@@ -94,7 +94,7 @@
     &:before {
       position: absolute;
       filter: blur(#{toRem(250)});
-      background-color: #56FF43;
+      background-color: $color-green-bright;
       content: "";
     }
 
