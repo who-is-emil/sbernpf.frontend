@@ -1,7 +1,9 @@
 <template>
   <div class="app">
     <AppHeader />
-    <AppCategories />
+    <div class="mb-lg-128 mb-md-144 mb-112">
+      <AppCategories />
+    </div>
     <div class="mb-lg-128 mb-md-96 mb-80">
       <AppCalculator />
     </div>
@@ -10,16 +12,17 @@
         <AppSteps />
       </div>
     </div>
-    <br>
-    <br>
+    <div class="mb-lg-128 mb-md-96 mb-80">
+      <div class="container">
+        <AppProgramCard />
+      </div>
+    </div>
     <AppInfo />
     <div class="mb-lg-128 mb-md-144 mb-56">
       <div class="container">
         <AppInfoCard />
       </div>
     </div>
-    <br>
-    <br>
     <AppFooter />
   </div>
 </template>
@@ -32,10 +35,11 @@ import AppFooter from '~/components/AppFooter/AppFooter';
 import AppInfoCard from '~/components/AppInfoCard/AppInfoCard';
 import AppInfo from '~/components/AppInfo/AppInfo';
 import AppSteps from '~/components/AppSteps/AppSteps';
+import AppProgramCard from '~/components/AppProgramCard/AppProgramCard';
 
 export default {
   name: 'App',
-  components: { AppSteps, AppInfo, AppInfoCard, AppFooter, AppHeader, AppCategories, AppCalculator },
+  components: { AppProgramCard, AppSteps, AppInfo, AppInfoCard, AppFooter, AppHeader, AppCategories, AppCalculator },
   mounted () {
     this.resizeCheck();
   },
