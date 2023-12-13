@@ -1,0 +1,36 @@
+.app-tooltip {
+  $root: &;
+
+  position: relative;
+  display: inline;
+
+  @include defaultTransition(color);
+
+  &--grey {
+    color: rgba($color-white, 0.4);
+
+    @include hover {
+      color: $color-white;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: calc(50% + #{toRem(3)});
+    left: calc(50% + #{toRem(12)});
+    transform: translate(-50%, -50%);
+    width: toRem(16);
+    height: toRem(16);
+    color: currentColor;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+
+    @include media-breakpoint-up(md) {
+      top: calc(50% + #{toRem(2)});
+      left: calc(50% + #{toRem(16)});
+      width: toRem(24);
+      height: toRem(24);
+    }
+  }
+}

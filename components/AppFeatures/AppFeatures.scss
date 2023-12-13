@@ -16,12 +16,18 @@
   }
 
   &__swiper {
-    width: 100%;
 
+    @include media-breakpoint-up(lg) {
+      width: 100%;
+    }
     @include media-breakpoint-only(md) {
       width: toRem(344);
       margin-left: auto;
       margin-right: auto;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-left: toRem(-2);
+      margin-right: toRem(-2);
     }
 
     .swiper-container {
@@ -32,6 +38,7 @@
     .swiper-wrapper {
       @include media-breakpoint-up(lg) {
         transform: none !important;
+        width: auto !important;
       }
     }
   }
@@ -51,18 +58,11 @@
   }
 
   &__items {
-    margin-left: toRem(-2);
-    margin-right: toRem(-2);
-
     @include media-breakpoint-up(lg) {
       display: flex;
       flex-wrap: wrap;
       margin-left: toRem(-8);
       margin-right: toRem(-8);
-    }
-    @include media-breakpoint-only(md) {
-      margin-left: toRem(-4);
-      margin-right: toRem(-4);
     }
   }
 
@@ -91,6 +91,7 @@
       max-width: toRem(400);
       min-height: toRem(96);
       margin-bottom: toRem(28);
+      margin-left: toRem(32);
     }
     @include media-breakpoint-only(md) {
       max-width: toRem(520);
@@ -118,6 +119,11 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    pointer-events: none;
+
+    &.is-active {
+      pointer-events: auto;
+    }
 
     @include media-breakpoint-up(lg) {
       padding-top: toRem(70);
@@ -129,6 +135,10 @@
       @include media-breakpoint-down(sm) {
         width: 100%;
       }
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin-left: toRem(32);
     }
   }
 

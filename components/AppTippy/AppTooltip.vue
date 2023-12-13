@@ -1,6 +1,13 @@
 <template>
-  <span class="app-tippy">
-    <button v-tippy="content" class="app-tippy__icon">
+  <span
+    class="app-tooltip"
+    :class="iconTheme"
+  >
+    <button
+      v-tippy="content"
+      type="button"
+      class="app-tooltip__icon"
+    >
       <AppIcon :name="icon" />
     </button>
   </span>
@@ -8,6 +15,7 @@
 <script>
 import AppIcon from '~/components/AppIcon/AppIcon';
 export default {
+  name: 'AppTooltip',
   components: { AppIcon },
   props: {
     data: {
@@ -28,6 +36,11 @@ export default {
     theme () {
       return this.data.theme || 'white';
     },
+    iconTheme () {
+      const theme = this.data.iconTheme || '';
+
+      return theme ? `app-tooltip--${theme}` : '';
+    },
     interactive () {
       return this.data.interactive || false;
     },
@@ -44,5 +57,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "AppTippy";
+@import "AppTooltip";
 </style>

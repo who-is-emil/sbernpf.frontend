@@ -3,24 +3,37 @@
 
   display: flex;
   flex-direction: column;
-  padding: toRem(40);
+  align-items: flex-start;
+  padding: toRem(24);
   border-radius: toRem(12);
   overflow: hidden;
   background-color: rgba($color-white, 0.1);
   color: $color-white;
   min-height: toRem(278);
 
-  @include media-breakpoint-up(md) {
-    min-height: toRem(380);
+  @include media-breakpoint-up(lg) {
+    padding: toRem(40);
   }
   @include media-breakpoint-up(md) {
+    min-height: toRem(380);
     border-radius: toRem(16);
+  }
+  @include media-breakpoint-only(md) {
+    padding: toRem(32);
   }
 
   &__title {
     @include media-breakpoint-up(lg) {
       min-height: toRem(87);
       margin-bottom: toRem(24);
+    }
+    @include media-breakpoint-only(md) {
+      min-height: toRem(87);
+      margin-bottom: toRem(24);
+    }
+    @include media-breakpoint-down(sm) {
+      min-height: toRem(64);
+      margin-bottom: toRem(35);
     }
   }
 

@@ -12,7 +12,10 @@
         class="app-features__block"
       >
         <p v-if="item.text" class="app-features__text">
-          {{ item.text }}
+          <span v-html="item.text" />
+          <template v-if="item.tooltip">
+            <AppTooltip :data="item.tooltip" />
+          </template>
         </p>
 
         <div v-if="item.action" class="app-features__action">
@@ -57,16 +60,17 @@ import AppCardText from '~/components/AppCardText/AppCardText';
 import AppButton from '~/components/AppButton/AppButton';
 import AppImage from '~/components/AppImage/AppImage';
 import AppSliderPagination from '~/components/AppSliderPagination/AppSliderPagination';
+import AppTooltip from '~/components/AppTippy/AppTooltip';
 
 export default {
   name: 'AppFeatures',
-  components: { AppSliderPagination, AppImage, AppButton, AppCardText },
+  components: { AppTooltip, AppSliderPagination, AppImage, AppButton, AppCardText },
   data () {
     return {
       title: 'В чём преимущества',
       items: [
         {
-          title: 'Гарантированная поддержка от государства',
+          title: 'Гарантированная поддержка от&nbsp;государства',
           text: 'Государство увеличит ваши накопления в первые три года. Получайте ежегодно до 36 000 ₽. Узнайте, каким будет ваш дополнительный доход',
           image: {
             src: 'images/features/image-1.png'
@@ -77,25 +81,29 @@ export default {
             text: 'Рассчитать доход',
             href: '#!',
             theme: 'gradient'
+          },
+          tooltip: {
+            iconTheme: 'grey',
+            text: 'Сумма поддержки зависит от вашего официального дохода. Если зараба-тываете до 80 000 ₽ / мес, вносите ежемесячно от 3 000 ₽ и получайте дополнительно до 36 000 ₽ за год от государства.'
           }
         },
         {
           title: 'Счет застрахован в АСВ',
-          text: 'Агентство по страхованию вкладов защитит ваши сбережения на сумму до 2,8 млн ₽',
+          text: 'Агентство по страхованию вкладов защитит ваши сбережения на сумму до&nbsp;2,8 млн ₽',
           image: {
             src: 'images/features/image-2.png'
           }
         },
         {
           title: 'Поддержка в сложных ситуациях',
-          text: 'Оплатите дорогостоящее лечение или получите поддержку при потере кормильца',
+          text: 'Оплатите дорогостоящее лечение или&nbsp;получите поддержку при потере кормильца',
           image: {
             src: 'images/features/image-3.png'
           }
         },
         {
-          title: 'Пенсионные накопления в ваших руках',
-          text: 'Переведите пенсионные накопления в активное управление. Где находятся ваши пенсионные накопления?',
+          title: 'Пенсионные накопления в&nbsp;ваших&nbsp;руках',
+          text: 'Переведите пенсионные накопления в&nbsp;активное управление. Где находятся ваши пенсионные накопления?',
           image: {
             src: 'images/features/image-4.png'
           },
@@ -115,7 +123,7 @@ export default {
         },
         {
           title: 'Защита капитала',
-          text: 'Ваши сбережения не уйдут в минус, а доход от инвестирования будет зафиксирован',
+          text: 'Ваши сбережения не уйдут в минус, а&nbsp;доход от инвестирования будет зафиксирован',
           image: {
             src: 'images/features/image-6.png'
           }
@@ -190,14 +198,20 @@ export default {
       const blocks = this.$refs.block;
 
       const activeBlock = blocks[idx];
-      const restBlock = blocks.filter((item, itemIdx) => idx !== itemIdx);
+      const restBlocks = blocks.filter((item, itemIdx) => idx !== itemIdx);
 
-      tl.to(restBlock, { opacity: 0, duration: 0.3 })
+      tl.to(restBlocks, { opacity: 0, duration: 0.3 })
         .fromTo(activeBlock, { opacity: 0 }, {
           opacity: 1,
           duration: 0.3,
           onStart: () => {
             this.prevActiveIndex = idx;
+
+            restBlocks.forEach((item) => {
+              item.classList.remove('is-active');
+            });
+
+            activeBlock.classList.add('is-active');
           }
         }, '0');
 

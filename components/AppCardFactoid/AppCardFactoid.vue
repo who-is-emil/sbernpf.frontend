@@ -9,9 +9,7 @@
     <p v-if="text" class="app-card-factoid__text">
       {{ text }}
     </p>
-    <p v-if="description" class="app-card-factoid__description">
-      {{ description }}
-    </p>
+    <p v-if="description" class="app-card-factoid__description" v-html="description" />
   </div>
 </template>
 

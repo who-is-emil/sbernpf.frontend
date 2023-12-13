@@ -88,7 +88,7 @@
     margin-bottom: toRem(80);
 
     @include media-breakpoint-up(lg) {
-      margin-bottom: toRem(160);
+      margin-bottom: toRem(132);
     }
     @include media-breakpoint-only(md) {
       margin-bottom: toRem(96);

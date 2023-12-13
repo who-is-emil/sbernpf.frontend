@@ -8,9 +8,7 @@
           </span>
         </h2>
 
-        <p v-if="text" class="app-slider-factoids__text">
-          {{ text }}
-        </p>
+        <p v-if="text" class="app-slider-factoids__text" v-html="text" />
       </div>
 
       <div class="app-slider-factoids__base">

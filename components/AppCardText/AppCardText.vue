@@ -4,9 +4,7 @@
     :class="{'app-card-text--active' : active}"
     @click="click"
   >
-    <p class="app-card-text__title">
-      {{ title }}
-    </p>
+    <p class="app-card-text__title" v-html="title" />
   </div>
 </template>
 
