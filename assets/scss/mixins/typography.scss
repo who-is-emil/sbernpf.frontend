@@ -44,6 +44,19 @@
   }
 }
 
+@mixin h5 {
+  font-size: toRem(14);
+  line-height: 1.2;
+  font-weight: 600;
+
+  @include media-breakpoint-up(lg) {
+    font-size: toRem(20);
+  }
+  @include media-breakpoint-only(md) {
+    font-size: toRem(18);
+  }
+}
+
 @mixin text-body {
   font-size: toRem(14);
   line-height: 1.2;

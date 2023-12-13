@@ -76,7 +76,6 @@ export default {
       return this.data.textRight || '';
     },
     tooltip () {
-      console.log(this.data.tooltip);
       return this.data.tooltip;
     }
   },

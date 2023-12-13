@@ -60,6 +60,10 @@
         width: 100%;
       }
     }
+
+    .app-button {
+      min-width: toRem(200) !important;
+    }
   }
 
   &__items {
@@ -93,7 +97,6 @@
       }
     }
   }
-
 
   &__toggle-icon {
     display: flex;

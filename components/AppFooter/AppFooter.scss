@@ -129,8 +129,12 @@
     @include media-breakpoint-up(lg) {
       width: calc(44.4444% + #{toRem(8)});
 
-      &:first-child {
-        padding-left: toRem(48);
+      &:nth-child(1) {
+        padding-left: toRem(44);
+      }
+
+      &:nth-child(2) {
+        padding-left: toRem(32);
       }
     }
     @include media-breakpoint-only(md) {
@@ -146,17 +150,13 @@
 
   &__link {
     display: inline-block;
-    font-size: toRem(14);
     line-height: 1.2;
     font-weight: 600;
     color: $color-white;
     margin-bottom: toRem(8);
 
+    @include h5;
     @include defaultTransition(color);
-
-    @include media-breakpoint-up(md) {
-      font-size: toRem(18);
-    }
 
     @include hover {
       color: $color-grey;
@@ -197,6 +197,12 @@
     text-decoration: underline;
     max-width: toRem(178);
 
+    @include media-breakpoint-up(lg) {
+      margin-bottom: toRem(20);
+    }
+    @include media-breakpoint-only(md) {
+      margin-left: toRem(32);
+    }
     @include media-breakpoint-up(md) {
       font-size: toRem(14);
     }
@@ -210,12 +216,43 @@
 
   &__text {
     color: rgba($color-white, 0.4);
+    width: 100%;
 
     @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
       margin-left: toRem(48);
-      max-width: toRem(437);
     }
 
     @include text-small;
+
+    &::v-deep {
+      a {
+        color: currentColor;
+
+        @include defaultTransition(opacity);
+
+        @include hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+
+  &__text-left {
+    @include media-breakpoint-up(lg) {
+      max-width: toRem(413);
+      margin-right: toRem(32);
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(24);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(16);
+    }
+  }
+
+  &__text-right {
+    max-width: toRem(518);
   }
 }
