@@ -1,8 +1,17 @@
 <template>
   <div class="app-program">
+    <div class="app-program__background">
+      <span />
+      <span />
+      <span />
+    </div>
     <div class="app-program__container container">
       <div class="app-program__slider">
         <AppSliderFactoid :data="slider" />
+      </div>
+
+      <div class="app-program__features">
+        <AppFeatures :data="features" />
       </div>
     </div>
   </div>
@@ -11,9 +20,10 @@
 <script>
 
 import AppSliderFactoid from '~/components/AppSliderFactoids/AppSliderFactoids';
+import AppFeatures from '~/components/AppFeatures/AppFeatures';
 export default {
   name: 'AppProgram',
-  components: { AppSliderFactoid },
+  components: { AppFeatures, AppSliderFactoid },
   data () {
     return {
       slider: {

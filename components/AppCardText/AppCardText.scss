@@ -1,0 +1,31 @@
+.app-card-text {
+  $root: &;
+
+  display: block;
+  border-radius: toRem(16);
+  background-color: $color-white;
+  color: $color-black;
+  cursor: pointer;
+  padding: toRem(16) toRem(24);
+  min-height: toRem(66);
+
+  @include media-breakpoint-up(lg) {
+    background-color: transparent;
+    color: $color-white;
+    backdrop-filter: blur(75px);
+
+    @include defaultTransition(background-color, color);
+  }
+  @include media-breakpoint-up(md) {
+    padding: toRem(20) toRem(32);
+    min-height: toRem(88);
+  }
+
+  &--active {
+    @include media-breakpoint-up(lg) {
+      background-color: $color-white;
+      color: $color-black;
+      cursor: default;
+    }
+  }
+}

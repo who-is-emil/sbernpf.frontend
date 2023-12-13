@@ -3,7 +3,6 @@
 
   position: relative;
   padding-top: toRem(56);
-  background-color: $color-black;
   color: $color-white;
 
   @include media-breakpoint-up(lg) {
@@ -11,5 +10,88 @@
   }
   @include media-breakpoint-only(md) {
     padding-top: toRem(80);
+  }
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-black;
+    border-radius: toRem(40);
+    overflow: hidden;
+
+    span {
+      position: absolute;
+      background: #00BC72;
+      filter: blur(#{toRem(150)});
+      pointer-events: none;
+
+      &:nth-child(1) {
+        @include media-breakpoint-up(lg) {
+          top: 0;
+          left: 0;
+          transform: rotate(13deg) translate(-50%, -50%);
+          width: toRem(962);
+          height: toRem(463);
+        }
+        @include media-breakpoint-down(sm) {
+          top: 0;
+          left: 0;
+          transform: rotate(5deg) translate(-60%, -40%);
+          width: toRem(324);
+          height: toRem(359);
+        }
+      }
+
+      &:nth-child(2) {
+        @include media-breakpoint-up(lg) {
+          transform: rotate(13deg) translateX(60%);
+        }
+        @include media-breakpoint-only(md) {
+          top: toRem(300);
+          right: 0;
+          width: toRem(1229);
+          height: toRem(528);
+          transform: rotate(13deg) translateX(80%);
+        }
+        @include media-breakpoint-down(sm) {
+          top: toRem(350);
+          left: 50%;
+          width: toRem(300);
+          height: toRem(300);
+          transform: rotate(5deg) translateX(-50%);
+        }
+      }
+
+      &:nth-child(3) {
+        @include media-breakpoint-up(md) {
+          left: 50%;
+          bottom: 0;
+          transform: rotate(-4deg) translate(-50%, 50%);
+          width: toRem(962);
+          height: toRem(463);
+        }
+        @include media-breakpoint-down(sm) {
+          bottom: toRem(-150);
+          left: 0;
+          width: toRem(324);
+          height: toRem(359);
+          transform: rotate(5deg) translateX(-50%);
+        }
+      }
+    }
+  }
+
+  &__slider {
+    margin-bottom: toRem(80);
+
+    @include media-breakpoint-up(lg) {
+      margin-bottom: toRem(160);
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(96);
+    }
   }
 }

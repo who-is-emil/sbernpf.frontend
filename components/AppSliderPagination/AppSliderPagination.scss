@@ -26,5 +26,13 @@
         background-color: $color-white;
       }
     }
+
+    #{$root}--black & {
+      background-color: rgba($color-black, 0.2);
+
+      &--active {
+        background-color: $color-black;
+      }
+    }
   }
 }

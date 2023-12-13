@@ -41,8 +41,7 @@ export default {
       ssr: false
     },
     {
-      src: '~plugins/vue-select.js',
-      ssr: false
+      src: '~plugins/gsap.js'
     }
   ],
 
