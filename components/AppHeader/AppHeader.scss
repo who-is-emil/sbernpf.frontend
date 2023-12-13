@@ -179,6 +179,10 @@
 
     .app-button {
       min-width: auto;
+
+      @include media-breakpoint-up(lg) {
+        padding: 0 toRem(18);
+      }
     }
 
     @include media-breakpoint-only(md) {

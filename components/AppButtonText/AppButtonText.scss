@@ -38,9 +38,14 @@
 
   &__icon {
     display: block;
-    width: toRem(24);
-    height: toRem(24);
+    width: toRem(16);
+    height: toRem(16);
     margin-left: toRem(8);
+
+    @include media-breakpoint-up(md) {
+      width: toRem(24);
+      height: toRem(24);
+    }
 
     @include defaultTransition(color, transform);
   }

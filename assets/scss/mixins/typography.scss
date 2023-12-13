@@ -100,9 +100,15 @@
 }
 
 @mixin text-button-small {
-  font-size: toRem(16);
-  letter-spacing: -0.128px;
-  line-height: 1.26;
+  font-size: toRem(14);
+  line-height: 1.1;
+  letter-spacing: -0.42px;
+
+  @include media-breakpoint-up(md) {
+    font-size: toRem(16);
+    line-height: 1.26;
+    letter-spacing: -0.128px;
+  }
 }
 
 @mixin text-number {

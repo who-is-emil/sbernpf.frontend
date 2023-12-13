@@ -45,7 +45,7 @@
 
     @include media-breakpoint-up(lg) {
       right: toRem(114);
-      bottom: toRem(90);
+      bottom: toRem(100);
       width: toRem(663);
       height: toRem(569);
     }
@@ -128,8 +128,8 @@
       z-index: 1;
       display: flex;
       bottom: toRem(36);
-      left: toRem(40);
-      width: calc(100% - #{toRem(80)});
+      left: toRem(32);
+      width: calc(100% - #{toRem(64)});
     }
     @include media-breakpoint-down(md) {
       margin-top: toRem(4);

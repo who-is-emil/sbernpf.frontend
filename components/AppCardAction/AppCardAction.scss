@@ -24,6 +24,7 @@
   }
 
   &__title {
+    padding-top: toRem(8);
     margin-bottom: toRem(16);
 
     @include media-breakpoint-up(lg) {

@@ -1,9 +1,7 @@
 <template>
   <div class="app-card-action">
     <div class="app-card-action__content">
-      <p v-if="title" class="app-card-action__title">
-        {{ title }}
-      </p>
+      <p v-if="title" class="app-card-action__title" v-html="title" />
 
       <div v-if="icon" class="app-card-action__icon">
         <AppIcon :name="icon" />
