@@ -40,6 +40,7 @@
 
 <script>
 import _throttle from 'lodash.throttle';
+import { _disableScroll, _enableScroll } from '~/assets/js/scroll';
 import AppIcon from '~/components/AppIcon/AppIcon';
 import AppButton from '~/components/AppButton/AppButton';
 
@@ -112,6 +113,12 @@ export default {
   methods: {
     menuStateToggle () {
       this.menuState = !this.menuState;
+
+      if (this.menuState) {
+        _disableScroll();
+      } else {
+        _enableScroll();
+      }
     }
   }
 };
