@@ -10,7 +10,13 @@
       <div class="app-steps__items">
         <div v-for="(item, idx) in items" :key="idx" class="app-steps__item">
           <span class="app-steps__counter" />
-          <p class="app-steps__text" v-html="item.text" />
+          <p class="app-steps__text">
+            <span v-html="item.text" />
+
+            <template v-if="item.tooltip">
+              <AppTooltip :data="item.tooltip" />
+            </template>
+          </p>
         </div>
       </div>
 
@@ -27,10 +33,11 @@
 
 <script>
 import AppButton from '~/components/AppButton/AppButton';
+import AppTooltip from '~/components/AppTooltip/AppTooltip';
 
 export default {
   name: 'AppSteps',
-  components: { AppButton },
+  components: { AppTooltip, AppButton },
   data () {
     return {
       title: ['Как стать участником', 'и получать от программы', 'максимум'],
@@ -50,7 +57,12 @@ export default {
           text: 'Сделайте взнос на&nbsp;сумму от&nbsp;3&nbsp;000 ₽. Делайте взносы регулярно'
         },
         {
-          text: 'По желанию переведите пенсионные накопления в&nbsp;программу'
+          text: 'По желанию переведите пенсионные накопления в&nbsp;программу',
+          tooltip: {
+            text: 'По желанию переведите пенсионные накопления в&nbsp;программу',
+            icon: '24/info-stroke',
+            iconTheme: 'black'
+          }
         }
       ]
     };

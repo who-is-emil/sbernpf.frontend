@@ -35,7 +35,7 @@
       </div>
     </div>
     <AppInfo />
-    <div class="mb-lg-128 mb-md-144 mb-56">
+    <div class="mb-lg-128 mb-md-144 mb-16">
       <div class="container">
         <AppCardInfo />
       </div>

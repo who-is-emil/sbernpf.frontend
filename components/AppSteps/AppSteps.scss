@@ -13,7 +13,7 @@
   }
 
   &__title {
-    margin-bottom: toRem(32g);
+    margin-bottom: toRem(32);
 
     @include media-breakpoint-up(lg) {
       padding-left: toRem(32);
@@ -44,9 +44,18 @@
       margin-top: toRem(30);
       margin-bottom: toRem(60);
       grid-area: action;
+      padding-left: toRem(50);
     }
     @include media-breakpoint-only(md) {
       margin-top: toRem(52);
+    }
+
+    .app-button {
+      min-width: toRem(200);
+
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
     }
   }
 
@@ -86,7 +95,12 @@
     counter-increment: number;
 
     @include media-breakpoint-up(lg) {
-      width: 33.3333%;
+      width: 100%;
+
+      &:first-child {
+        width: 33.6666%;
+        flex-shrink: 0;
+      }
     }
     @include media-breakpoint-only(md) {
       &:not(:last-child) {

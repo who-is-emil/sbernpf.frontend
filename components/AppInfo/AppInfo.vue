@@ -51,7 +51,13 @@
             <h4 v-if="item.title" class="app-info__row-title" v-html="item.title" />
           </div>
           <div class="app-info__cell">
-            <p v-if="item.text" class="app-info__row-text" v-html="item.text" />
+            <p v-if="item.text" class="app-info__row-text">
+              <span v-html="item.text" />
+
+              <template v-if="item.tooltip">
+                <AppTooltip :data="item.tooltip" />
+              </template>
+            </p>
           </div>
         </div>
       </div>
@@ -62,10 +68,11 @@
 <script>
 import { CollapseTransition } from '@ivanv/vue-collapse-transition';
 import AppButtonText from '~/components/AppButtonText/AppButtonText';
+import AppTooltip from '~/components/AppTooltip/AppTooltip';
 
 export default {
   name: 'AppInfo',
-  components: { AppButtonText, CollapseTransition },
+  components: { AppTooltip, AppButtonText, CollapseTransition },
   data () {
     return {
       title: ['Позаботьтесь', 'о будущей пенсии'],
@@ -81,10 +88,20 @@ export default {
       ],
       rows: [
         {
+          tooltip: {
+            text: 'Сначала переведите пенсионные накопления в СберНПФ не позднее 15 ноября 2024г. Это позволит уже в 2024 году подать заявление на перевод накоплений в программу',
+            icon: '24/info-stroke',
+            iconTheme: 'black'
+          },
           title: 'Если пенсионные накопления находятся в&nbsp;СберНПФ',
           text: 'Переведите пенсионные накопления в&nbsp;программу до 1 декабря 2024 года'
         },
         {
+          tooltip: {
+            text: 'Сначала переведите пенсионные накопления в СберНПФ не позднее 15 ноября 2024г. Это позволит уже в 2024 году подать заявление на перевод накоплений в программу',
+            icon: '24/info-stroke',
+            iconTheme: 'black'
+          },
           title: 'Если пенсионные накопления — в&nbsp;другом фонде',
           text: 'Сначала переведите пенсионные накопления в СберНПФ не позднее 15 ноября 2024г. Это позволит уже в 2024 году подать заявление на перевод накоплений в программу'
         }

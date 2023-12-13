@@ -4,6 +4,11 @@
   position: relative;
   display: block;
 
+  @include media-breakpoint-down(sm) {
+    margin-left: toRem(-8);
+    margin-right: toRem(-8);
+  }
+
   &__background {
     position: absolute;
     top: 0;
@@ -19,7 +24,7 @@
   &__content {
     position: relative;
     z-index: 1;
-    padding: toRem(32) toRem(24) toRem(211);
+    padding: toRem(32) toRem(24) toRem(296);
 
     @include media-breakpoint-up(lg) {
       min-height: toRem(326);
@@ -47,7 +52,7 @@
     }
     @include media-breakpoint-down(sm) {
       left: 50%;
-      bottom: toRem(-86);
+      bottom: 0;
       transform: translateX(-50%);
       width: toRem(328);
       height: toRem(273);
@@ -83,6 +88,12 @@
     @include media-breakpoint-down(sm) {
       &:not(:last-child) {
         margin-bottom: toRem(16);
+      }
+    }
+
+    .app-button {
+      @include media-breakpoint-down(sm) {
+        width: 100%;
       }
     }
   }
