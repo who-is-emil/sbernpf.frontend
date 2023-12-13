@@ -18,5 +18,13 @@
       border-radius: toRem(8);
       background-color: $color-green;
     }
+
+    #{$root}--white & {
+      background-color: rgba($color-white, 0.2);
+
+      &--active {
+        background-color: $color-white;
+      }
+    }
   }
 }

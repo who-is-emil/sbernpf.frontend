@@ -9,6 +9,9 @@
     <div class="mb-lg-128 mb-md-144 mb-112">
       <AppCategories />
     </div>
+    <div class="mb-lg-128 mb-md-96 mb-80">
+      <AppProgram />
+    </div>
     <div class="mb-lg-112 mb-md-96 mb-80">
       <div class="container">
         <AppCardRequest />
@@ -52,10 +55,12 @@ import AppCardProgram from '~/components/AppCardProgram/AppCardProgram';
 import AppCardInfo from '~/components/AppCardInfo/AppInfoCard';
 import AppCardLayout from '~/components/AppCardLayout/AppCardLayout';
 import AppHero from '~/components/AppHero/AppHero';
+import AppProgram from '~/components/AppProgram/AppProgram';
 
 export default {
   name: 'App',
   components: {
+    AppProgram,
     AppHero,
     AppCardLayout,
     AppCardInfo,

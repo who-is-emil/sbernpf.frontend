@@ -1,5 +1,5 @@
 <template>
-  <div class="app-slider-pagination">
+  <div class="app-slider-pagination" :class="theme">
     <div
       v-for="(_, idx) in items"
       :key="idx"
@@ -24,6 +24,10 @@ export default {
     },
     activeIndex () {
       return this.data.activeIndex || 0;
+    },
+    theme () {
+      const theme = this.data.theme || '';
+      return theme ? `app-slider-pagination--${theme}` : theme;
     }
   }
 };

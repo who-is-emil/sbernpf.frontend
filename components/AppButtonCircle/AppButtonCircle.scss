@@ -1,0 +1,33 @@
+.app-button-circle {
+  $root: &;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: toRem(64);
+  height: toRem(64);
+  padding: 0;
+  background-color: $color-grey;
+  color: $color-black;
+  border: 0;
+  border-radius: 100%;
+
+  &:disabled {
+    color: rgba($color-black, 0.4);
+  }
+
+  @include defaultTransition(background-color, color);
+
+  @include hover {
+   &:not(:disabled) {
+     background-color: $color-green;
+     color: $color-white;
+   }
+  }
+
+  &__icon {
+    display: block;
+    width: toRem(24);
+    height: toRem(24);
+  }
+}

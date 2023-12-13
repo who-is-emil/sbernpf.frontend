@@ -1,0 +1,177 @@
+.app-slider-factoids {
+  $root: &;
+
+  position: relative;
+
+  &__base {
+    width: toRem(260);
+
+    @include media-breakpoint-up(lg) {
+      width: toRem(348);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @include media-breakpoint-only(md) {
+      width: toRem(306);
+    }
+  }
+
+  &__top {
+    @include media-breakpoint-up(lg) {
+      padding-left: toRem(32);
+      padding-right: toRem(80);
+      margin-bottom: toRem(40);
+    }
+    @include media-breakpoint-up(md) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    @include media-breakpoint-down(md) {
+      margin-bottom: toRem(40);
+    }
+  }
+
+  &__title {
+    span {
+      display: block;
+
+      &:not(:first-child) {
+        font-weight: 300;
+      }
+    }
+
+    @include media-breakpoint-only(md) {
+      max-width: toRem(312);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(24);
+    }
+  }
+
+  &__text {
+    max-width: toRem(280);
+
+    @include media-breakpoint-up(lg) {
+      padding-top: toRem(30);
+      max-width: toRem(348);
+    }
+    @include media-breakpoint-only(md) {
+      padding-top: toRem(15);
+      max-width: toRem(260);
+    }
+  }
+
+  &__swiper {
+    margin-left: toRem(-39);
+    margin-right: toRem(-39);
+
+    .swiper-container {
+      overflow: visible !important;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin-left: toRem(-44);
+      margin-right: toRem(-44);
+    }
+  }
+
+  &__item {
+    position: relative;
+    padding: 0 toRem(39);
+
+    @include media-breakpoint-up(md) {
+      padding: 0 toRem(44);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 100%;
+    width: toRem(46);
+    height: toRem(46);
+    transform: translateY(-50%) translateX(-50%);
+    color: $color-black;
+    background-color: $color-white;
+    border-radius: 50%;
+
+    @include media-breakpoint-up(md) {
+      width: toRem(56);
+      height: toRem(56);
+    }
+
+    .app-icon {
+      width: toRem(24);
+      height: toRem(24);
+    }
+  }
+
+  &__bottom {
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-left: toRem(32);
+      margin-top: toRem(72);
+    }
+    @include media-breakpoint-down(md) {
+      margin-top: toRem(48);
+    }
+  }
+
+  &__caption {
+    max-width: toRem(312);
+
+    @include media-breakpoint-up(lg) {
+      max-width: toRem(392);
+      order: 1;
+    }
+    @include media-breakpoint-only(md) {
+      max-width: toRem(392);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+    @include media-breakpoint-only(md) {
+      padding-top: toRem(40);
+    }
+    @include media-breakpoint-down(sm) {
+      padding-top: toRem(24);
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(16);
+    width: 33.3333%;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  &__action {
+    @include media-breakpoint-up(lg) {
+      width: 33.3333%;
+      order: -1;
+    }
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(28);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: toRem(24);
+    }
+  }
+}

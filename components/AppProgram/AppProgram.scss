@@ -1,0 +1,15 @@
+.app-program {
+  $root: &;
+
+  position: relative;
+  padding-top: toRem(56);
+  background-color: $color-black;
+  color: $color-white;
+
+  @include media-breakpoint-up(lg) {
+    padding-top: toRem(88);
+  }
+  @include media-breakpoint-only(md) {
+    padding-top: toRem(80);
+  }
+}

@@ -1,0 +1,34 @@
+.app-card-factoid {
+  $root: &;
+
+  display: flex;
+  flex-direction: column;
+  padding: toRem(40);
+  border-radius: toRem(12);
+  overflow: hidden;
+  background-color: rgba($color-white, 0.1);
+  color: $color-white;
+  min-height: toRem(278);
+
+  @include media-breakpoint-up(md) {
+    min-height: toRem(380);
+  }
+  @include media-breakpoint-up(md) {
+    border-radius: toRem(16);
+  }
+
+  &__title {
+    @include media-breakpoint-up(lg) {
+      min-height: toRem(87);
+      margin-bottom: toRem(24);
+    }
+  }
+
+  &__value {
+    margin-bottom: toRem(4);
+  }
+
+  &__description {
+    margin-top: auto;
+  }
+}
