@@ -2,6 +2,9 @@
   <div class="app-field">
     <label v-if="label" :for="id" class="app-field__label">
       {{ label }}
+      <template v-if="tooltip">
+        <AppTooltip :data="tooltip" />
+      </template>
     </label>
 
     <template v-if="type === 'switch'">
@@ -41,10 +44,11 @@ import AppInput from '~/components/FormFields/AppInput/AppInput';
 import AppSelect from '~/components/FormFields/AppSelect/AppSelect';
 import AppRange from '~/components/FormFields/AppRange/AppRange';
 import AppCheckbox from '~/components/FormFields/AppCheckbox/AppCheckbox';
+import AppTooltip from '~/components/AppTooltip/AppTooltip';
 
 export default {
   name: 'AppField',
-  components: { AppCheckbox, AppRange, AppSelect, AppInput, AppSwitch },
+  components: { AppTooltip, AppCheckbox, AppRange, AppSelect, AppInput, AppSwitch },
   props: {
     data: {
       type: Object,
@@ -70,6 +74,10 @@ export default {
     },
     textRight () {
       return this.data.textRight || '';
+    },
+    tooltip () {
+      console.log(this.data.tooltip);
+      return this.data.tooltip;
     }
   },
   methods: {

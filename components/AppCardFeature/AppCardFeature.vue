@@ -27,7 +27,7 @@
 
 <script>
 import AppIcon from '~/components/AppIcon/AppIcon';
-import AppTooltip from '~/components/AppTippy/AppTooltip';
+import AppTooltip from '~/components/AppTooltip/AppTooltip';
 export default {
   name: 'AppCardFeature',
   components: { AppTooltip, AppIcon },

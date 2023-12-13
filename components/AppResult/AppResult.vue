@@ -124,6 +124,10 @@
           </template>
         </div>
       </div>
+
+      <div class="app-result__caption">
+        *Вы будете перенаправлены на сайт СберНПФ
+      </div>
     </div>
   </div>
 </template>
@@ -142,7 +146,7 @@ export default {
   },
   data () {
     return {
-      title: 'Результаты расчета',
+      title: 'Результат расчета',
       actions: [
         {
           name: 'request',

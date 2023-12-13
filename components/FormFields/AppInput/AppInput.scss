@@ -14,7 +14,7 @@
     border-radius: toRem(80);
     appearance: none;
 
-    @include text-input;
+    @include text-body;
     @include defaultTransition(background-color, color);
 
     @include media-breakpoint-up(md) {

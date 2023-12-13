@@ -2,9 +2,10 @@
   $root: &;
 
   position: relative;
-  
+
   &__label {
-    display: block;
+    display: flex;
+    align-items: center;
     color: rgba($color-white, 0.4);
     margin-bottom: toRem(16);
   }
@@ -34,6 +35,19 @@
 
     &--right {
       margin-left: auto;
+    }
+  }
+
+  &::v-deep {
+    .app-tooltip {
+      display: inline-block;
+      margin-left: toRem(4);
+    }
+
+    .app-tooltip__icon {
+      display: block;
+      position: static;
+      transform: none;
     }
   }
 }

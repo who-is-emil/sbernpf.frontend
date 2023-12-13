@@ -203,7 +203,12 @@ export default {
         type: 'text',
         label: 'Сумма со счета ОПС',
         suffix: '₽',
-        currency: true
+        currency: true,
+        tooltip: {
+          text: 'Сумма со счета ОПС Сумма со счета ОПС Сумма со счета ОПС',
+          iconTheme: 'grey',
+          icon: '24/info-stroke'
+        }
       },
       sumAccountValue: 10000,
 

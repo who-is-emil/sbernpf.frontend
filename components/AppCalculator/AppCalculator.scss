@@ -3,6 +3,12 @@
 
   background-color: $color-black;
   color: $color-white;
+  border-radius: toRem(32);
+  overflow: hidden;
+
+  @include media-breakpoint-up(md) {
+    border-radius: toRem(40);
+  }
 
   &__content {
     padding: toRem(56) 0;
@@ -11,7 +17,7 @@
       padding: toRem(80) toRem(32) toRem(64);
     }
     @include media-breakpoint-only(md) {
-      padding: toRem(80) 0;
+      padding: toRem(80) toRem(32);
     }
   }
 
@@ -63,9 +69,23 @@
     @include media-breakpoint-up(md) {
       display: flex;
     }
+    @include media-breakpoint-down(sm) {
+      &:not(:last-child) {
+        margin-bottom: toRem(56);
+      }
+    }
 
     &--has-checkbox {
       position: relative;
+    }
+
+    &:first-child {
+      @include media-breakpoint-only(md) {
+        margin-bottom: toRem(40);
+      }
+      @include media-breakpoint-down(sm) {
+        margin-bottom: toRem(32);
+      }
     }
   }
 
@@ -90,13 +110,13 @@
       left: 0;
 
       @include media-breakpoint-up(lg) {
-        left: toRem(20);
+        left: toRem(12);
       }
     }
   }
 
   &__actions {
-    margin-top: toRem(88);
+    margin-top: toRem(70);
 
     @include media-breakpoint-up(lg) {
       margin-top: toRem(80);
@@ -130,7 +150,7 @@
 
   &__text {
     color: $color-grey;
-    margin-top: toRem(48);
+    margin-top: toRem(40);
 
     @include text-small;
 
@@ -143,13 +163,13 @@
   }
 
   &__result {
-    padding: 0 toRem(56);
+    padding: toRem(56) 0;
 
     @include media-breakpoint-up(lg) {
       padding: toRem(80) toRem(32) toRem(72);
     }
     @include media-breakpoint-only(md) {
-      padding: 0 toRem(80);
+      padding: toRem(80) toRem(32);
     }
   }
 }

@@ -50,7 +50,7 @@
         border: 0;
         opacity: 1;
 
-        @include text-input;
+        @include text-body;
       }
 
       &__dropdown-menu {

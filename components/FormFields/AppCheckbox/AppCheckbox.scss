@@ -28,11 +28,10 @@
     display: block;
     height: toRem(24);
     width: toRem(24);
-    background-color: transparent;
-    border: 1px solid rgba($color-white, 0.4);
+    background-color: $color-white;
     border-radius: toRem(6);
 
-    @include defaultTransition(background-color, border-color);
+    @include defaultTransition(background-color);
 
     &:after {
       position: absolute;
@@ -51,7 +50,6 @@
     }
 
     #{$root}__input:checked ~ & {
-      border-color: $color-green;
       background-color: $color-green;
 
       &:after {
@@ -66,6 +64,6 @@
     padding-left: toRem(40);
     color: rgba($color-white, 0.4);
 
-    @include text-button;
+    @include text-body;
   }
 }

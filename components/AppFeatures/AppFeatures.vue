@@ -60,7 +60,7 @@ import AppCardText from '~/components/AppCardText/AppCardText';
 import AppButton from '~/components/AppButton/AppButton';
 import AppImage from '~/components/AppImage/AppImage';
 import AppSliderPagination from '~/components/AppSliderPagination/AppSliderPagination';
-import AppTooltip from '~/components/AppTippy/AppTooltip';
+import AppTooltip from '~/components/AppTooltip/AppTooltip';
 
 export default {
   name: 'AppFeatures',
