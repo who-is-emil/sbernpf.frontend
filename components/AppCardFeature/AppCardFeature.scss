@@ -20,11 +20,7 @@
   }
 
   @include media-breakpoint-up(lg) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    min-height: toRem(336);
+    height: toRem(336);
     border-radius: toRem(32);
     padding: toRem(32);
 
@@ -36,6 +32,7 @@
   }
   @include media-breakpoint-only(md) {
     min-height: toRem(280);
+    padding: toRem(24) toRem(32);
   }
 
   &__top {
@@ -51,6 +48,12 @@
     @include media-breakpoint-only(md) {
       margin-bottom: toRem(44);
     }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   &__title {
@@ -76,5 +79,7 @@
 
   &__text {
     width: 100%;
+    margin-top: auto;
+    padding-right: toRem(16);
   }
 }

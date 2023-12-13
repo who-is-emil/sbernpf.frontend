@@ -15,7 +15,11 @@
       </div>
 
       <p v-if="text" class="app-card-feature__text">
-        {{ text }}
+        <span v-html="text" />
+
+        <template v-if="tooltip">
+          <AppTooltip :data="tooltip" />
+        </template>
       </p>
     </div>
   </div>
@@ -23,9 +27,10 @@
 
 <script>
 import AppIcon from '~/components/AppIcon/AppIcon';
+import AppTooltip from '~/components/AppTippy/AppTooltip';
 export default {
   name: 'AppCardFeature',
-  components: { AppIcon },
+  components: { AppTooltip, AppIcon },
   props: {
     data: {
       type: Object,
@@ -47,6 +52,9 @@ export default {
     },
     inactive () {
       return this.data.inactive || false;
+    },
+    tooltip () {
+      return this.data.tooltip;
     }
   }
 };
