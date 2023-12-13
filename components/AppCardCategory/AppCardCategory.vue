@@ -10,9 +10,7 @@
       <h3 v-if="title" class="app-card-category__title">
         {{ title }}
       </h3>
-      <p v-if="text" class="app-card-category__text">
-        {{ text }}
-      </p>
+      <p v-if="text" class="app-card-category__text" v-html="text" />
     </div>
   </div>
 </template>

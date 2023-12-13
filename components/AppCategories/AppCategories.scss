@@ -20,16 +20,22 @@
     .swiper-container {
       position: static;
       overflow: visible !important;
+
+      @include media-breakpoint-only(md) {
+        margin-left: toRem(-8);
+        margin-right: toRem(-8);
+      }
     }
 
     .swiper-wrapper {
       @include media-breakpoint-up(lg) {
         transform: none !important;
+        width: auto;
       }
     }
 
     @include media-breakpoint-only(md) {
-      width: 62.5%;
+      width: 62%;
     }
   }
 
@@ -44,6 +50,7 @@
 
     @include media-breakpoint-up(lg) {
       margin-bottom: toRem(56);
+      padding-left: toRem(32);
     }
     @include media-breakpoint-only(md) {
       margin-bottom: toRem(40);
@@ -51,14 +58,9 @@
   }
 
   &__items {
-    margin-left: toRem(-4);
-    margin-right: toRem(-4);
-
     @include media-breakpoint-up(lg) {
       display: flex;
       flex-wrap: wrap;
-    }
-    @include media-breakpoint-only(md) {
       margin-left: toRem(-8);
       margin-right: toRem(-8);
     }
