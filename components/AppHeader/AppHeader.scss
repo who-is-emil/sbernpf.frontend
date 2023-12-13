@@ -8,6 +8,8 @@
   width: 100%;
   box-shadow: none;
 
+  @include defaultTransition(transform, box-shadow);
+
   @include media-breakpoint-up(lg) {
     background-color: $color-white;
   }
@@ -24,9 +26,11 @@
     }
   }
 
-  @include defaultTransition(box-shadow);
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
 
-  &.fixed {
+  &.is-fixed {
     box-shadow: 0 0 toRem(88) 0 rgba(109, 140, 155, 0.15);
   }
 
@@ -265,3 +269,4 @@
     }
   }
 }
+

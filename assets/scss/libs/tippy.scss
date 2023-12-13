@@ -1,0 +1,27 @@
+.tippy {
+  $root: &;
+
+  &-tooltip {
+    background-color: $color-white !important;
+    color: $color-black !important;
+    padding: toRem(16);
+    box-shadow: 0 toRem(4) toRem(23) 0 rgba(0, 0, 0, 0.07);
+    border-radius: toRem(8);
+    width: toRem(292);
+    text-align: left;
+
+    @include text-small;
+
+    @include media-breakpoint-up(md) {
+      width: toRem(312);
+    }
+  }
+
+  &-content {
+
+  }
+
+  &-backdrop {
+    background-color: transparent !important;
+  }
+}

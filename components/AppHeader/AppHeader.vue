@@ -85,15 +85,29 @@ export default {
     };
   },
   mounted () {
-    document.addEventListener('scroll', _throttle(() => {
-      const y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const header = this.$refs.header;
+    let lastScrollTop = 0;
+    // const tl = this.$gsap.timeline({ paused: true });
 
-      if (y > 0) {
-        this.$refs.header.classList.add('fixed');
-      } else {
-        this.$refs.header.classList.remove('fixed');
+    document.addEventListener('scroll', _throttle(() => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      const direction = scrollTop > lastScrollTop ? 'down' : 'up';
+
+      if (direction === 'up') {
+        header.classList.remove('is-hidden');
+
+        if (scrollTop > 25) {
+          header.classList.add('is-fixed');
+        } else {
+          header.classList.remove('is-fixed');
+        }
+      } else if (direction === 'down' && scrollTop > 25) {
+        header.classList.add('is-hidden');
       }
-    }, 100));
+
+      lastScrollTop = scrollTop;
+    }, 50));
   },
   methods: {
     menuStateToggle () {

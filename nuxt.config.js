@@ -41,6 +41,9 @@ export default {
       ssr: false
     },
     {
+      src: '~plugins/tippy.js'
+    },
+    {
       src: '~plugins/gsap.js'
     }
   ],
