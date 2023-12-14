@@ -111,10 +111,6 @@ export default {
     focusOut () {
       this.focusClass = '';
     }
-    // change () {
-    //   const { value } = this.$refs.slider;
-    //   this.progress = ((value - 18) / (100 - 18)) * 100;
-    // }
   }
 };
 </script>

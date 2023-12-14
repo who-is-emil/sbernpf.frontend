@@ -7,7 +7,7 @@
   padding: toRem(16) toRem(16) toRem(24);
   background-color: $color-white;
   color: $color-black;
-  border-radius: toRem(32);
+  border-radius: toRem(24);
   overflow: hidden;
 
   @include media-breakpoint-up(lg) {
@@ -17,6 +17,7 @@
     min-height: toRem(110);
   }
   @include media-breakpoint-up(md) {
+    border-radius: toRem(32);
     padding: toRem(16) toRem(32) toRem(24);
   }
   @include media-breakpoint-down(md) {

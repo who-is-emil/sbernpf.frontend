@@ -61,8 +61,13 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    ['vue-scrollto/nuxt', { duration: 300, offset: -80 }]
+    ['vue-scrollto/nuxt', { duration: 500, offset: -80 }]
   ],
+
+  server: { // TODO временно для тестирования
+    host: '192.168.1.103',
+    port: 8080
+  },
 
   svg: {
     vueSvgLoader: {

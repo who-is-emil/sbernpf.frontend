@@ -3,6 +3,23 @@
 
   position: relative;
 
+  &__wrap {
+    position: relative;
+
+    &:before {
+      position: absolute;
+      bottom: 0.5px;
+      left: 0;
+      width: toRem(40);
+      height: 100%;
+      border-bottom: toRem(3.25) solid $color-green;
+      border-top-left-radius: toRem(80);
+      border-bottom-left-radius: toRem(80);
+      content: "";
+      pointer-events: none;
+    }
+  }
+
   &__input {
     display: block;
     width: 100%;
@@ -59,10 +76,11 @@
   &::v-deep {
     .vue-slider {
       cursor: pointer;
+      height: toRem(3) !important;
 
       &-process {
         background-color: $color-green;
-        border-radius: 0;
+        border-radius: 0 0 0 toRem(10);
       }
 
       &-dot {
@@ -109,7 +127,7 @@
     left: toRem(24);
     bottom: 0;
     width: calc(100% - #{toRem(48)});
-    transform: translateY(calc(50% - 2px));
+    transform: translateY(calc(50% - #{toRem(2)}));
 
     @include media-breakpoint-up(md) {
       left: toRem(32);

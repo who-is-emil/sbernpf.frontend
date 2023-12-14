@@ -14,32 +14,47 @@
     overflow: hidden;
     background-color: $color-black;
 
-    &:before {
+    span {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: toRem(951);
-      height: toRem(404);
-      transform: rotate(14deg) translateX(-40%) translateY(-30%);
-      border-radius: toRem(668);
-      background-color: #00BC72;
-      filter: blur(#{toRem(150)});
-      will-change: transform;
-      content: "";
-    }
 
-    &:after {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      width: toRem(890);
-      height: toRem(340);
-      transform: rotate(14deg) translateX(50%) translateY(30%);
-      border-radius: toRem(889);
-      background-color: #00BC72;
-      filter: blur(#{toRem(150)});
-      will-change: transform;
-      content: "";
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: toRem(951);
+        height: toRem(404);
+        transform: rotate(14deg) translateX(-40%) translateY(-30%);
+        border-radius: toRem(668);
+        background-color: #00BC72;
+        filter: blur(#{toRem(150)});
+        will-change: transform;
+        content: "";
+      }
+
+      &:nth-child(2) {
+        right: 0;
+        bottom: 0;
+        width: toRem(890);
+        height: toRem(340);
+        transform: rotate(14deg) translateX(50%) translateY(30%);
+        border-radius: toRem(889);
+        background-color: #00BC72;
+        filter: blur(#{toRem(150)});
+        will-change: transform;
+        content: "";
+      }
+
+      &:nth-child(3) {
+        left: 0;
+        top: 0;
+        width: toRem(668);
+        height: toRem(283);
+        transform: rotate(14deg) translateX(-70%) translateY(-37%);
+        border-radius: toRem(889);
+        background-color: #00ADDA;
+        filter: blur(#{toRem(250)});
+        will-change: transform;
+        content: "";
+      }
     }
   }
 
@@ -254,5 +269,21 @@
 
   &__text-right {
     max-width: toRem(518);
+  }
+
+  &__scroll-to-top {
+    position: absolute;
+    z-index: 1;
+    right: toRem(40);
+    bottom: toRem(396);
+
+    @include media-breakpoint-up(lg) {
+      right: toRem(48);
+      bottom: toRem(154);
+    }
+    @include media-breakpoint-only(md) {
+      right: toRem(32);
+      bottom: toRem(348);
+    }
   }
 }

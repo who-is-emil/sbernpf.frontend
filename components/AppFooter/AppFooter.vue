@@ -43,17 +43,26 @@
       </div>
     </div>
 
-    <div class="app-footer__background" />
+    <div class="app-footer__background">
+      <span />
+      <span />
+      <span />
+    </div>
+
+    <div class="app-footer__scroll-to-top">
+      <AppScrollToTop />
+    </div>
   </footer>
 </template>
 
 <script>
 import AppIcon from '~/components/AppIcon/AppIcon';
 import AppQA from '~/components/AppQA/AppQA';
+import AppScrollToTop from '~/components/AppScrollToTop/AppScrollToTop';
 
 export default {
   name: 'AppFooter',
-  components: { AppQA, AppIcon },
+  components: { AppScrollToTop, AppQA, AppIcon },
   data () {
     return {
       contacts: [

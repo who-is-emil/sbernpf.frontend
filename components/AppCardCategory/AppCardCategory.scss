@@ -29,6 +29,11 @@
     padding: toRem(34) toRem(20) toRem(16);
     width: 100%;
     height: toRem(128);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    will-change: transform;
 
     @include media-breakpoint-up(md) {
       height: toRem(174);

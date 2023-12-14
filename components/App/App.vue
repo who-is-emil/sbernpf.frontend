@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <div class="mb-lg-128 mb-md-144 mb-112">
+    <div>
       <AppCategories />
     </div>
     <div class="mb-lg-128 mb-md-96 mb-80">

@@ -1,8 +1,6 @@
 <template>
   <div class="app-card-factoid">
-    <h4 v-if="title" class="app-card-factoid__title">
-      {{ title }}
-    </h4>
+    <h4 v-if="title" class="app-card-factoid__title" v-html="title" />
     <p v-if="value" class="app-card-factoid__value h2">
       {{ value }}
     </p>

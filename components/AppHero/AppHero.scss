@@ -8,6 +8,7 @@
   &__base {
     position: relative;
     height: toRem(382);
+    overflow: hidden;
 
     @include media-breakpoint-up(lg) {
       height: calc(100vh - #{toRem(136)});
@@ -24,9 +25,14 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-radius: toRem(48);
+    border-radius: toRem(32);
+    pointer-events: none;
 
-    &:before {
+    @include media-breakpoint-up(md) {
+      border-radius: toRem(48);
+    }
+
+    span {
       position: absolute;
       top: 0;
       left: 0;
@@ -37,30 +43,36 @@
       background-color: $color-green-bright;
       filter: blur(#{toRem(400)});
       content: "";
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
   }
 
   &__image {
     position: absolute;
+    pointer-events: none;
 
     @include media-breakpoint-up(lg) {
       right: toRem(114);
-      bottom: toRem(100);
-      width: toRem(663);
-      height: toRem(569);
+      bottom: toRem(4);
+      width: toRem(695);
+      height: toRem(664);
     }
     @include media-breakpoint-only(md) {
       right: 0;
-      bottom: 0;
-      width: toRem(500);
-      height: toRem(430);
+      bottom: toRem(-76);
+      width: toRem(480);
+      height: toRem(459);
     }
     @include media-breakpoint-down(sm) {
       left: 50%;
       transform: translateX(-50%);
-      bottom: 0;
-      width: toRem(238);
-      height: toRem(204);
+      bottom: toRem(-38);
+      width: toRem(240);
+      height: toRem(229);
     }
   }
 

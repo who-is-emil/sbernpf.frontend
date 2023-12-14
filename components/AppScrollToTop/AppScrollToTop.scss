@@ -1,0 +1,32 @@
+.app-scroll-to-top {
+  $root: &;
+
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: toRem(40);
+  height: toRem(40);
+  border: 0;
+  padding: 0;
+  background-color: $color-white;
+  color: $color-black;
+  border-radius: 50%;
+
+  @include media-breakpoint-up(md) {
+    width: toRem(56);
+    height: toRem(56);
+  }
+
+  @include defaultTransition(background-color);
+
+  @include hover {
+    color: $color-white;
+    background-color: $color-green;
+  }
+
+  .app-icon {
+    width: toRem(24);
+    height: toRem(24);
+  }
+}

@@ -35,6 +35,38 @@
     }
   }
 
+  &--white-filled {
+    &::v-deep {
+      path {
+        fill: $color-white;
+        @include defaultTransition(fill);
+
+        &:nth-child(1) {
+          fill: transparent;
+        }
+      }
+    }
+
+
+    @include hover {
+      &::v-deep {
+        path {
+          &:nth-child(1) {
+            fill: $color-white;
+          }
+
+          &:nth-child(2) {
+            fill: $color-white;
+          }
+
+          &:nth-child(3) {
+            fill: $color-black;
+          }
+        }
+      }
+    }
+  }
+
   &__icon {
     position: absolute;
     top: calc(50% + #{toRem(3)});
