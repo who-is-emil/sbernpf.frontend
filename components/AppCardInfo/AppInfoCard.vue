@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card-info">
+  <div id="info" class="app-card-info">
     <div class="app-card-info__background" />
 
     <div class="app-card-info__content">
@@ -35,13 +35,15 @@ export default {
         {
           title: 'Узнать в Сбербанк Онлайн',
           text: 'Узнать в Сбербанк Онлайн',
-          href: '#!',
-          theme: 'gradient'
+          href: 'https://www.sberbank.com/sms/calculationpensionall',
+          theme: 'gradient',
+          external: true
         },
         {
           title: 'Запросить на Госуслугах',
           text: 'Запросить на Госуслугах',
-          href: '#!'
+          href: 'https://www.gosuslugi.ru/',
+          external: true
         }
       ],
       image: {

@@ -32,7 +32,8 @@ export default {
       action: {
         title: 'Сообщить о запуске *',
         text: 'Сообщить о запуске *',
-        href: '#!'
+        href: 'https://npfsberbanka.ru/pds/#subscription',
+        external: true
       },
       caption: '*Вы будете перенаправлены на сайт СберНПФ',
       image: {

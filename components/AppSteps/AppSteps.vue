@@ -45,7 +45,8 @@ export default {
       action: {
         text: 'Узнать',
         title: 'Узнать',
-        href: '#!',
+        href: '#',
+        target: '#info',
         theme: 'white',
         external: true
       },
@@ -59,7 +60,7 @@ export default {
         {
           text: 'По желанию переведите пенсионные накопления в&nbsp;программу',
           tooltip: {
-            text: 'По желанию переведите пенсионные накопления в&nbsp;программу',
+            text: 'Эти накопления формировались с 2002 по 2013 год из отчислений работодателей',
             icon: '24/info-stroke',
             iconTheme: 'black'
           }

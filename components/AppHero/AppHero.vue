@@ -44,7 +44,9 @@ export default {
           action: {
             text: 'Узнать больше',
             title: 'Узнать больше',
-            icon: '24/circle-arrow-right'
+            icon: '24/circle-arrow-right',
+            href: '#',
+            target: '#how'
           },
           icon: '80/rub'
         },
@@ -53,7 +55,9 @@ export default {
           action: {
             text: 'Начать копить',
             title: 'Начать копить',
-            icon: '24/circle-arrow-right'
+            icon: '24/circle-arrow-right',
+            href: '#',
+            target: '#how'
           },
           icon: '80/mark'
         },
@@ -62,7 +66,9 @@ export default {
           action: {
             text: 'Рассчитать',
             title: 'Рассчитать',
-            icon: '24/circle-arrow-right'
+            icon: '24/circle-arrow-right',
+            href: '#',
+            target: '#calculator'
           },
           icon: '80/up'
         }

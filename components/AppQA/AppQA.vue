@@ -52,7 +52,8 @@ export default {
       action: {
         title: 'Оставить заявку',
         text: 'Оставить заявку',
-        href: '#!',
+        external: true,
+        href: 'https://npfsberbanka.ru/pds/#subscription',
         theme: 'gradient'
       },
       items: [

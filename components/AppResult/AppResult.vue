@@ -152,7 +152,9 @@ export default {
           name: 'request',
           text: 'Оставить заявку*',
           title: 'Оставить заявку*',
-          theme: 'gradient'
+          theme: 'gradient',
+          external: true,
+          href: 'https://npfsberbanka.ru/pds/#subscription'
         },
         {
           name: 'edit',

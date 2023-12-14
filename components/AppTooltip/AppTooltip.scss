@@ -27,6 +27,14 @@
     }
   }
 
+  &--white {
+    color: $color-white;
+
+    @include hover {
+      color: rgba($color-white, 0.4);
+    }
+  }
+
   &__icon {
     position: absolute;
     top: calc(50% + #{toRem(3)});

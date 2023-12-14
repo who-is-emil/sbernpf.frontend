@@ -68,40 +68,70 @@ import AppIcon from '~/components/AppIcon/AppIcon';
 export default {
   name: 'AppSliderFactoid',
   components: { AppIcon, AppButton, AppButtonCircle, AppCardFactoid, AppSliderPagination },
-  props: {
-    data: {
-      type: Object,
-      required: true
-    }
-  },
   data () {
     return {
+      title: ['Из чего состоит', 'программа'],
+      text: 'Расскажем на примере как&nbsp;удвоить сбережения с&nbsp;помощью господдержки',
+      action: {
+        text: 'Оставить заявку',
+        title: 'Оставить заявку',
+        theme: 'gradient',
+        external: true,
+        href: 'https://npfsberbanka.ru/pds/#subscription'
+      },
+      items: [
+        {
+          title: 'Ваши взносы',
+          value: '3 000 ₽',
+          text: 'в месяц',
+          description: '12 ежемесячных взносов в году на 5 лет',
+          icon: '24/plus'
+        },
+        {
+          title: 'Софинансирование от государства',
+          value: '108 000 ₽',
+          text: 'за 3 года',
+          description: 'Первые 3 года государство софинансирует до 36 000 ₽ в год',
+          icon: '24/plus'
+        },
+        {
+          title: 'Инвестиционный доход',
+          value: '63 101 ₽',
+          text: 'за 5 лет',
+          description: 'СберНПФ инвестирует ваши накопления и начислит доход на счёт',
+          icon: '24/plus'
+        },
+        {
+          title: 'Возврат налога',
+          value: '26 093 ₽',
+          text: 'за 5 лет',
+          description: 'Размер вычета зависит от взносов',
+          icon: '24/equals',
+          tooltip: {
+            icon: '24/info-stroke',
+            iconTheme: 'white',
+            text: 'При вложении Налогового вычета как взнос вы получите повышенный налоговый вычет в следующем году, а также заработаете дополнительный инвестиционный доход Максимально получить можно 52 000 ₽ в год, если внести 400 000 ₽ или больше.'
+          }
+        },
+        {
+          title: 'Ваш финансовый результат',
+          value: '377 193 ₽',
+          text: 'за 5 лет',
+          description: 'Ваш общий доход составит более 100%'
+        }
+      ],
+      caption: 'при расчете принимается среднегодовая доходность 7% при инвестировании активов. Является прогнозом, не гарантирована',
       sliderInstance: null,
       activeIndex: 0
     };
   },
   computed: {
-    title () {
-      return this.data.title || '';
-    },
-    text () {
-      return this.data.text || '';
-    },
-    items () {
-      return this.data.items || [];
-    },
     pagination () {
       return {
         items: this.items.map((_, idx) => idx),
         activeIndex: this.activeIndex,
         theme: 'white'
       };
-    },
-    caption () {
-      return this.data.caption || '';
-    },
-    action () {
-      return this.data.action;
     },
     prev () {
       return {

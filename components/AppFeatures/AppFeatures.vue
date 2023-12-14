@@ -79,7 +79,8 @@ export default {
           action: {
             title: 'Рассчитать доход',
             text: 'Рассчитать доход',
-            href: '#!',
+            href: '#',
+            target: '#calculator',
             theme: 'gradient'
           },
           tooltip: {
