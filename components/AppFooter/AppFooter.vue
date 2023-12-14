@@ -1,5 +1,5 @@
 <template>
-  <footer class="app-footer" role="contentinfo">
+  <footer id="qa" class="app-footer" role="contentinfo">
     <div class="app-footer__content">
       <div class="app-footer__qa">
         <AppQA />

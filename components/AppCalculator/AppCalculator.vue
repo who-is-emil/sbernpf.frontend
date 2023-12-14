@@ -1,5 +1,5 @@
 <template>
-  <div class="app-calculator">
+  <div id="calculator" class="app-calculator">
     <div class="app-calculator__container container">
       <div v-if="showResult" class="app-calculator__result">
         <AppResult :data="result" @edit="resultToggle" />

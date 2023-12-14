@@ -172,6 +172,10 @@
     }
 
     @include defaultTransition(color);
+
+    &--active {
+      color: $color-green;
+    }
   }
 
   &__action {

@@ -6,11 +6,11 @@
       <span />
     </div>
     <div class="app-program__container container">
-      <div class="app-program__slider">
+      <div id="about" class="app-program__slider">
         <AppSliderFactoid :data="slider" />
       </div>
 
-      <div class="app-program__features">
+      <div id="advantages" class="app-program__features">
         <AppFeatures :data="features" />
       </div>
     </div>

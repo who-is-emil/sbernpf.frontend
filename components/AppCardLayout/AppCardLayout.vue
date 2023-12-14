@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card-layout">
+  <div id="how" class="app-card-layout">
     <div class="app-card-layout__container container">
       <div class="app-card-layout__top">
         <h2 class="app-card-layout__title">

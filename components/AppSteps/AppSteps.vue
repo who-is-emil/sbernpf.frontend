@@ -1,5 +1,5 @@
 <template>
-  <div class="app-steps">
+  <div id="become" class="app-steps">
     <div class="app-steps__content">
       <h2 class="app-steps__title">
         <span v-for="(item, idx) in title" :key="idx">

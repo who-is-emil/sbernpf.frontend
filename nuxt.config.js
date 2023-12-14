@@ -60,7 +60,9 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    ['vue-scrollto/nuxt', { duration: 300, offset: -80 }]
+  ],
 
   svg: {
     vueSvgLoader: {
@@ -102,9 +104,9 @@ export default {
   },
 
   router: {
-    base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
-    // base: './'
-    // base: '/'
+    // base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
+    // base: '/promo/pds/test'
+    base: '/'
   },
 
   generate: {
