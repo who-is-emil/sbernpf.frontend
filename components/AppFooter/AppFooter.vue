@@ -44,9 +44,7 @@
     </div>
 
     <div class="app-footer__background">
-      <span />
-      <span />
-      <span />
+      <AppImage :data="gradient" />
     </div>
 
     <div class="app-footer__scroll-to-top">
@@ -59,12 +57,16 @@
 import AppIcon from '~/components/AppIcon/AppIcon';
 import AppQA from '~/components/AppQA/AppQA';
 import AppScrollToTop from '~/components/AppScrollToTop/AppScrollToTop';
+import AppImage from '~/components/AppImage/AppImage';
 
 export default {
   name: 'AppFooter',
-  components: { AppScrollToTop, AppQA, AppIcon },
+  components: { AppImage, AppScrollToTop, AppQA, AppIcon },
   data () {
     return {
+      gradient: {
+        src: 'images/gradient/gradient-2.jpg'
+      },
       contacts: [
         {
           text: '+7 (495) 500-55-50',

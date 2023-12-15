@@ -11,26 +11,33 @@
     padding-bottom: toRem(96);
   }
 
-  &:after {
+  &:before {
     position: absolute;
     bottom: 0;
-    border-radius: 1440px;
-    width: toRem(1440);
-    height: toRem(352);
-    background-color: $color-green-bright;
-    filter: blur(150px);
-    transform: translateY(50%);
-    will-change: transform;
+    left: 50%;
+    border-radius: toRem(2174);
+    transform: translateX(-50%) translateY(50%);
+    height: toRem(798);
+    width: toRem(2174);
+    opacity: 0.8;
+    background: radial-gradient(50.78% 50.85% at 50% 50%, #56FF43 0%, rgba(255, 255, 255, 0.07) 100%);
     content: "";
   }
 
+  @include media-breakpoint-only(md) {
+    &:before {
+      height: toRem(600);
+      width: toRem(1100);
+      border-radius: toRem(1100);
+      transform: translateX(-50%) translateY(0);
+      background: radial-gradient(50.78% 50.85% at 50% 50%, #56FF43 0%, rgba(255, 255, 255, 0.07) 100%);
+    }
+  }
+
   @include media-breakpoint-down(sm) {
-    &:after {
-      width: toRem(540);
-      height: toRem(200);
-      bottom: toRem(100);
-      left: 50%;
-      transform: translateX(-50%);
+    &:before {
+      opacity: 0.5;
+      bottom: toRem(150);
     }
   }
 

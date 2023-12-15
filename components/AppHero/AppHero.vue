@@ -1,9 +1,6 @@
 <template>
   <div id="hero" class="app-hero">
     <div class="app-hero__base">
-      <div class="app-hero__background">
-        <span />
-      </div>
       <div class="app-hero__content">
         <div class="app-hero__image">
           <AppImage :data="image" />

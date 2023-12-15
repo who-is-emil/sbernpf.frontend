@@ -7,34 +7,26 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -10%);
-    width: toRem(1300);
-    height: toRem(370);
-    border-radius: toRem(1300);
-    background-color: $color-green-bright;
-    filter: blur(#{toRem(175)});
+    transform: translate(-50%, -40%);
+    width: toRem(2063);
+    height: toRem(941);
+    border-radius: toRem(2063);
+    background: radial-gradient(53.59% 53.67% at 50% 50%, #56FF43 0%, rgba(255, 255, 255, 0.00) 90%);
     content: "";
-  }
 
-  @include media-breakpoint-only(md) {
-    &:before {
-      transform: translate(-50%, 0%);
-      width: toRem(1074);
-      height: toRem(192);
-      filter: blur(#{toRem(120)});
+    @include media-breakpoint-only(md) {
+      width: toRem(1000);
+      height: toRem(1000);
+      border-radius: toRem(1000);
+      background: radial-gradient(100% 50% at 50% 50%, rgba(#56FF43, 0.5) 0%, rgba(255, 255, 255, 0.00) 80%);
     }
-  }
-  @include media-breakpoint-down(sm) {
-    &:before {
-      transform: translate(-50%, 0%);
-      width: toRem(540);
-      height: toRem(200);
-      filter: blur(#{toRem(150)});
-    }
-  }
 
-  &__container {
-    overflow: hidden;
+    @include media-breakpoint-down(sm) {
+      width: toRem(1000);
+      height: toRem(1000);
+      border-radius: toRem(1000);
+      background: radial-gradient(60% 55% at 50% 50%, rgba(#56FF43, 0.5) 0%, rgba(255, 255, 255, 0.00) 80%);
+    }
   }
 
   &__top {

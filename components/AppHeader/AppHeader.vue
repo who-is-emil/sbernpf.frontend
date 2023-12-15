@@ -21,6 +21,7 @@
                   class="app-header__link"
                   :class="{'app-header__link--active' : item.active}"
                   :data-target="item.href"
+                  @click="click"
                 >
                   {{ item.text }}
                 </a>
@@ -46,6 +47,7 @@
 
 <script>
 import _throttle from 'lodash.throttle';
+import { isDesktop } from '~/assets/js/breakpoints';
 import { _disableScroll, _enableScroll } from '~/assets/js/scroll';
 import AppIcon from '~/components/AppIcon/AppIcon';
 import AppButton from '~/components/AppButton/AppButton';
@@ -168,6 +170,12 @@ export default {
         rootMargin: '0px 0px 50% 0px',
         threshold: 0.5
       });
+    },
+    click () {
+      if (!isDesktop()) {
+        _enableScroll();
+        this.menuState = false;
+      }
     }
   }
 };
