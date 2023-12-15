@@ -44,11 +44,61 @@
     }
   }
 
+  ol {
+    counter-reset: number;
+    margin-bottom: toRem(16);
+
+    li {
+      position: relative;
+      padding-left: toRem(24);
+      counter-increment: number;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        //content: counters(number, ".", decimal-leading-zero);
+        content: counter(number) '.';
+      }
+
+      &:not(:last-child) {
+        margin-bottom: toRem(16);
+      }
+
+      @include media-breakpoint-up(md) {
+        padding-left: toRem(32);
+      }
+    }
+
+    ul li {
+      &:before {
+        top: toRem(9);
+        left: toRem(1);
+        content: "";
+
+        @include media-breakpoint-up(md) {
+          top: toRem(12);
+          left: toRem(2);
+        }
+      }
+    }
+  }
+
   span {
     display: block;
     color: rgba($color-white, 0.4);
     margin-bottom: toRem(16);
 
     @include text-small;
+  }
+
+  a {
+    color: $color-main;
+
+    @include defaultTransition(color);
+
+    @include hover {
+      color: rgba($color-main, 0.6);
+    }
   }
 }

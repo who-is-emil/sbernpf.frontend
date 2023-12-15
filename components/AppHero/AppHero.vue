@@ -69,18 +69,18 @@ export default {
             target: '#how'
           },
           icon: '80/mark'
-        },
-        {
-          title: 'Управляйте пенсионными накоплениями',
-          action: {
-            text: 'Рассчитать',
-            title: 'Рассчитать',
-            icon: '24/circle-arrow-right',
-            href: '#',
-            target: '#calculator'
-          },
-          icon: '80/up'
         }
+        // {
+        //   title: 'Управляйте пенсионными накоплениями',
+        //   action: {
+        //     text: 'Рассчитать',
+        //     title: 'Рассчитать',
+        //     icon: '24/circle-arrow-right',
+        //     href: '#',
+        //     target: '#calculator'
+        //   },
+        //   icon: '80/up'
+        // }
       ],
       image: {
         src: 'images/hero/image-1.png',

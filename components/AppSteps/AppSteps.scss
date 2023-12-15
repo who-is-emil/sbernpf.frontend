@@ -78,8 +78,8 @@
       &:before {
         position: absolute;
         top: toRem(31);
-        left: 0;
-        width: 100%;
+        left: toRem(10);
+        width: calc(100% + #{toRem(10)});
         height: toRem(2);
         background-color: rgba(#70EC2D, 0.2);
         content: "";
