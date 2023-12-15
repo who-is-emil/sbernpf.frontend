@@ -155,6 +155,7 @@
 
   &__links-bottom {
     padding-right: toRem(16);
+    flex-shrink: 0;
 
     @include media-breakpoint-up(lg) {
       width: 25%;
@@ -196,14 +197,8 @@
   }
 
   &__text {
-    color: rgba($color-white, 0.4);
     width: 100%;
-
-    @include media-breakpoint-up(lg) {
-      display: flex;
-      align-items: flex-start;
-      margin-left: toRem(48);
-    }
+    color: rgba($color-white, 0.4);
 
     @include text-small;
 
@@ -217,6 +212,14 @@
           opacity: 0.6;
         }
       }
+    }
+  }
+
+  &__text-top {
+    @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+      margin-left: toRem(48);
     }
   }
 
@@ -237,19 +240,30 @@
     max-width: toRem(518);
   }
 
+  &__text-bottom {
+    margin-top: toRem(16);
+
+    @include media-breakpoint-up(lg) {
+      margin-left: toRem(48);
+    }
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(24);
+    }
+  }
+
   &__scroll-to-top {
     position: absolute;
     z-index: 1;
     right: toRem(40);
-    bottom: toRem(396);
+    bottom: toRem(400);
 
     @include media-breakpoint-up(lg) {
       right: toRem(48);
-      bottom: toRem(154);
+      bottom: toRem(264);
     }
     @include media-breakpoint-only(md) {
       right: toRem(32);
-      bottom: toRem(348);
+      bottom: toRem(440);
     }
   }
 }
