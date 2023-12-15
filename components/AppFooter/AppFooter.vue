@@ -29,14 +29,34 @@
         </div>
 
         <div class="app-footer__bottom">
-          <div class="app-footer__policy">
-            <a
-              :href="policy.href"
-              class="app-footer__policy-link"
-              target="_blank"
-            >
-              {{ policy.text }}
-            </a>
+          <div class="app-footer__links-bottom">
+            <div class="app-footer__link-wrapper">
+              <a
+                :href="policy.href"
+                class="app-footer__link-bottom"
+                target="_blank"
+              >
+                {{ policy.text }}
+              </a>
+            </div>
+            <div class="app-footer__link-wrapper">
+              <a
+                :href="information.href"
+                class="app-footer__link-bottom"
+                target="_blank"
+              >
+                {{ information.text }}
+              </a>
+            </div>
+            <div class="app-footer__link-wrapper">
+              <a
+                :href="about.href"
+                class="app-footer__link-bottom"
+                target="_blank"
+              >
+                {{ about.text }}
+              </a>
+            </div>
           </div>
 
           <div class="app-footer__text">
@@ -87,8 +107,16 @@ export default {
         text: 'Политика обработки персональных данных',
         href: 'https://www.sberbank.ru/privacy/policy#pdn'
       },
+      information: {
+        text: 'Информация, обязательная к размещению',
+        href: 'https://www.sberbank.ru/ru/inform'
+      },
+      about: {
+        text: 'Раскрытие информации о банке как о профессиональном участнике рынка ценных бумаг',
+        href: 'https://www.sberbank.ru/ru/disclosure3921u'
+      },
       textLeft: '© 2009–2023 Акционерное общество «Негосударственный Пенсионный Фонд Сбербанка» Лицензия №41/2 от 16.06.2009 г. выдана Федеральной службой по финансовым рынкам ИНН/ КПП 7725352740/772501001, ОГРН 1147799009160',
-      textRight: 'Реклама. Рекламодатель АО «НПФ Сбербанка», erid. Услуги предоставляет АО «НПФ Сбербанка» (115162, г. Москва, ул. Шаболовка, д. 31Г. ИНН 7725352740, ОГРН 1147799009160. Лицензия № 41/2 от 16.06.2009 выдана Федеральной службой по финансовым рынкам). Подробнее об условиях: <a href="https://npfsberbanka.ru/" target="_blank">https://npfsberbanka.ru/</a>.'
+      textRight: 'Реклама. Рекламодатель АО «НПФ Сбербанка», erid 2RanymDjMbn. Услуги предоставляет АО «НПФ Сбербанка» (115162, г. Москва, ул. Шаболовка, д. 31Г. ИНН 7725352740, ОГРН 1147799009160. Лицензия № 41/2 от 16.06.2009 выдана Федеральной службой по финансовым рынкам). Подробнее об условиях: <a href="https://npfsberbanka.ru/" target="_blank">https://npfsberbanka.ru/</a>.'
     };
   }
 };
