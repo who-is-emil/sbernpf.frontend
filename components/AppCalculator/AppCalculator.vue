@@ -233,7 +233,7 @@ export default {
           text: 'Оставить заявку',
           title: 'Оставить заявку',
           external: true,
-          href: 'https://npfsberbanka.ru/pds/#subscription'
+          href: 'https://npfsberbanka.ru/pds/?utm_source=sbersite&utm_medium=pdsportal&utm_campaign=getlead&utm_content=1#subscription'
         }
       ],
       text: 'Не является офертой и не гарантирует доходность в будущем. ' +
