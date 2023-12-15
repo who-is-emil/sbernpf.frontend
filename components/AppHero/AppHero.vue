@@ -1,5 +1,9 @@
 <template>
-  <div id="hero" class="app-hero">
+  <div
+    id="hero"
+    class="app-hero"
+    :class="{'app-hero--timer-disable' : !timer}"
+  >
     <div class="app-hero__base">
       <div class="app-hero__background" />
       <div class="app-hero__content">
@@ -20,6 +24,9 @@
         </div>
       </div>
     </div>
+    <div v-if="timer" class="app-hero__timer">
+      <AppTimer @newYear="newYear" />
+    </div>
     <div class="app-hero__items">
       <div v-for="(item, idx) in items" :key="idx" class="app-hero__item">
         <AppCardAction :data="item" />
@@ -31,11 +38,13 @@
 <script>
 import AppImage from '~/components/AppImage/AppImage';
 import AppCardAction from '~/components/AppCardAction/AppCardAction';
+import AppTimer from '~/components/AppTimer/AppTimer';
 export default {
   name: 'AppHero',
-  components: { AppCardAction, AppImage },
+  components: { AppTimer, AppCardAction, AppImage },
   data () {
     return {
+      timer: false,
       title: ['Программа', 'долгосрочных', 'сбережений'],
       text: 'Копите на любые цели и получайте поддержку от государства',
       items: [
@@ -78,6 +87,11 @@ export default {
         srcset: ['images/hero/image-1.png', 'images/hero/image-1@2x.png']
       }
     };
+  },
+  methods: {
+    newYear () {
+      this.timer = false;
+    }
   }
 };
 </script>

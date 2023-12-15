@@ -145,4 +145,21 @@
       }
     }
   }
+
+  &__timer {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      top: calc(100% + #{toRem(8)});
+      left: 0;
+      width: 100%;
+    }
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(8);
+      margin-bottom: toRem(8);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-top: toRem(4);
+      margin-bottom: toRem(4);
+    }
+  }
 }

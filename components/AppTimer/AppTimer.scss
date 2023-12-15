@@ -1,0 +1,57 @@
+.app-timer {
+  $root: &;
+
+  position: relative;
+  height: toRem(56);
+  border-radius: toRem(56);
+  background-color: $color-grey-light;
+  box-shadow: 0 0 toRem(88) 0 rgba(109, 140, 155, 0.15);
+
+  @include media-breakpoint-up(md) {
+    height: toRem(40);
+    border-radius: toRem(40);
+  }
+  @include media-breakpoint-down(sm) {
+    @include text-small;
+  }
+
+  &__line {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: $gradient-first;
+    color: $color-white;
+    border-radius: toRem(56);
+
+    @include media-breakpoint-up(md) {
+      border-radius: toRem(40);
+      padding: 0 toRem(32);
+    }
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__text {
+    @include media-breakpoint-up(md) {
+      @include text-body;
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(4);
+
+      @include text-small;
+    }
+  }
+
+  &__time {
+    span {
+      @include text-small;
+    }
+  }
+}
