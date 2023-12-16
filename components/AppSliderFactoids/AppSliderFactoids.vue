@@ -2,16 +2,16 @@
   <div class="app-slider-factoids">
     <div class="app-slider-factoids__content">
       <div class="app-slider-factoids__top">
-        <h2 v-if="title" class="app-slider-factoids__title">
+        <h2 v-if="title" class="app-slider-factoids__title" data-aos="fade" data-aos-delay="100">
           <span v-for="(item, idx) in title" :key="idx">
             {{ item }}
           </span>
         </h2>
 
-        <p v-if="text" class="app-slider-factoids__text" v-html="text" />
+        <p v-if="text" class="app-slider-factoids__text" data-aos="fade" data-aos-delay="100" v-html="text" />
       </div>
 
-      <div class="app-slider-factoids__base">
+      <div class="app-slider-factoids__base" data-aos="fade" data-aos-delay="200">
         <div class="app-slider-factoids__swiper">
           <div ref="slider" class="swiper-container">
             <div class="app-slider-factoids__items swiper-wrapper">
@@ -31,11 +31,11 @@
         </div>
       </div>
 
-      <div class="app-slider-factoids__pagination">
+      <div class="app-slider-factoids__pagination" data-aos="fade" data-aos-delay="200">
         <AppSliderPagination :data="pagination" />
       </div>
 
-      <div class="app-slider-factoids__bottom">
+      <div class="app-slider-factoids__bottom" data-aos="fade" data-aos-delay="200">
         <p v-if="caption" class="app-slider-factoids__caption">
           {{ caption }}
         </p>
@@ -49,7 +49,7 @@
           </div>
         </div>
 
-        <div v-if="action" class="app-slider-factoids__action">
+        <div v-if="action" class="app-slider-factoids__action" data-aos="fade" data-aos-delay="200">
           <AppButton :data="action" />
         </div>
       </div>

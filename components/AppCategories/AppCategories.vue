@@ -1,12 +1,12 @@
 <template>
   <div class="app-categories">
     <div class="app-categories__container container">
-      <h2 class="app-categories__title">
+      <h2 class="app-categories__title" data-aos="fade" data-aos-delay="100">
         <span v-for="(item, idx) in title" :key="idx">
           {{ item }}
         </span>
       </h2>
-      <div class="app-categories__swiper">
+      <div class="app-categories__swiper" data-aos="fade" data-aos-delay="200">
         <div ref="slider" class="swiper-container">
           <div class="app-categories__items swiper-wrapper">
             <div

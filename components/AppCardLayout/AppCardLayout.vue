@@ -1,7 +1,7 @@
 <template>
   <div id="how" class="app-card-layout">
     <div class="app-card-layout__container container">
-      <div class="app-card-layout__top">
+      <div class="app-card-layout__top" data-aos="fade" data-aos-delay="100">
         <h2 class="app-card-layout__title">
           <span v-for="(item, idx) in title" :key="idx">
             {{ item }}
@@ -19,6 +19,8 @@
               v-for="(item, idx) in itemsComputed"
               :key="idx"
               class="app-card-layout__item swiper-slide"
+              data-aos="fade"
+              data-aos-delay="200"
             >
               <AppCardFeature ref="card" :data="item" />
             </div>

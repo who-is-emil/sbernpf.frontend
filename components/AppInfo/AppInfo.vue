@@ -1,7 +1,7 @@
 <template>
   <div class="app-info">
     <div class="app-info__container container">
-      <div class="app-info__base">
+      <div class="app-info__base" data-aos="fade" data-aos-delay="100">
         <h2 class="app-info__title">
           <span v-for="(item, idx) in title" :key="idx">
             {{ item }}
@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div class="app-info__rows">
+      <div class="app-info__rows" data-aos="fade" data-aos-delay="200">
         <div
           v-for="(item, idx) in rows"
           :key="idx"

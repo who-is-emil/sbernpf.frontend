@@ -1,5 +1,5 @@
 <template>
-  <div id="info" class="app-card-info">
+  <div id="info" class="app-card-info" data-aos="fade" data-aos-delay="100">
     <div class="app-card-info__background" />
 
     <div class="app-card-info__content">

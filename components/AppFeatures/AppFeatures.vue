@@ -1,10 +1,10 @@
 <template>
   <div class="app-features">
-    <h2 class="app-features__title">
+    <h2 class="app-features__title" data-aos="fade" data-aos-delay="100">
       {{ title }}
     </h2>
 
-    <div class="app-features__blocks">
+    <div class="app-features__blocks" data-aos="fade" data-aos-delay="200">
       <div
         v-for="(item, idx) in items"
         :key="idx"
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="app-features__slider">
+    <div class="app-features__slider" data-aos="fade" data-aos-delay="200">
       <div class="app-features__swiper">
         <div ref="slider" class="swiper-container">
           <div class="app-features__items swiper-wrapper">
@@ -48,7 +48,9 @@
     </div>
 
     <div class="app-features__pagination">
-      <AppSliderPagination :data="pagination" />
+      <div data-aos="fade" data-aos-delay="200">
+        <AppSliderPagination :data="pagination" />
+      </div>
     </div>
   </div>
 </template>
@@ -199,7 +201,9 @@ export default {
       }
     },
     animation (idx = 0) {
-      if (idx === this.prevActiveIndex) { return; }
+      if (idx === this.prevActiveIndex) {
+        return;
+      }
 
       const tl = this.$gsap.timeline({ paused: true });
 

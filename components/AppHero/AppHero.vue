@@ -8,26 +8,28 @@
       <div class="app-hero__background" />
       <div class="app-hero__content">
         <div class="app-hero__image">
-          <AppImage :data="image" />
+          <div data-aos="fade" data-aos-delay="100">
+            <AppImage :data="image" />
+          </div>
         </div>
 
         <div class="app-hero__info">
-          <h1 class="app-hero__title">
+          <h1 class="app-hero__title" data-aos="fade" data-aos-delay="200">
             <span v-for="(item, idx) in title" :key="idx">
               {{ item }}
             </span>
           </h1>
 
-          <p v-if="text" class="app-hero__text">
+          <p v-if="text" class="app-hero__text" data-aos="fade" data-aos-delay="200">
             {{ text }}
           </p>
         </div>
       </div>
     </div>
-    <div v-if="timer" class="app-hero__timer">
+    <div v-if="timer" class="app-hero__timer" data-aos="fade" data-aos-delay="300">
       <AppTimer @newYear="newYear" />
     </div>
-    <div class="app-hero__items">
+    <div class="app-hero__items" data-aos="fade" data-aos-delay="300">
       <div v-for="(item, idx) in items" :key="idx" class="app-hero__item">
         <AppCardAction :data="item" />
       </div>
@@ -39,6 +41,7 @@
 import AppImage from '~/components/AppImage/AppImage';
 import AppCardAction from '~/components/AppCardAction/AppCardAction';
 import AppTimer from '~/components/AppTimer/AppTimer';
+
 export default {
   name: 'AppHero',
   components: { AppTimer, AppCardAction, AppImage },

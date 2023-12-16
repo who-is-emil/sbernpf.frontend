@@ -1,5 +1,5 @@
 <template>
-  <div class="app-card-request">
+  <div class="app-card-request" data-aos="fade" data-aos-delay="100">
     <div class="app-card-request__background" />
     <div class="app-card-request__content">
       <h2 class="app-card-request__title">

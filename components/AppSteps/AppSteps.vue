@@ -1,13 +1,13 @@
 <template>
   <div id="become" class="app-steps">
     <div class="app-steps__content">
-      <h2 class="app-steps__title">
+      <h2 class="app-steps__title" data-aos="fade" data-aos-delay="100">
         <span v-for="(item, idx) in title" :key="idx">
           {{ item }}
         </span>
       </h2>
 
-      <div class="app-steps__items">
+      <div class="app-steps__items" data-aos="fade" data-aos-delay="200">
         <div v-for="(item, idx) in items" :key="idx" class="app-steps__item">
           <span class="app-steps__counter" />
           <p class="app-steps__text">
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="app-steps__action">
+      <div class="app-steps__action" data-aos="fade" data-aos-delay="100">
         <p class="app-steps__caption">
           {{ caption }}
         </p>

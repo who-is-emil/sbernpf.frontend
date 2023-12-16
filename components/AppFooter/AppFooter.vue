@@ -1,10 +1,10 @@
 <template>
   <footer id="qa" class="app-footer" role="contentinfo">
     <div class="app-footer__content">
-      <div class="app-footer__qa">
+      <div class="app-footer__qa" data-aos="fade" data-aos-delay="100">
         <AppQA />
       </div>
-      <div class="app-footer__container container">
+      <div class="app-footer__container container" data-aos="fade" data-aos-delay="200">
         <div class="app-footer__top">
           <div class="app-footer__logos">
             <div class="app-footer__logo">
@@ -74,7 +74,7 @@
       <AppImage :data="gradient" />
     </div>
 
-    <div class="app-footer__scroll-to-top">
+    <div class="app-footer__scroll-to-top" data-aos="fade" data-aos-delay="200">
       <AppScrollToTop />
     </div>
   </footer>

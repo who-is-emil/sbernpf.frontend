@@ -45,6 +45,10 @@ export default {
     },
     {
       src: '~plugins/gsap.js'
+    },
+    {
+      src: '~plugins/aos.js',
+      ssr: false
     }
   ],
 

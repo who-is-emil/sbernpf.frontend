@@ -6,7 +6,7 @@
     role="banner"
   >
     <div class="app-header__container container">
-      <div class="app-header__content">
+      <div class="app-header__content" data-aos="fade" data-aos-delay="50">
         <div class="app-header__logo">
           <AppIcon name="logos/logo" />
         </div>
