@@ -1,7 +1,9 @@
 .app-features {
   $root: &;
 
-  position: relative;
+  &__content {
+    position: relative;
+  }
 
   &__title {
     margin-bottom: toRem(24);

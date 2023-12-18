@@ -1,57 +1,36 @@
 <template>
-  <div class="app-slider-factoids">
-    <div class="app-slider-factoids__container container">
-      <div class="app-slider-factoids__content">
-        <div class="app-slider-factoids__top">
-          <h2 v-if="title" class="app-slider-factoids__title" data-aos="fade" data-aos-delay="100">
+  <div ref="slider" class="app-slider-circle">
+    <div class="app-slider-circle__content">
+      <div class="app-slider-circle__container container">
+        <div class="app-slider-circle__top">
+          <h2 v-if="title" class="app-slider-circle__title" data-aos="fade" data-aos-delay="100">
             <span v-for="(item, idx) in title" :key="idx">
               {{ item }}
             </span>
           </h2>
 
-          <p v-if="text" class="app-slider-factoids__text" data-aos="fade" data-aos-delay="100" v-html="text" />
+          <p v-if="text" class="app-slider-circle__text" data-aos="fade" data-aos-delay="100" v-html="text" />
         </div>
 
-        <div class="app-slider-factoids__base" data-aos="fade" data-aos-delay="200">
-          <div class="app-slider-factoids__swiper">
-            <div ref="slider" class="swiper-container">
-              <div class="app-slider-factoids__items swiper-wrapper">
-                <div
-                  v-for="(item, idx) in items"
-                  :key="idx"
-                  class="app-slider-factoids__item swiper-slide"
-                >
-                  <AppCardFactoid :data="item" />
-
-                  <div v-if="item.icon" class="app-slider-factoids__icon">
-                    <AppIcon :name="item.icon" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="app-slider-factoids__pagination" data-aos="fade" data-aos-delay="200">
-          <AppSliderPagination :data="pagination" />
-        </div>
-
-        <div class="app-slider-factoids__bottom" data-aos="fade" data-aos-delay="200">
-          <p v-if="caption" class="app-slider-factoids__caption">
+        <div class="app-slider-circle__bottom" data-aos="fade" data-aos-delay="200">
+          <p v-if="caption" class="app-slider-circle__caption">
             {{ caption }}
           </p>
 
-          <div class="app-slider-factoids__arrows">
-            <div class="app-slider-factoids__arrow">
-              <AppButtonCircle :data="prev" @click="goToPrev" />
-            </div>
-            <div class="app-slider-factoids__arrow">
-              <AppButtonCircle :data="next" @click="goToNext" />
-            </div>
-          </div>
-
-          <div v-if="action" class="app-slider-factoids__action" data-aos="fade" data-aos-delay="200">
+          <div v-if="action" class="app-slider-circle__action">
             <AppButton :data="action" />
+          </div>
+        </div>
+      </div>
+
+      <div data-aos="fade" data-aos-delay="200">
+        <div ref="circle" class="app-slider-circle__circle">
+          <div v-for="(item, idx) in items" :key="idx" class="app-slider-circle__item">
+            <AppCardFactoid :data="item" />
+
+            <div v-if="item.icon" class="app-slider-circle__icon">
+              <AppIcon :name="item.icon" />
+            </div>
           </div>
         </div>
       </div>
@@ -60,16 +39,13 @@
 </template>
 
 <script>
-import { Swiper } from 'swiper';
-import AppSliderPagination from '~/components/AppSliderPagination/AppSliderPagination';
 import AppCardFactoid from '~/components/AppCardFactoid/AppCardFactoid';
-import AppButtonCircle from '~/components/AppButtonCircle/AppButtonCircle';
 import AppButton from '~/components/AppButton/AppButton';
 import AppIcon from '~/components/AppIcon/AppIcon';
 
 export default {
-  name: 'AppSliderFactoid',
-  components: { AppIcon, AppButton, AppButtonCircle, AppCardFactoid, AppSliderPagination },
+  name: 'AppSliderCircle',
+  components: { AppIcon, AppButton, AppCardFactoid },
   data () {
     return {
       title: ['Из чего состоит', 'программа'],
@@ -124,66 +100,84 @@ export default {
       ],
       caption: 'при расчете принимается среднегодовая доходность 7% при инвестировании активов. Является прогнозом, не гарантирована',
 
-      sliderInstance: null,
-      activeIndex: 0
+      timeline: null,
+      controller: null
     };
   },
   computed: {
-    pagination () {
-      return {
-        items: this.items.map((_, idx) => idx),
-        activeIndex: this.activeIndex,
-        theme: 'white'
-      };
-    },
     prev () {
       return {
         icon: '24/prev',
-        title: 'Назад',
-        disabled: this.activeIndex === 0
+        title: 'Назад'
       };
     },
     next () {
       return {
         icon: '24/next',
-        title: 'Вперед',
-        disabled: this.activeIndex === this.items.length - 1
+        title: 'Вперед'
       };
     }
   },
   mounted () {
-    this.initSwiper();
+    this.animation();
+    this.initController();
   },
   beforeDestroy () {
-    this.sliderInstance.destroy();
-    this.sliderInstance = null;
+    this.controller.kill();
+    this.timeline.kill();
+
+    this.controller = null;
+    this.timeline = null;
   },
   methods: {
-    initSwiper () {
-      const swiperEl = this.$refs.slider;
+    animation () {
+      const trigger = this.$refs.slider;
+      const circle = this.$refs.circle;
 
-      this.sliderInstance = new Swiper(swiperEl, {
-        slidesPerView: 1,
-        speed: 800,
-        a11y: false,
-        loop: false,
-        on: {
-          slideChange: ({ activeIndex }) => {
-            this.activeIndex = activeIndex;
-          }
+      this.timeline = this.$gsap.timeline({
+        scrollTrigger: {
+          scroller: 'body',
+          trigger,
+          scrub: true,
+          start: '0%',
+          end: '+=175%',
+          preventOverlaps: true,
+          invalidateOnRefresh: true,
+          toggleActions: 'play none none reverse'
         }
       });
+
+      this.timeline.fromTo(circle, { rotate: '0deg' }, { rotate: '-21deg', ease: 'none' });
+
+      // this.timeline.to(circle, { rotate: '0deg', ease: 'none', duration: 0.5 })
+      //   .addLabel('labelFirst')
+      //   .to(circle, { rotate: '-5.25deg', ease: 'none', duration: 0.5 })
+      //   .addLabel('labelSecond')
+      //   .to(circle, { rotate: '-10.5deg', ease: 'none', duration: 0.5 })
+      //   .addLabel('labelThird')
+      //   .to(circle, { rotate: '-15.75deg', ease: 'none', duration: 0.5 })
+      //   .addLabel('labelFourth')
+      //   .to(circle, { rotate: '-21deg', ease: 'none', duration: 0.5 })
+      //   .addLabel('labelFifth');
     },
-    goToPrev () {
-      this.sliderInstance.slidePrev();
-    },
-    goToNext () {
-      this.sliderInstance.slideNext();
+    initController () {
+      const trigger = document.querySelector('.app-program');
+
+      this.controller = this.$scrollTrigger.create({
+        scroller: 'body',
+        trigger,
+        start: '50px top',
+        end: '+=175%',
+        pin: true,
+        preventOverlaps: true,
+        invalidateOnRefresh: true,
+        invalidateOnResize: true
+      });
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "AppSliderFactoids";
+@import "AppSliderCircle";
 </style>

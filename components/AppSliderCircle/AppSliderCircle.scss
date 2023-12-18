@@ -1,0 +1,160 @@
+.app-slider-circle {
+  $root: &;
+
+  overflow: hidden;
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: toRem(32);
+    padding-right: toRem(72);
+    margin-bottom: toRem(32);
+  }
+
+  &__title {
+    width: 72%;
+    flex-shrink: 0;
+
+    span {
+      display: block;
+
+      &:not(:first-child) {
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__text {
+    padding-top: toRem(30);
+    max-width: toRem(330);
+    margin-right: auto;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    height: toRem(728);
+  }
+
+  &__circle {
+    position: absolute;
+    top: toRem(152);
+    left: 50%;
+    transform: translateX(-50%);
+    width: toRem(10000);
+    height: toRem(10000);
+    border-radius: 100%;
+  }
+
+  &__item {
+    position: absolute;
+    top: 0;
+    width: toRem(460);
+    transform: translateX(-50%);
+    padding-left: toRem(56);
+    padding-right: toRem(56);
+    transform-origin: 0 0;
+
+    &:nth-child(1) {
+      left: 50%;
+    }
+
+    &:nth-child(2) {
+      top: toRem(22);
+      left: calc(50% + #{toRem(460)});
+      transform: rotate(5.25deg) translateX(-50%);
+    }
+
+    &:nth-child(3) {
+      top: toRem(86);
+      left: calc(50% + #{toRem(920)});
+      transform: rotate(10.5deg) translateX(-50%);
+    }
+
+    &:nth-child(4) {
+      top: toRem(194);
+      left: calc(50% + #{toRem(1380)});
+      transform: rotate(15.75deg) translateX(-50%);
+    }
+
+    &:nth-child(5) {
+      top: toRem(350);
+      left: calc(50% + #{toRem(1840)});
+      transform: rotate(21deg) translateX(-50%);
+    }
+
+    &:nth-child(6) {
+      top: toRem(558);
+      left: calc(50% + #{toRem(2300)});
+      transform: rotate(26.25deg) translateX(-50%);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    right: toRem(-18);
+    width: toRem(56);
+    height: toRem(56);
+    color: $color-black;
+    background-color: $color-white;
+    border-radius: 50%;
+
+    .app-icon {
+      width: toRem(24);
+      height: toRem(24);
+    }
+  }
+
+  &__card {
+    width: 100%;
+  }
+
+  &__bottom {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: toRem(32);
+    margin-top: toRem(520);
+    padding-right: toRem(72);
+  }
+
+  &__caption {
+    position: relative;
+    max-width: toRem(348);
+    order: 1;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: toRem(-16);
+      content: "1";
+
+      @include text-small;
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(16);
+    width: 33.3333%;
+  }
+
+  &__action {
+    width: 33.3333%;
+    order: -1;
+  }
+}

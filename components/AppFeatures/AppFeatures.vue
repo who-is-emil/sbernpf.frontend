@@ -1,55 +1,59 @@
 <template>
   <div class="app-features">
-    <h2 class="app-features__title" data-aos="fade" data-aos-delay="100">
-      {{ title }}
-    </h2>
+    <div class="app-features__container container">
+      <div class="app-features__content">
+        <h2 class="app-features__title" data-aos="fade" data-aos-delay="100">
+          {{ title }}
+        </h2>
 
-    <div class="app-features__blocks" data-aos="fade" data-aos-delay="200">
-      <div
-        v-for="(item, idx) in items"
-        :key="idx"
-        ref="block"
-        class="app-features__block"
-      >
-        <p v-if="item.text" class="app-features__text">
-          <span v-html="item.text" />
-          <template v-if="item.tooltip">
-            <AppTooltip :data="item.tooltip" />
-          </template>
-        </p>
+        <div class="app-features__blocks" data-aos="fade" data-aos-delay="200">
+          <div
+            v-for="(item, idx) in items"
+            :key="idx"
+            ref="block"
+            class="app-features__block"
+          >
+            <p v-if="item.text" class="app-features__text">
+              <span v-html="item.text" />
+              <template v-if="item.tooltip">
+                <AppTooltip :data="item.tooltip" />
+              </template>
+            </p>
 
-        <div v-if="item.action" class="app-features__action">
-          <AppButton :data="item.action" />
-        </div>
+            <div v-if="item.action" class="app-features__action">
+              <AppButton :data="item.action" />
+            </div>
 
-        <div v-if="item.image" class="app-features__image">
-          <AppImage :data="item.image" />
-        </div>
-      </div>
-    </div>
-
-    <div class="app-features__slider" data-aos="fade" data-aos-delay="200">
-      <div class="app-features__swiper">
-        <div ref="slider" class="swiper-container">
-          <div class="app-features__items swiper-wrapper">
-            <div
-              v-for="(item, idx) in items"
-              :key="idx"
-              class="app-features__item swiper-slide"
-            >
-              <AppCardText
-                :data="item"
-                @click="toggle(idx)"
-              />
+            <div v-if="item.image" class="app-features__image">
+              <AppImage :data="item.image" />
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="app-features__pagination">
-      <div data-aos="fade" data-aos-delay="200">
-        <AppSliderPagination :data="pagination" />
+        <div class="app-features__slider" data-aos="fade" data-aos-delay="200">
+          <div class="app-features__swiper">
+            <div ref="slider" class="swiper-container">
+              <div class="app-features__items swiper-wrapper">
+                <div
+                  v-for="(item, idx) in items"
+                  :key="idx"
+                  class="app-features__item swiper-slide"
+                >
+                  <AppCardText
+                    :data="item"
+                    @click="toggle(idx)"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="app-features__pagination">
+          <div data-aos="fade" data-aos-delay="200">
+            <AppSliderPagination :data="pagination" />
+          </div>
+        </div>
       </div>
     </div>
   </div>

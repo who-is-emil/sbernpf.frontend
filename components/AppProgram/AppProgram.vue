@@ -3,9 +3,14 @@
     <div class="app-program__background">
       <AppImage :data="gradient" />
     </div>
-    <div class="app-program__container container">
+    <div class="app-program__content">
       <div id="about" class="app-program__slider">
-        <AppSliderFactoid />
+        <div v-if="isDesktop" class="app-program__slider--desk">
+          <AppSliderCircle />
+        </div>
+        <div v-else class="app-program__slider--tablet">
+          <AppSliderFactoid />
+        </div>
       </div>
 
       <div id="advantages" class="app-program__features">
@@ -17,18 +22,33 @@
 
 <script>
 
+// import _debounce from 'lodash.debounce';
 import AppSliderFactoid from '~/components/AppSliderFactoids/AppSliderFactoids';
 import AppFeatures from '~/components/AppFeatures/AppFeatures';
 import AppImage from '~/components/AppImage/AppImage';
+import AppSliderCircle from '~/components/AppSliderCircle/AppSliderCircle';
+
 export default {
   name: 'AppProgram',
-  components: { AppImage, AppFeatures, AppSliderFactoid },
+  components: { AppSliderCircle, AppImage, AppFeatures, AppSliderFactoid },
   data () {
     return {
       gradient: {
         src: 'images/gradient/gradient-1.jpg'
-      }
+      },
+
+      windowWidth: window.innerWidth
     };
+  },
+  computed: {
+    isDesktop () {
+      return this.windowWidth >= 1025;
+    }
+  },
+  mounted () {
+    window.addEventListener('resize', () => {
+      this.windowWidth = window.innerWidth;
+    });
   }
 };
 </script>

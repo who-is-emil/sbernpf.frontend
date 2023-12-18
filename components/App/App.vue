@@ -6,7 +6,6 @@
         <AppHero />
       </div>
     </div>
-
     <div>
       <AppCategories />
     </div>
