@@ -2,15 +2,6 @@
   $root: &;
 
   position: relative;
-  padding-bottom: toRem(112);
-  overflow: hidden;
-
-  @include media-breakpoint-up(lg) {
-    padding-bottom: toRem(128);
-  }
-  @include media-breakpoint-only(md) {
-    padding-bottom: toRem(144);
-  }
 
   &__container {
     position: relative;

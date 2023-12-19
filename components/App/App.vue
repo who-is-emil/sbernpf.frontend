@@ -6,9 +6,12 @@
         <AppHero />
       </div>
     </div>
-    <div>
+    <div class="mb-lg-120 mb-md-144 mb-112">
       <AppCategories />
     </div>
+    <!--    <div class="mb-lg-120 mb-md-144 mb-112">-->
+    <!--      <AppSliderVideo />-->
+    <!--    </div>-->
     <div class="mb-lg-128 mb-md-96 mb-80">
       <AppProgram />
     </div>
@@ -56,10 +59,12 @@ import AppCardInfo from '~/components/AppCardInfo/AppInfoCard';
 import AppCardLayout from '~/components/AppCardLayout/AppCardLayout';
 import AppHero from '~/components/AppHero/AppHero';
 import AppProgram from '~/components/AppProgram/AppProgram';
+// import AppSliderVideo from '~/components/AppSliderVideo/AppSliderVideo';
 
 export default {
   name: 'App',
   components: {
+    // AppSliderVideo,
     AppProgram,
     AppHero,
     AppCardLayout,

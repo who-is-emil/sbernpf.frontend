@@ -47,7 +47,7 @@ export default {
   components: { AppTimer, AppCardAction, AppImage },
   data () {
     return {
-      timer: false,
+      timer: true,
       title: ['Программа', 'долгосрочных', 'сбережений'],
       text: 'Копите на любые цели и получайте поддержку от государства',
       items: [

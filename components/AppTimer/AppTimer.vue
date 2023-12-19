@@ -56,7 +56,7 @@ export default {
         const lastDigit = number % 10;
         const lastTwoDigits = number % 100;
         if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-          return options[3];
+          return options[2];
         }
         switch (lastDigit) {
           case 1:
@@ -70,8 +70,12 @@ export default {
         }
       }
 
-      const dd = `${days} ${getEnding(days, ['<span>день</span>', '<span>дня</span>', '<span>дней</span>'])}`;
-      const hh = `${hours} ${getEnding(hours, ['<span>час</span>', '<span>часа</span>', '<span>часов</span>'])}`;
+      const dd = days > 0
+        ? `${days} ${getEnding(days, ['<span>день</span>', '<span>дня</span>', '<span>дней</span>'])}`
+        : '';
+      const hh = hours > 0
+        ? `${hours} ${getEnding(hours, ['<span>час</span>', '<span>часа</span>', '<span>часов</span>'])}`
+        : '';
       const mm = `${minutes} ${getEnding(minutes, ['<span>минута</span>', '<span>минуты</span>', '<span>минут</span>'])}`;
 
       this.time = `${dd} ${hh} ${mm}`;

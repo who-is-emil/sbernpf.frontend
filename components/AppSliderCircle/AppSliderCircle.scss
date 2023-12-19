@@ -69,26 +69,20 @@
 
     &:nth-child(3) {
       top: toRem(86);
-      left: calc(50% + #{toRem(920)});
+      left: calc(50% + #{toRem(918)});
       transform: rotate(10.5deg) translateX(-50%);
     }
 
     &:nth-child(4) {
       top: toRem(194);
-      left: calc(50% + #{toRem(1380)});
+      left: calc(50% + #{toRem(1370)});
       transform: rotate(15.75deg) translateX(-50%);
     }
 
     &:nth-child(5) {
-      top: toRem(350);
-      left: calc(50% + #{toRem(1840)});
+      top: toRem(342);
+      left: calc(50% + #{toRem(1810)});
       transform: rotate(21deg) translateX(-50%);
-    }
-
-    &:nth-child(6) {
-      top: toRem(558);
-      left: calc(50% + #{toRem(2300)});
-      transform: rotate(26.25deg) translateX(-50%);
     }
   }
 
@@ -99,7 +93,7 @@
     justify-content: center;
     top: 50%;
     transform: translateY(-50%);
-    right: toRem(-18);
+    right: toRem(-20);
     width: toRem(56);
     height: toRem(56);
     color: $color-black;
