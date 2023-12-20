@@ -2,7 +2,7 @@
   <div class="app-slider-video">
     <div class="app-slider-video__container container">
       <div class="app-slider__content">
-        <div class="app-slider-video__top">
+        <div class="app-slider-video__top" data-aos="fade" data-aos-delay="100">
           <h2 class="app-slider-video__title">
             <span v-for="(item, idx) in title" :key="idx">
               {{ item }}

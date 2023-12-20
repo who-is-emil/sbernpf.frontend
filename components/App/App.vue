@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import _debounce from 'lodash.debounce';
 // import AppCalculator from '~/components/AppCalculator/AppCalculator';
 import AppCategories from '~/components/AppCategories/AppCategories';
 import AppHeader from '~/components/AppHeader/AppHeader';
@@ -80,6 +81,11 @@ export default {
   },
   mounted () {
     this.resizeCheck();
+
+    window.addEventListener('touchmove', _debounce(() => {
+      // TODO костыль, чтобы закрывать открытый typpy при свайпе на тач устройствах
+      document.body.click();
+    }, 100));
   },
   methods: {
     resizeCheck () {
