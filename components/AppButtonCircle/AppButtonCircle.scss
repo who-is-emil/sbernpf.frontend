@@ -30,4 +30,20 @@
     width: toRem(24);
     height: toRem(24);
   }
+
+  &--grey {
+    background-color: $color-grey-light;
+    color: $color-black;
+
+    @include hover {
+      &:not(:disabled) {
+        background-color: $color-green;
+        color: $color-white;
+      }
+    }
+
+    &:disabled {
+      color: rgba($color-black, 0.4);
+    }
+  }
 }

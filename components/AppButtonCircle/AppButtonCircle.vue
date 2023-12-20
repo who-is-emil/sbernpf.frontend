@@ -2,6 +2,7 @@
   <button
     type="button"
     class="app-button-circle"
+    :class="[theme]"
     :title="title"
     :disabled="disabled"
     @click="click"
@@ -29,6 +30,10 @@ export default {
     },
     icon () {
       return this.data.icon;
+    },
+    theme () {
+      const theme = this.data.theme || '';
+      return theme ? `app-button-circle--${theme}` : theme;
     },
     disabled () {
       return this.data.disabled;

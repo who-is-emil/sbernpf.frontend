@@ -6,13 +6,19 @@
   }
 
   &__top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-
     @include media-breakpoint-up(lg) {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
       padding-left: toRem(32);
       padding-right: toRem(60);
+      margin-bottom: toRem(72);
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(24);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(32);
     }
   }
 
@@ -26,6 +32,14 @@
         font-weight: 300;
       }
     }
+
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(32);
+      max-width: toRem(640);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(24);
+    }
   }
 
   &__text {
@@ -33,16 +47,38 @@
       padding-top: toRem(28);
       max-width: toRem(360);
     }
+    @include media-breakpoint-only(md) {
+      max-width: toRem(452);
+    }
   }
 
   &__swiper {
     .swiper-container {
       overflow: visible !important;
+
+      @include media-breakpoint-only(md) {
+        margin-left: toRem(-8);
+        margin-right: toRem(-8);
+      }
+      @include media-breakpoint-down(sm) {
+        margin-left: toRem(-5);
+        margin-right: toRem(-5);
+      }
     }
 
     .swiper-wrapper {
-      transform: none !important;
+      @include media-breakpoint-up(lg) {
+        transform: none !important;
+      }
     }
+
+    @include media-breakpoint-only(md) {
+      width: 87.5%;
+    }
+  }
+
+  &__base {
+    position: relative;
   }
 
   &__items {
@@ -55,22 +91,32 @@
     position: relative;
 
     @include media-breakpoint-up(lg) {
+      flex-shrink: 1;
+
       &:not(:last-child) {
         margin-right: toRem(16);
       }
 
       &:nth-child(1) {
-        width: calc(50% - #{toRem(16)}) !important;
+        width: calc(50% - #{toRem(8)}) !important;
       }
 
       &:nth-child(2),
       &:nth-child(3) {
-        width: calc(25% - #{toRem(16)}) !important;
+        width: calc(25% - #{toRem(8)}) !important;
       }
 
       &:nth-child(n+4) {
         display: none;
       }
+    }
+    @include media-breakpoint-only(md) {
+      padding-left: toRem(8);
+      padding-right: toRem(8);
+    }
+    @include media-breakpoint-down(sm) {
+      padding-left: toRem(5);
+      padding-right: toRem(5);
     }
   }
 
@@ -87,6 +133,12 @@
         height: toRem(373);
       }
     }
+    @include media-breakpoint-only(md) {
+      height: toRem(345);
+    }
+    @include media-breakpoint-down(sm) {
+      height: toRem(185);
+    }
 
     @include hover {
       #{$root}__play {
@@ -101,6 +153,33 @@
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: $color-black;
+
+    @include media-breakpoint-up(lg) {
+      &.is-active {
+        z-index: 1;
+      }
+
+      &.new-active {
+        z-index: 2;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      display: none;
+      transform: none !important;
+
+      &.is-current {
+        display: block;
+      }
+    }
+  }
+
+  &__image-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
     .app-image {
       position: absolute;
@@ -108,17 +187,14 @@
       left: 0;
     }
 
-    &--first {
-      z-index: 2;
-    }
-
-    &--rest {
-      z-index: 1;
+    @include media-breakpoint-down(md) {
+      opacity: 1 !important;
     }
   }
 
   &__play {
     position: absolute;
+    z-index: 3;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -160,6 +236,52 @@
         width: toRem(32);
         height: toRem(32);
       }
+    }
+  }
+
+  &__action {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      right: toRem(200);
+    }
+    @include media-breakpoint-only(md) {
+      margin-bottom: toRem(40);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(40);
+
+      .app-button {
+        width: 100%;
+      }
+    }
+  }
+
+  &__arrows {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    gap: toRem(16);
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  &__pagination {
+    position: absolute;
+    top: calc(100% + #{toRem(24)});
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+    @include media-breakpoint-only(md) {
+      top: calc(100% + #{toRem(40)});
     }
   }
 }
