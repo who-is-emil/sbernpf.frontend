@@ -113,7 +113,8 @@ export default {
   },
 
   router: {
-    base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
+    // base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
+    base: process.env.NODE_ENV === '/'
     // base: '/promo/pds/test'
     // base: '/promo/pds'
   },
