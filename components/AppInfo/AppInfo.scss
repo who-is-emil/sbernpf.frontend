@@ -2,14 +2,6 @@
   $root: &;
 
   position: relative;
-  padding-bottom: toRem(80);
-
-  @include media-breakpoint-up(lg) {
-    padding-bottom: toRem(112);
-  }
-  @include media-breakpoint-only(md) {
-    padding-bottom: toRem(96);
-  }
 
   &:before {
     position: absolute;

@@ -15,9 +15,8 @@
           в&nbsp;программе
         </p>
 
-        <p class="app-result__total-description">
-          Вы сможете вернуть 13% от суммы ваших личных взносов по&nbsp;договору долгосрочных сбережений на сумму 325&nbsp;000
-          ₽
+        <p v-if="taxDeductionText" class="app-result__total-description">
+          {{ taxDeductionText }}
         </p>
       </div>
 
@@ -56,6 +55,15 @@
           </p>
           <p class="app-result__item-value h4">
             {{ investmentIncome }}
+          </p>
+        </div>
+
+        <div v-if="taxDeduction" class="app-result__item">
+          <p class="app-result__item-text">
+            Налоговый вычет
+          </p>
+          <p class="app-result__item-value h4">
+            {{ taxDeduction }}
           </p>
         </div>
       </div>
@@ -169,24 +177,39 @@ export default {
     totalAmount () {
       return this.data.totalAmount;
     },
+    // Ваши личные взносы
     personalContributions () {
       return this.data.personalContributions;
     },
+    // Перевод пенсионных накоплений (ОПС)
     pensionTransfer () {
       return this.data.pensionTransfer;
     },
+    // Софинансирование от государства
     stateCofinancing () {
       return this.data.stateCofinancing;
     },
+    // Инвестиционный доход
     investmentIncome () {
       return this.data.investmentIncome;
     },
+    // Налоговый вычет
+    taxDeduction () {
+      console.log(this.data.taxDeduction);
+      return this.data.taxDeduction;
+    },
+    taxDeductionText () {
+      return this.data.taxDeductionText;
+    },
+    // Срочная
     urgentPayment () {
       return this.data.urgentPayment;
     },
+    // Единовременная
     oneTime () {
       return this.data.oneTime;
     },
+    // Пожизненная
     lifetime () {
       return this.data.lifetime;
     }
