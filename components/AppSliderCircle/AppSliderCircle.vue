@@ -148,17 +148,6 @@ export default {
       });
 
       this.timeline.fromTo(circle, { rotate: '0deg' }, { rotate: '-21deg', ease: 'none' });
-
-      // this.timeline.to(circle, { rotate: '0deg', ease: 'none', duration: 0.5 })
-      //   .addLabel('labelFirst')
-      //   .to(circle, { rotate: '-5.25deg', ease: 'none', duration: 0.5 })
-      //   .addLabel('labelSecond')
-      //   .to(circle, { rotate: '-10.5deg', ease: 'none', duration: 0.5 })
-      //   .addLabel('labelThird')
-      //   .to(circle, { rotate: '-15.75deg', ease: 'none', duration: 0.5 })
-      //   .addLabel('labelFourth')
-      //   .to(circle, { rotate: '-21deg', ease: 'none', duration: 0.5 })
-      //   .addLabel('labelFifth');
     },
     initController () {
       const trigger = document.querySelector('.app-program');
