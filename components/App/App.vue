@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <AppHeader />
+
     <div class="mb-lg-132 mb-md-64 mb-80">
       <div class="container">
         <AppHero />
@@ -26,6 +27,7 @@
     <div class="mb-lg-128 mb-md-96 mb-80 relative z-1">
       <AppCalculator />
     </div>
+    <!--  Калькулятор здесь-->
     <div class="mb-lg-176 mb-md-96 mb-80">
       <div class="container">
         <AppSteps />

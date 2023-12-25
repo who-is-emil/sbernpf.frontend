@@ -1,5 +1,17 @@
 <template>
   <div id="calculator" class="app-calculator">
+    <!--    <pre>-->
+    <!--      Итоговая сумма накоплений в программе: {{ result.totalAmount }}-->
+    <!--      Ваши личные взносы: {{ result.personalContributions }}-->
+    <!--      Перевод пенсионных накоплений (ОПС): {{ result.pensionTransfer }}-->
+    <!--      Софинансирование от государства: {{ result.stateCofinancing }}-->
+    <!--      Инвестиционный доход: {{ result.investmentIncome }}-->
+    <!--      Налоговый вычет: {{ result.taxDeduction }}-->
+    <!--      Налоговый вычет (текст): {{ result.taxDeductionText }}-->
+    <!--      Срочная: {{ result.urgentPayment }}-->
+    <!--      Единовременная: {{ result.oneTime }}-->
+    <!--      Пожизненная: {{ result.lifetime }}-->
+    <!--    </pre>-->
     <div class="app-calculator__container container">
       <div v-if="showResult" class="app-calculator__result">
         <AppResult :data="result" @edit="resultToggle" />
@@ -168,7 +180,7 @@ export default {
         textLeft: '18 лет',
         textRight: '100 лет'
       },
-      ageValue: 35,
+      ageValue: 56,
 
       // Возраст окончания участия в программе
       ageEndField: {
@@ -180,7 +192,7 @@ export default {
         textLeft: '50 лет',
         textRight: '100 лет'
       },
-      ageEndValue: 55,
+      ageEndValue: 60,
 
       // Сумма взноса в месяц
       sumField: {
@@ -189,7 +201,7 @@ export default {
         label: 'Сумма взноса в месяц',
         textLeft: '500 ₽'
       },
-      sumValue: 10000,
+      sumValue: 2500,
 
       // Срок ежемесячных выплат
       periodField: {
@@ -201,7 +213,7 @@ export default {
         textLeft: '5 лет',
         textRight: '30 лет'
       },
-      periodValue: 15,
+      periodValue: 5,
 
       // Сумма со счета ОПС
       sumAccountField: {
@@ -216,7 +228,7 @@ export default {
           icon: '24/info-stroke'
         }
       },
-      sumAccountValue: 10000,
+      sumAccountValue: 109309,
 
       // Учитывать накопление ОПС
       OPSField: {
@@ -268,10 +280,9 @@ export default {
 
     // Софинансирование в год = Меньшее(36 000 || Сумма взноса в год * коэффициент софинансирования государством)
     cofinancing () {
-      const maxPerYear = 36000;
       const calcMinValue = this.sumPerYear * this.cofinancingRatio;
 
-      return Math.min(maxPerYear, calcMinValue);
+      return Math.min(36000, calcMinValue);
     },
 
     // Сумма взноса в год = Сумма взносов в месяц * 12
@@ -298,9 +309,9 @@ export default {
 
     // Второй экран калькулятора:
 
-    // Личные взносы = (Сумма взноса в год * Период участия)
+    // Личные взносы = (Сумма взноса в год * Период участия) (/ 12?)
     personalContributions () {
-      return this.sumPerYear * this.period;
+      return (this.sumPerYear * this.period) / 12;
     },
 
     // Софинансирование государства = софинансирование * Меньшее(3 || Период участия).
@@ -329,7 +340,7 @@ export default {
     },
     taxDeductionText () {
       if (!this.taxDeductionValue) {
-        const res = ((Math.min(400000, this.sumPerYear)) * 0.13) * this.period / 12;
+        const res = ((Math.min(400000, this.sumPerYear)) * 0.13) * (this.period / 12);
         const textFomat = this.formatNumberToCurrency(res);
         return `Вы сможете вернуть 13% от суммы ваших личных взносов по договору долгосрочных сбережений на сумму ${textFomat} ₽`;
       }
@@ -358,9 +369,9 @@ export default {
 
       let third;
 
-      if (this.period / 12 < 2) {
+      if ((this.period / 12) < 2) {
         third = 0;
-      } else if (this.period / 12 === 2) {
+      } else if ((this.period / 12) === 2) {
         third = (Math.min(400000, (this.sumPerYear + this.deduction)) * 0.13) * (this.percent / 100);
       } else {
         const limit = this.period / 12;
