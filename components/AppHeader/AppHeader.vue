@@ -71,10 +71,10 @@ export default {
           text: 'Как работает программа',
           href: '#how'
         },
-        {
-          text: 'Калькулятор',
-          href: '#calculator'
-        },
+        // {
+        //   text: 'Калькулятор',
+        //   href: '#calculator'
+        // },
         {
           text: 'Стать участником',
           href: '#become'

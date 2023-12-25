@@ -82,13 +82,13 @@ export default {
             src: 'images/features/image-1.png'
           },
           active: true,
-          action: {
-            title: 'Рассчитать доход',
-            text: 'Рассчитать доход',
-            href: '#',
-            target: '#calculator',
-            theme: 'gradient'
-          },
+          // action: {
+          //   title: 'Рассчитать доход',
+          //   text: 'Рассчитать доход',
+          //   href: '#',
+          //   target: '#calculator',
+          //   theme: 'gradient'
+          // },
           tooltip: {
             icon: '24/info-filled',
             iconTheme: 'white-filled',
