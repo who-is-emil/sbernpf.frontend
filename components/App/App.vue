@@ -2,6 +2,10 @@
   <div class="app">
     <AppHeader />
 
+    <div class="mb-lg-128 mb-md-96 mb-80 relative z-1">
+      <AppCalculator />
+    </div>
+
     <div class="mb-lg-132 mb-md-64 mb-80">
       <div class="container">
         <AppHero />
@@ -25,9 +29,7 @@
       <AppCardLayout />
     </div>
     <!--  Калькулятор здесь-->
-    <!--    <div class="mb-lg-128 mb-md-96 mb-80 relative z-1">-->
-    <!--      <AppCalculator />-->
-    <!--    </div>-->
+
     <div class="mb-lg-176 mb-md-96 mb-80">
       <div class="container">
         <AppSteps />
@@ -52,7 +54,7 @@
 
 <script>
 import _debounce from 'lodash.debounce';
-// import AppCalculator from '~/components/AppCalculator/AppCalculator';
+import AppCalculator from '~/components/AppCalculator/AppCalculator';
 import AppCategories from '~/components/AppCategories/AppCategories';
 import AppHeader from '~/components/AppHeader/AppHeader';
 import AppFooter from '~/components/AppFooter/AppFooter';
@@ -80,8 +82,8 @@ export default {
     AppInfo,
     AppFooter,
     AppHeader,
-    AppCategories
-    // AppCalculator
+    AppCategories,
+    AppCalculator
   },
   mounted () {
     this.resizeCheck();

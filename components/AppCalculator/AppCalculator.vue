@@ -1,17 +1,22 @@
 <template>
   <div id="calculator" class="app-calculator">
-    <!--    <pre>-->
-    <!--      Итоговая сумма накоплений в программе: {{ result.totalAmount }}-->
-    <!--      Ваши личные взносы: {{ result.personalContributions }}-->
-    <!--      Перевод пенсионных накоплений (ОПС): {{ result.pensionTransfer }}-->
-    <!--      Софинансирование от государства: {{ result.stateCofinancing }}-->
-    <!--      Инвестиционный доход: {{ result.investmentIncome }}-->
-    <!--      Налоговый вычет: {{ result.taxDeduction }}-->
-    <!--      Налоговый вычет (текст): {{ result.taxDeductionText }}-->
-    <!--      Срочная: {{ result.urgentPayment }}-->
-    <!--      Единовременная: {{ result.oneTime }}-->
-    <!--      Пожизненная: {{ result.lifetime }}-->
-    <!--    </pre>-->
+    <pre>
+     percent: {{ percent }}
+     сумма за взносы: {{ contributionSum }}
+     Сумма за софинансирование: {{ cofinancingSum }}
+     Сумма за ОПС: {{ OPSSum }}
+    pensionTransfer: {{ pensionTransfer }}
+          Итоговая сумма накоплений в программе: {{ result.totalAmount }}
+          Ваши личные взносы: {{ result.personalContributions }}
+          Перевод пенсионных накоплений (ОПС): {{ result.pensionTransfer }}
+          Софинансирование от государства: {{ result.stateCofinancing }}
+          Инвестиционный доход: {{ result.investmentIncome }}
+          Налоговый вычет: {{ result.taxDeduction }}
+          Налоговый вычет (текст): {{ result.taxDeductionText }}
+          Срочная: {{ result.urgentPayment }}
+          Единовременная: {{ result.oneTime }}
+          Пожизненная: {{ result.lifetime }}
+        </pre>
     <div class="app-calculator__container container">
       <div v-if="showResult" class="app-calculator__result">
         <AppResult :data="result" @edit="resultToggle" />
@@ -275,7 +280,8 @@ export default {
 
     // Процент - процент доходности(ROI) / 12 / 100
     percent () {
-      return this.ROI / 12 / 100;
+      return Math.pow(1 + this.ROI / 100, 1 / 12) - 1;
+      // return this.ROI / 12 / 100;
     },
 
     // Софинансирование в год = Меньшее(36 000 || Сумма взноса в год * коэффициент софинансирования государством)
@@ -309,14 +315,38 @@ export default {
 
     // Второй экран калькулятора:
 
-    // Личные взносы = (Сумма взноса в год * Период участия) (/ 12?)
+    // Личные взносы = (Сумма взноса в год * Период участия / 12)
     personalContributions () {
-      return (this.sumPerYear * this.period) / 12;
+      return (this.sumPerYear * this.period / 12);
     },
 
     // Софинансирование государства = софинансирование * Меньшее(3 || Период участия).
     stateCofinancing () {
-      return this.cofinancing * Math.min(3, this.period);
+      if (!this.taxDeductionValue) {
+        return this.cofinancing * Math.min(3, this.period / 12);
+      }
+
+      let res = 0;
+      const limit = Math.min(2, (this.period / 12) - 1);
+
+      for (let i = 0; i <= limit; i++) {
+        let sum;
+
+        if (i === 0) {
+          // первый налоговый вычет равен 0
+          sum = Math.min(36000, (this.sumPerYear + 0));
+        } else if (i === 1) {
+          sum = Math.min(36000, (this.sumPerYear + this.deduction * this.cofinancingRatio));
+        } else {
+          // вычисляем вычет[i]
+          const currentDeduction = (this.sumPerYear + this.deduction) * 0.13;
+          sum = Math.min(36000, (this.sumPerYear + currentDeduction * this.cofinancingRatio));
+        }
+
+        res += sum;
+      }
+
+      return res;
     },
 
     // Перевод пенсионных накоплений
@@ -365,14 +395,15 @@ export default {
       // вычет
       const first = this.deduction;
       // процент доходности / 100
-      const second = this.ROI / 100;
+      const second = 1 + this.ROI / 100;
+      // const second = (Math.pow(1 + this.ROI / 100, this.period / 12) - 1) / (this.ROI / 100);
 
       let third;
 
       if ((this.period / 12) < 2) {
         third = 0;
       } else if ((this.period / 12) === 2) {
-        third = (Math.min(400000, (this.sumPerYear + this.deduction)) * 0.13) * (this.percent / 100);
+        third = (Math.min(400000, (this.sumPerYear + this.deduction)) * 0.13) * second;
       } else {
         const limit = this.period / 12;
 
@@ -384,7 +415,8 @@ export default {
         for (let i = 2; i <= limit; i++) {
           const currentDeduction = Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13;
 
-          res += (Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13) * (this.percent / 100);
+          res += currentDeduction;
+          console.log(`res${i}: ${res}`);
 
           prevDeduction = currentDeduction;
         }
@@ -392,7 +424,7 @@ export default {
         third = res;
       }
 
-      return first * second + third;
+      return ((first + third) * second);
     },
 
     // сумма за взносы
@@ -400,11 +432,13 @@ export default {
       // сумма взносов в месяц
       const first = parseInt(this.sumValue.toString().replace(/\s/g, ''), 10);
 
-      const second = ((Math.pow((1 + this.percent), this.period)) - 1) / ((1 + this.percent) - 1);
+      const second = (Math.pow((1 + this.percent), this.period)) - 1;
 
-      const third = (1 + this.percent);
+      const third = (1 + this.percent) - 1;
 
-      return first * second * third;
+      const fourth = (1 + this.percent);
+
+      return (first * second / third) * fourth;
     },
 
     // сумма за софинансирование
@@ -425,7 +459,8 @@ export default {
       // софинансирование в год
       const first = this.cofinancing;
 
-      const second = ((1 + this.ROI) - 1) / (((1 + this.ROI) - 1) * (1 + this.ROI));
+      // const second = ((1 + this.ROI / 100) - 1) / (((1 + this.ROI / 100) - 1) * (1 + this.ROI / 100));
+      const second = 1 + this.ROI / 100;
 
       let third = 0;
       // предыдущий вычет
@@ -434,34 +469,48 @@ export default {
       for (let i = 2; i <= 3; i++) {
         const currentDeduction = Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13;
 
-        third += (Math.min(36000, ((this.sumPerYear + currentDeduction) * this.cofinancingRatio))) *
-          ((1 + this.ROI) - 1) / (((1 + this.ROI) - 1) * (1 + this.ROI));
+        third += (Math.min(36000, this.sumPerYear + currentDeduction)) * this.cofinancingRatio * (1 + this.ROI / 100);
+
+        // third += (this.sumPerYear + currentDeduction) * this.cofinancingRatio *
+        //   ((1 + this.ROI / 100) - 1) / (((1 + this.ROI / 100) - 1) * (1 + this.ROI / 100));
 
         prevDeduction = currentDeduction;
       }
 
-      const fourth = Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 3));
+      const fourth = (this.period / 12) < 4
+        ? 1
+        : Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 3));
 
-      return first * second + third * fourth;
+      return (first * second + third) * fourth;
     },
 
     // сумма за ОПС
     OPSSum () {
-      return this.pensionTransfer * (1 + Math.pow(this.percent, this.period / 12));
+      return this.pensionTransfer * (Math.pow(1 + this.ROI / 100, this.period / 12));
+      // return this.pensionTransfer * (1 + Math.pow(this.percent, this.period / 12));
     },
 
     // Сумма всех вычетов
     sumDeductions () {
       // предыдущий вычет
-      let prevDeduction = this.deduction;
+      let prevDeduction = 0;
 
       const limit = this.period / 12;
       let sum = 0;
 
       for (let i = 1; i <= limit; i++) {
-        const currentDeduction = Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13;
+        let currentDeduction = 0;
 
-        sum += (Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13) * (this.percent / 100);
+        if (i === 1) {
+          // первый налоговый вычет равен 0
+          currentDeduction = Math.min(400000, (this.sumPerYear + 0)) * 0.13;
+        } else if (i === 2) {
+          currentDeduction = Math.min(400000, (this.sumPerYear + this.deduction)) * 0.13;
+        } else {
+          currentDeduction = Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13;
+        }
+
+        sum += (Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13);
 
         prevDeduction = currentDeduction;
       }
@@ -479,7 +528,9 @@ export default {
     // + Перевод пенсионных накоплений + Инвестиционный доход
 
     totalAmount () {
-      return this.personalContributions + this.stateCofinancing + this.pensionTransfer + this.investmentIncome + this.sumDeductions;
+      // return this.personalContributions + this.stateCofinancing + this.pensionTransfer + this.sumDeductions;
+      // return this.personalContributions + this.stateCofinancing + this.pensionTransfer + this.investmentIncome + this.sumDeductions;
+      return this.investmentIncome;
     },
 
     // Виды выплат:
