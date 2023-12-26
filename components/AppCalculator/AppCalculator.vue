@@ -1,7 +1,7 @@
 <template>
   <div id="calculator" class="app-calculator">
     <pre>
-     percent: {{ percent }}
+     annuityValue: {{ annuityValue }}
      сумма за взносы: {{ contributionSum }}
      Сумма за софинансирование: {{ cofinancingSum }}
      Сумма за ОПС: {{ OPSSum }}
@@ -310,7 +310,7 @@ export default {
 
     // Значение аннуитета для пожилых лиц
     annuityValue () {
-      return annuityData[this.ageValue][this.genderValue];
+      return annuityData[this.ageEndValue][this.genderValue];
     },
 
     // Второй экран калькулятора:
@@ -360,13 +360,13 @@ export default {
       return parseInt(this.sumAccountValue.toString().replace(/\s/g, ''), 10);
     },
 
-    // Налоговый вычет == Сумма за вычет
+    // Налоговый вычет == Сумма за вычетов
     taxDeduction () {
       if (!this.taxDeductionValue) {
         return null;
       }
 
-      return this.sumDeduction;
+      return this.sumDeductions;
     },
     taxDeductionText () {
       if (!this.taxDeductionValue) {
@@ -392,39 +392,17 @@ export default {
         return 0;
       }
 
-      // вычет
-      const first = this.deduction;
-      // процент доходности / 100
-      const second = 1 + this.ROI / 100;
-      // const second = (Math.pow(1 + this.ROI / 100, this.period / 12) - 1) / (this.ROI / 100);
+      let res = 0;
+      const limit = this.period / 12;
+      let deduction = this.deduction;
 
-      let third;
+      for (let i = 1; i <= limit; i++) {
+        res += deduction * Math.pow(1 + this.ROI / 100, (this.period / 12) - i);
 
-      if ((this.period / 12) < 2) {
-        third = 0;
-      } else if ((this.period / 12) === 2) {
-        third = (Math.min(400000, (this.sumPerYear + this.deduction)) * 0.13) * second;
-      } else {
-        const limit = this.period / 12;
-
-        let res = 0;
-
-        // предыдущий вычет
-        let prevDeduction = this.deduction;
-
-        for (let i = 2; i <= limit; i++) {
-          const currentDeduction = Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13;
-
-          res += currentDeduction;
-          console.log(`res${i}: ${res}`);
-
-          prevDeduction = currentDeduction;
-        }
-
-        third = res;
+        deduction = Math.min(400000, this.sumPerYear + deduction) * 0.13;
       }
 
-      return ((first + third) * second);
+      return res;
     },
 
     // сумма за взносы
@@ -448,46 +426,39 @@ export default {
         // софинансирование в год
         const first = this.cofinancing;
 
-        const second = (Math.pow((1 + this.percent), Math.min(3, this.period / 12)) - 1) /
-          ((1 - this.percent) - 1) * (1 + this.percent);
+        const second = (Math.pow((1 + this.ROI / 100), Math.min(3, this.period / 12)) - 1) /
+          ((1 + this.ROI / 100) - 1) * (1 + this.ROI / 100);
 
-        const third = Math.pow((1 + this.percent), Math.max(0, this.period / 12 - 4));
+        const third = Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 4));
 
         return first * second * third;
       }
 
-      // софинансирование в год
-      const first = this.cofinancing;
+      const limit = Math.min(3, this.period / 12);
+      let sum = 0;
 
-      // const second = ((1 + this.ROI / 100) - 1) / (((1 + this.ROI / 100) - 1) * (1 + this.ROI / 100));
-      const second = 1 + this.ROI / 100;
+      for (let i = 1; i <= limit; i++) {
+        let deduction;
 
-      let third = 0;
-      // предыдущий вычет
-      let prevDeduction = this.deduction;
+        if (i === 1) {
+          deduction = 0;
+        } else if (i === 2) {
+          deduction = this.deduction;
+        } else {
+          deduction = Math.min(400000, (this.sumPerYear + this.deduction) * 0.13);
+        }
 
-      for (let i = 2; i <= 3; i++) {
-        const currentDeduction = Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13;
-
-        third += (Math.min(36000, this.sumPerYear + currentDeduction)) * this.cofinancingRatio * (1 + this.ROI / 100);
-
-        // third += (this.sumPerYear + currentDeduction) * this.cofinancingRatio *
-        //   ((1 + this.ROI / 100) - 1) / (((1 + this.ROI / 100) - 1) * (1 + this.ROI / 100));
-
-        prevDeduction = currentDeduction;
+        sum += (Math.min(36000, this.sumPerYear + deduction) *
+            this.cofinancingRatio * Math.pow((1 + this.ROI / 100), Math.min(3, this.period / 12) - i)) *
+          Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 3));
       }
 
-      const fourth = (this.period / 12) < 4
-        ? 1
-        : Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 3));
-
-      return (first * second + third) * fourth;
+      return sum;
     },
 
     // сумма за ОПС
     OPSSum () {
       return this.pensionTransfer * (Math.pow(1 + this.ROI / 100, this.period / 12));
-      // return this.pensionTransfer * (1 + Math.pow(this.percent, this.period / 12));
     },
 
     // Сумма всех вычетов
@@ -520,7 +491,10 @@ export default {
 
     // Инвестиционный доход
     investmentIncome () {
-      return this.sumDeduction + this.contributionSum + this.cofinancingSum + this.OPSSum;
+      const sumDeductions = this.taxDeductionValue ? this.sumDeductions : 0;
+
+      return this.totalAmount -
+        (this.personalContributions + this.pensionTransfer + this.stateCofinancing + sumDeductions);
     },
 
     // Итоговая сумма
@@ -528,15 +502,14 @@ export default {
     // + Перевод пенсионных накоплений + Инвестиционный доход
 
     totalAmount () {
-      // return this.personalContributions + this.stateCofinancing + this.pensionTransfer + this.sumDeductions;
-      // return this.personalContributions + this.stateCofinancing + this.pensionTransfer + this.investmentIncome + this.sumDeductions;
-      return this.investmentIncome;
+      // return this.investmentIncome;
+      return this.sumDeduction + this.contributionSum + this.cofinancingSum + this.OPSSum;
     },
 
     // Виды выплат:
-    // Срочная выплата = Округленное вниз значение (“Итоговая сумма” / ( “Период участия”*12)
+    // Срочная выплата = Округленное вниз значение (Итоговая сумма / Срок срочной выплаты / 12)
     urgentPayment () {
-      return Math.floor((this.totalAmount / this.period * 12));
+      return Math.floor((this.totalAmount / this.periodValue / 12));
     },
 
     // Единовременная = Итоговая сумма
