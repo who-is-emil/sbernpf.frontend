@@ -3,6 +3,7 @@
     <div class="app-range__wrap">
       <input
         :id="id"
+        ref="input"
         :value="value"
         :min="min"
         :max="max"
@@ -78,6 +79,7 @@ export default {
       const value = this.valueCheck(e.target.value);
 
       this.$refs.slider.setValue(value);
+      this.$refs.input.value = value;
     },
     change (e) {
       if (this.disabled) {

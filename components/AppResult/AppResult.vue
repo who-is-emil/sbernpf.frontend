@@ -71,7 +71,7 @@
 
     <div class="app-result__cards">
       <p class="app-result__cards-title h4">
-        Вы сможете выбрать один из видов выплаты
+        Вы сможете выбрать один из видов выплат в {{ ageEndValue }} лет
       </p>
 
       <div class="app-result__cards-list">
@@ -85,7 +85,7 @@
           </p>
 
           <p class="app-result__card-text">
-            Срок срочной выплаты — 10 лет
+            Ежемесячный размер выплат, получаемый Вами в течение {{ periodValue }} лет
           </p>
         </div>
         <div class="app-result__card">
@@ -112,9 +112,7 @@
           </p>
 
           <p class="app-result__card-text">
-            Расчёт предварительный. Точная
-            сумма будет рассчитана в момент
-            оформления выплаты
+            Ежемесячный размер выплат, получаемый Вами в течение всей жизни после назначения выплаты
           </p>
         </div>
       </div>
@@ -133,9 +131,13 @@
         </div>
       </div>
 
-      <div class="app-result__caption">
-        *Вы будете перенаправлены на сайт СберНПФ
+      <div class="app-result__text">
+        {{ text }}
       </div>
+
+      <!--      <div class="app-result__caption">-->
+      <!--        *Вы будете перенаправлены на сайт СберНПФ-->
+      <!--      </div>-->
     </div>
   </div>
 </template>
@@ -155,6 +157,7 @@ export default {
   data () {
     return {
       title: 'Результат расчета',
+      ROI: 7,
       actions: [
         {
           name: 'request',
@@ -195,7 +198,6 @@ export default {
     },
     // Налоговый вычет
     taxDeduction () {
-      console.log(this.data.taxDeduction);
       return this.data.taxDeduction;
     },
     taxDeductionText () {
@@ -212,6 +214,19 @@ export default {
     // Пожизненная
     lifetime () {
       return this.data.lifetime;
+    },
+    periodValue () {
+      return this.data.periodValue;
+    },
+    ageEndValue () {
+      return this.data.ageEndValue;
+    },
+    text () {
+      return `Не является офертой и не гарантирует доходность в будущем.
+      Ожидаемая доходность в размере ${this.ROI}% годовых.
+      Расчеты срочных периодических выплат осуществляются в соответствии с выбранной продолжительностью выплат.
+      Расчеты пожизненных периодических выплат и единовременной выплаты осуществляется осуществляются
+      исходя из выбранного при расчете пола и возраста начала получения выплат.`;
     }
   },
   methods: {

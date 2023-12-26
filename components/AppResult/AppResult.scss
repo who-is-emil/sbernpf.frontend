@@ -231,4 +231,18 @@
 
     @include text-small;
   }
+
+  &__text {
+    color: $color-grey;
+    margin-top: toRem(40);
+
+    @include text-small;
+
+    @include media-breakpoint-up(lg) {
+      margin-top: toRem(40);
+    }
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(48);
+    }
+  }
 }

@@ -1,22 +1,5 @@
 <template>
   <div id="calculator" class="app-calculator">
-    <pre>
-     annuityValue: {{ annuityValue }}
-     сумма за взносы: {{ contributionSum }}
-     Сумма за софинансирование: {{ cofinancingSum }}
-     Сумма за ОПС: {{ OPSSum }}
-    pensionTransfer: {{ pensionTransfer }}
-          Итоговая сумма накоплений в программе: {{ result.totalAmount }}
-          Ваши личные взносы: {{ result.personalContributions }}
-          Перевод пенсионных накоплений (ОПС): {{ result.pensionTransfer }}
-          Софинансирование от государства: {{ result.stateCofinancing }}
-          Инвестиционный доход: {{ result.investmentIncome }}
-          Налоговый вычет: {{ result.taxDeduction }}
-          Налоговый вычет (текст): {{ result.taxDeductionText }}
-          Срочная: {{ result.urgentPayment }}
-          Единовременная: {{ result.oneTime }}
-          Пожизненная: {{ result.lifetime }}
-        </pre>
     <div class="app-calculator__container container">
       <div v-if="showResult" class="app-calculator__result">
         <AppResult :data="result" @edit="resultToggle" />
@@ -181,21 +164,21 @@ export default {
         type: 'range',
         label: 'Текущий возраст',
         min: 18,
-        max: 100,
+        max: 80,
         textLeft: '18 лет',
-        textRight: '100 лет'
+        textRight: '80 лет'
       },
-      ageValue: 56,
+      ageValue: 40,
 
       // Возраст окончания участия в программе
       ageEndField: {
         id: 'endAge',
         type: 'range',
         label: 'Возраст окончания участия в программе',
-        min: 50,
-        max: 100,
-        textLeft: '50 лет',
-        textRight: '100 лет'
+        min: 60,
+        max: 90,
+        textLeft: '60 лет',
+        textRight: '90 лет'
       },
       ageEndValue: 60,
 
@@ -204,9 +187,10 @@ export default {
         id: 'sum',
         type: 'text',
         label: 'Сумма взноса в месяц',
-        textLeft: '500 ₽'
+        textLeft: '500 ₽',
+        onlyPositiveValue: true
       },
-      sumValue: 2500,
+      sumValue: 10000,
 
       // Срок ежемесячных выплат
       periodField: {
@@ -226,14 +210,14 @@ export default {
         type: 'text',
         label: 'Сумма со счета ОПС',
         suffix: '₽',
-        currency: true,
+        onlyPositiveValue: true,
         tooltip: {
           text: 'Сумма со счета ОПС',
           iconTheme: 'grey',
           icon: '24/info-stroke'
         }
       },
-      sumAccountValue: 109309,
+      sumAccountValue: 10000,
 
       // Учитывать накопления ОПС
       OPSField: {
@@ -543,7 +527,11 @@ export default {
         // Единовременная
         oneTime: this.formatNumberToCurrency(this.oneTime),
         // Пожизненная
-        lifetime: this.formatNumberToCurrency(this.lifetime)
+        lifetime: this.formatNumberToCurrency(this.lifetime),
+        // срок срочной выплаты
+        periodValue: this.periodValue,
+
+        ageEndValue: this.ageEndValue
       };
     },
 
@@ -566,25 +554,20 @@ export default {
       // то нижнее значение будет равно “Ваш возраст+15”.
       if (current <= 45) {
         min = current + 15;
-        max = 100;
+        max = 90;
         disabled = false;
         //  Если значение в поле “Ваш возраст” от 45 до 59,
         //  то значение равно 60.
       } else if (current > 45 && current <= 59) {
         min = 60;
-        max = 100;
+        max = 90;
         disabled = false;
-        // сли значение в поле “Ваш возраст” более 59,
+        // если значение в поле “Ваш возраст” более 59,
         // то нижнее значение будет равно “Ваш возраст+1”
       } else if (current > 59 && current < 100) {
         min = current + 1;
-        max = 100;
+        max = 90;
         disabled = false;
-        // если возраст равен 100
-      } else {
-        min = 101;
-        max = 101;
-        disabled = true;
       }
 
       this.$set(this.ageEndField, 'disabled', disabled);
