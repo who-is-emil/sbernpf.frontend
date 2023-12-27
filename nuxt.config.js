@@ -71,8 +71,8 @@ export default {
     ['vue-scrollto/nuxt', { duration: 500, offset: -80 }]
   ],
 
-  server: { // TODO временно для тестирования
-    host: '192.168.1.103',
+  server: {
+    host: '192.168.1.103', // TODO временно для тестирования
     port: 8080
   },
 

@@ -37,6 +37,7 @@
                 <div
                   v-for="(item, idx) in items"
                   :key="idx"
+                  ref="slide"
                   class="app-features__item swiper-slide"
                 >
                   <AppCardText
@@ -160,6 +161,8 @@ export default {
     this.initSwiper();
 
     this.animation();
+
+    // console.log(this.$refs.slide);
   },
   methods: {
     initSwiper () {

@@ -88,7 +88,7 @@ export default {
     window.addEventListener('touchmove', _debounce(() => {
       // TODO костыль, чтобы закрывать открытый typpy при свайпе на тач устройствах
       document.body.click();
-    }, 100));
+    }, 200));
   },
   methods: {
     resizeCheck () {

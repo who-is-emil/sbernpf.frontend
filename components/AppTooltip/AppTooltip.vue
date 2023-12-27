@@ -4,6 +4,7 @@
     :class="iconTheme"
   >
     <button
+      ref="tippy"
       v-tippy="content"
       type="button"
       class="app-tooltip__icon"
@@ -13,6 +14,7 @@
   </span>
 </template>
 <script>
+import { isDesktop } from '~/assets/js/breakpoints';
 import AppIcon from '~/components/AppIcon/AppIcon';
 export default {
   name: 'AppTooltip',
@@ -31,7 +33,7 @@ export default {
       return this.data.text;
     },
     trigger () {
-      return this.data.trigger || 'mouseenter';
+      return this.data.trigger || isDesktop() ? 'mouseenter' : 'click';
     },
     theme () {
       return this.data.theme || 'white';
