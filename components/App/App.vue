@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <AppHeader />
+
     <div class="mb-lg-132 mb-md-64 mb-80">
       <div class="container">
         <AppHero />

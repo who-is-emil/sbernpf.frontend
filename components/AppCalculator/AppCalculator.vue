@@ -175,12 +175,12 @@ export default {
         id: 'endAge',
         type: 'range',
         label: 'Возраст окончания участия в программе',
-        min: 60,
+        min: 55,
         max: 90,
-        textLeft: '60 лет',
+        textLeft: '55 лет',
         textRight: '90 лет'
       },
-      ageEndValue: 60,
+      ageEndValue: 55,
 
       // Сумма взноса в месяц
       sumField: {
@@ -202,7 +202,7 @@ export default {
         textLeft: '5 лет',
         textRight: '30 лет'
       },
-      periodValue: 5,
+      periodValue: 10,
 
       // Сумма со счета ОПС
       sumAccountField: {
@@ -217,7 +217,7 @@ export default {
           icon: '24/info-stroke'
         }
       },
-      sumAccountValue: 10000,
+      sumAccountValue: 25000,
 
       // Учитывать накопления ОПС
       OPSField: {
@@ -251,7 +251,10 @@ export default {
           external: true,
           href: 'https://npfsberbanka.ru/pds/?utm_source=sbersite&utm_medium=pdsportal&utm_campaign=getlead&utm_content=1#subscription'
         }
-      ]
+      ],
+
+      previousAge: 40,
+      currentAge: 40
     };
   },
   computed: {
@@ -307,7 +310,7 @@ export default {
     // Софинансирование государства = софинансирование * Меньшее(3 || Период участия).
     stateCofinancing () {
       if (!this.taxDeductionValue) {
-        return this.cofinancing * Math.min(3, this.period / 12);
+        return Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) * Math.min(3, this.period / 12);
       }
 
       let res = 0;
@@ -318,13 +321,13 @@ export default {
 
         if (i === 0) {
           // первый налоговый вычет равен 0
-          sum = Math.min(36000, (this.sumPerYear + 0));
+          sum = Math.min(36000, (this.sumPerYear + 0) * this.cofinancingRatio);
         } else if (i === 1) {
-          sum = Math.min(36000, (this.sumPerYear + this.deduction * this.cofinancingRatio));
+          sum = Math.min(36000, ((this.sumPerYear + this.deduction) * this.cofinancingRatio));
         } else {
           // вычисляем вычет[i]
           const currentDeduction = (this.sumPerYear + this.deduction) * 0.13;
-          sum = Math.min(36000, (this.sumPerYear + currentDeduction * this.cofinancingRatio));
+          sum = Math.min(36000, ((this.sumPerYear + currentDeduction) * this.cofinancingRatio));
         }
 
         res += sum;
@@ -432,12 +435,11 @@ export default {
           deduction = Math.min(400000, (this.sumPerYear + this.deduction) * 0.13);
         }
 
-        sum += (Math.min(36000, this.sumPerYear + deduction) *
-            this.cofinancingRatio * Math.pow((1 + this.ROI / 100), Math.min(3, this.period / 12) - i)) *
-          Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 3));
+        sum += (Math.min(36000, (this.sumPerYear + deduction) *
+          this.cofinancingRatio) * Math.pow((1 + this.ROI / 100), Math.min(3, this.period / 12) - i));
       }
 
-      return sum;
+      return sum * Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 3));
     },
 
     // сумма за ОПС
@@ -486,7 +488,6 @@ export default {
     // + Перевод пенсионных накоплений + Инвестиционный доход
 
     totalAmount () {
-      // return this.investmentIncome;
       return this.sumDeduction + this.contributionSum + this.cofinancingSum + this.OPSSum;
     },
 
@@ -531,7 +532,9 @@ export default {
         // срок срочной выплаты
         periodValue: this.periodValue,
 
-        ageEndValue: this.ageEndValue
+        ageEndValue: this.ageEndValue,
+
+        period: this.period / 12
       };
     },
 
@@ -546,33 +549,45 @@ export default {
   },
   watch: {
     ageValue: _debounce(function (current, previous) {
+      this.currentAge = current;
+      this.previousAge = previous;
+
+      this.calcAgeEndValue();
+    }, 500),
+    genderValue: _debounce(function () {
+      this.calcAgeEndValue();
+    }, 500)
+  },
+  methods: {
+    calcAgeEndValue () {
       let min;
       let max;
-      let disabled;
 
-      // Если значение в поле “Ваш возраст” меньше или равно 45,
-      // то нижнее значение будет равно “Ваш возраст+15”.
-      if (current <= 45) {
-        min = current + 15;
-        max = 90;
-        disabled = false;
-        //  Если значение в поле “Ваш возраст” от 45 до 59,
-        //  то значение равно 60.
-      } else if (current > 45 && current <= 59) {
-        min = 60;
-        max = 90;
-        disabled = false;
-        // если значение в поле “Ваш возраст” более 59,
-        // то нижнее значение будет равно “Ваш возраст+1”
-      } else if (current > 59 && current < 100) {
-        min = current + 1;
-        max = 90;
-        disabled = false;
+      if (this.genderValue === 'm') {
+        if (this.currentAge <= 45) {
+          min = this.currentAge + 15;
+          max = 90;
+        } else if (this.currentAge > 45 && this.currentAge <= 55) {
+          min = 60;
+          max = 90;
+        } else if (this.currentAge > 55) {
+          min = this.currentAge + 4;
+          max = 90;
+        }
+      } else if (this.genderValue === 'w') {
+        if (this.currentAge <= 40) {
+          min = this.currentAge + 15;
+          max = 90;
+        } else if (this.currentAge > 40 && this.currentAge <= 50) {
+          min = 55;
+          max = 90;
+        } else if (this.currentAge > 50) {
+          min = this.currentAge + 4;
+          max = 90;
+        }
       }
 
-      this.$set(this.ageEndField, 'disabled', disabled);
-
-      if (current > previous) {
+      if (this.currentAge > this.previousAge) {
         this.$set(this.ageEndField, 'max', max);
         this.$set(this.ageEndField, 'textRight', `${max} лет`);
 
@@ -591,9 +606,7 @@ export default {
           this.ageEndValue = min;
         });
       }
-    }, 500)
-  },
-  methods: {
+    },
     resultToggle () {
       this.showResult = !this.showResult;
     },

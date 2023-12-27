@@ -161,8 +161,6 @@ export default {
     this.initSwiper();
 
     this.animation();
-
-    // console.log(this.$refs.slide);
   },
   methods: {
     initSwiper () {
