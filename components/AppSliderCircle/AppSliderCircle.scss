@@ -71,6 +71,19 @@
       top: toRem(86);
       left: calc(50% + #{toRem(918)});
       transform: rotate(10.5deg) translateX(-50%);
+
+      &::v-deep .app-card-factoid__value {
+        position: relative;
+
+        &:after {
+          position: absolute;
+          top: toRem(4);
+          left: calc(100% + #{toRem(6)});
+          content: "1";
+
+          @include text-small;
+        }
+      }
     }
 
     &:nth-child(4) {

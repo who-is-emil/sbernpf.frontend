@@ -69,7 +69,7 @@ export default {
             title: 'Начать копить',
             icon: '24/circle-arrow-right',
             href: '#',
-            target: '#how'
+            target: '#cardProgram'
           },
           icon: '80/mark'
         },
