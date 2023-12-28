@@ -1,8 +1,6 @@
 .app-slider-circle {
   $root: &;
 
-  overflow: hidden;
-
   &__top {
     display: flex;
     align-items: flex-start;
