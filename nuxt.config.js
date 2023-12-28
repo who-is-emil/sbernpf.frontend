@@ -68,7 +68,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    ['vue-scrollto/nuxt', { duration: 500, offset: -80 }]
+    ['vue-scrollto/nuxt', { duration: 500, offset: -80 }],
+    'nuxt-lazy-load'
   ],
 
   server: {

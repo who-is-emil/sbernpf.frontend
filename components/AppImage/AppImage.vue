@@ -2,7 +2,7 @@
   <div class="app-image">
     <picture v-if="src">
       <source v-if="srcset" :srcset="srcset">
-      <img :src="src" :alt="alt">
+      <img v-lazy-load :src="src" :alt="alt">
     </picture>
   </div>
 </template>
