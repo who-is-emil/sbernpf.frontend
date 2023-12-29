@@ -50,9 +50,9 @@
                         :class="{'is-active': imageIdx === idx,
                                  'is-current': imageIdx === idx}"
                       >
-                        <div class="app-slider-video__image-wrap" data-image-wrap>
+                        <a :href="image.image.href" target="_blank" rel="nofollow" class="app-slider-video__image-wrap" data-image-wrap>
                           <AppImage :data="image.image" />
-                        </div>
+                        </a>
                       </div>
                     </div>
                     <div class="app-slider-video__play">
@@ -91,17 +91,32 @@ export default {
       items: [
         {
           image: {
-            src: 'images/slider-video/image-1.jpg'
+            src: 'images/slider-video/image-1.jpg',
+            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/6aa5a00ff4341217.mp4/playlist.m3u8'
           }
         },
         {
           image: {
-            src: 'images/slider-video/image-2.jpg'
+            src: 'images/slider-video/image-2.jpg',
+            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/595e3ed3e70f9809.mp4/playlist.m3u8'
           }
         },
         {
           image: {
-            src: 'images/slider-video/image-3.jpg'
+            src: 'images/slider-video/image-3.jpg',
+            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/7f232fae7fe42721.mp4/playlist.m3u8'
+          }
+        },
+        {
+          image: {
+            src: 'images/slider-video/image-4.jpg',
+            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/d2da3b23cb585e4b.mp4/playlist.m3u8'
+          }
+        },
+        {
+          image: {
+            src: 'images/slider-video/image-5.jpg',
+            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/25b2c55d4af6239f.mp4/playlist.m3u8'
           }
         }
       ],

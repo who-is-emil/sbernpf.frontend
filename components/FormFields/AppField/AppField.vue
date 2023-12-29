@@ -77,6 +77,9 @@ export default {
     },
     tooltip () {
       return this.data.tooltip;
+    },
+    minValue () {
+      return this.data.minValue || false;
     }
   },
   methods: {

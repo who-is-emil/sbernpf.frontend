@@ -2,6 +2,7 @@
   <div class="app-input">
     <input
       :id="id"
+      ref="inputRef"
       :type="type"
       :class="['app-input__input', focusClass]"
       :placeholder="placeholder"
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'AppInput',
   props: {
@@ -46,6 +48,9 @@ export default {
     },
     onlyPositiveValue () {
       return this.data.onlyPositiveValue || false;
+    },
+    minValue () {
+      return this.data.minValue || false;
     }
   },
   methods: {

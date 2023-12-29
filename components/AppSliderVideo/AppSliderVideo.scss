@@ -122,6 +122,7 @@
 
   &__frame {
     position: relative;
+    display: block;
     border-radius: toRem(24);
     overflow: hidden;
     cursor: pointer;
@@ -176,6 +177,7 @@
 
   &__image-wrap {
     position: absolute;
+    display: block;
     top: 0;
     left: 0;
     width: 100%;
@@ -185,6 +187,7 @@
       position: absolute;
       top: 0;
       left: 0;
+      pointer-events: none;
     }
 
     @include media-breakpoint-down(md) {
@@ -208,6 +211,7 @@
     background-color: rgba(255, 255, 255, 0.30);
     border-radius: 50%;
     color: $color-white;
+    pointer-events: none;
 
     @include defaultTransition(transform);
 

@@ -38,7 +38,7 @@
 
             <div class="app-calculator__item">
               <div class="app-calculator__field">
-                <AppField v-model.lazy="sumValue" v-money="money" :data="sumField" />
+                <AppField v-model="sumValue" v-money="money" :data="sumField" />
               </div>
             </div>
 
@@ -50,7 +50,7 @@
 
             <div class="app-calculator__item app-calculator__item--has-checkbox">
               <div class="app-calculator__field">
-                <AppField v-model.lazy="sumAccountValue" v-money="money" :data="sumAccountField" />
+                <AppField v-model="sumAccountValue" :data="sumAccountField" />
               </div>
 
               <div class="app-calculator__field app-calculator__field--checkbox">
@@ -102,7 +102,8 @@ export default {
         decimal: '.',
         thousands: ' ',
         suffix: ' ₽',
-        precision: 0
+        precision: 0,
+        masked: false
       },
 
       showResult: false,
@@ -209,7 +210,6 @@ export default {
         id: 'sumAccount',
         type: 'text',
         label: 'Сумма со счета ОПС',
-        suffix: '₽',
         onlyPositiveValue: true,
         tooltip: {
           text: 'Сумма со счета ОПС',
@@ -544,7 +544,8 @@ export default {
       Ожидаемая доходность в размере ${this.ROI}% годовых.
       Расчеты срочных периодических выплат осуществляются в соответствии с выбранной продолжительностью выплат.
       Расчеты пожизненных периодических выплат и единовременной выплаты осуществляется осуществляются
-      исходя из выбранного при расчете пола и возраста начала получения выплат.`;
+      исходя из выбранного при расчете пола и возраста начала получения выплат.
+      Расчет налогового вычета производится с учетом  изменений в Налоговом кодексе, которые вступят в силу в 2024 году`;
     }
   },
   watch: {
@@ -589,20 +590,20 @@ export default {
 
       if (this.currentAge > this.previousAge) {
         this.$set(this.ageEndField, 'max', max);
-        this.$set(this.ageEndField, 'textRight', `${max} лет`);
+        this.$set(this.ageEndField, 'textRight', `${max} ${this.getAgeEnding(max)}`);
 
         this.$nextTick(() => {
           this.$set(this.ageEndField, 'min', min);
-          this.$set(this.ageEndField, 'textLeft', `${min} лет`);
+          this.$set(this.ageEndField, 'textLeft', `${min} ${this.getAgeEnding(min)}`);
           this.ageEndValue = min;
         });
       } else {
         this.$set(this.ageEndField, 'min', min);
-        this.$set(this.ageEndField, 'textLeft', `${min} лет`);
+        this.$set(this.ageEndField, 'textLeft', `${min} ${this.getAgeEnding(min)}`);
 
         this.$nextTick(() => {
           this.$set(this.ageEndField, 'max', max);
-          this.$set(this.ageEndField, 'textRight', `${max} лет`);
+          this.$set(this.ageEndField, 'textRight', `${max} ${this.getAgeEnding(max)}`);
           this.ageEndValue = min;
         });
       }
@@ -620,6 +621,24 @@ export default {
       });
 
       return formatter.format(number);
+    },
+    getAgeEnding (number) {
+      number = Math.abs(number) % 100;
+      let ending = 'лет';
+
+      if (number > 10 && number < 20) {
+        return ending;
+      }
+
+      const lastDigit = number % 10;
+
+      if (lastDigit === 1) {
+        ending = 'год';
+      } else if ([2, 3, 4].includes(lastDigit)) {
+        ending = 'года';
+      }
+
+      return ending;
     }
   }
 };

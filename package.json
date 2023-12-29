@@ -22,6 +22,7 @@
     "swiper": "^6.4.1",
     "v-money": "^0.8.1",
     "vue": "^2.7.15",
+    "vue-currency-input": "^2.5.1",
     "vue-multiselect": "^2.1.8",
     "vue-scrollto": "^2.20.0",
     "vue-select": "^3.20.2",
