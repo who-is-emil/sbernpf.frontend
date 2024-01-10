@@ -7,9 +7,9 @@
   >
     <div class="app-header__container container">
       <div class="app-header__content" data-aos="fade" data-aos-delay="50">
-        <div class="app-header__logo">
+        <a :href="logoHref" class="app-header__logo">
           <AppIcon name="logos/logo" />
-        </div>
+        </a>
 
         <div class="app-header__menu">
           <nav class="app-header__nav" role="navigation">
@@ -58,6 +58,7 @@ export default {
   data () {
     return {
       menuState: false,
+      logoHref: 'https://www.sberbank.ru/',
       links: [
         {
           text: 'О программе',

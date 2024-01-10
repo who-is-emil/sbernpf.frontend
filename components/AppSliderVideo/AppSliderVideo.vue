@@ -50,9 +50,9 @@
                         :class="{'is-active': itemIdx === idx,
                                  'is-current': itemIdx === idx}"
                       >
-                        <div class="app-slider-video__image-wrap" data-image-wrap @click="showModal(itemIdx)">
+                        <button type="button" class="app-slider-video__image-wrap" data-image-wrap @click="showModal(itemIdx)">
                           <AppImage :data="item.image" />
-                        </div>
+                        </button>
                       </div>
                     </div>
 
