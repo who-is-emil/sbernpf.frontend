@@ -35,7 +35,7 @@
             <div ref="slider" class="swiper-container">
               <div class="app-slider-video__items swiper-wrapper">
                 <div
-                  v-for="(item, idx) in items"
+                  v-for="(_, idx) in items"
                   :key="idx"
                   ref="slide"
                   class="app-slider-video__item swiper-slide"
@@ -43,20 +43,21 @@
                   <div class="app-slider-video__frame">
                     <div class="app-slider-video__images">
                       <div
-                        v-for="(image, imageIdx) in items"
-                        :key="`image-${idx}-${imageIdx}`"
+                        v-for="(item, itemIdx) in items"
+                        :key="`image-${idx}-${itemIdx}`"
                         class="app-slider-video__image"
                         data-image
-                        :class="{'is-active': imageIdx === idx,
-                                 'is-current': imageIdx === idx}"
+                        :class="{'is-active': itemIdx === idx,
+                                 'is-current': itemIdx === idx}"
                       >
-                        <a :href="image.image.href" target="_blank" rel="nofollow" class="app-slider-video__image-wrap" data-image-wrap>
-                          <AppImage :data="image.image" />
-                        </a>
+                        <div class="app-slider-video__image-wrap" data-image-wrap @click="showModal(itemIdx)">
+                          <AppImage :data="item.image" />
+                        </div>
                       </div>
                     </div>
+
                     <div class="app-slider-video__play">
-                      <AppIcon :name="iconPlay" />
+                      <AppIcon name="32/play" />
                     </div>
                   </div>
                 </div>
@@ -70,54 +71,97 @@
         </div>
       </div>
     </div>
+
+    <modal
+      name="video-modal"
+      @closed="closedModal"
+    >
+      <div class="modal-content">
+        <div class="modal-frame">
+          <iframe
+            :src="`https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&amp;source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/${currentModalVideo.video}/playlist.m3u8&amp;poster=https://sber.cdnvideo.ru/common/video/pds${currentModalVideo.poster}`"
+            loading="eager"
+            sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation"
+            allow="payment 'none'; fullscreen 'none'; geolocation 'none'; camera 'none'; microphone 'none'"
+            importance="high"
+            referrerpolicy="no-referrer-when-downgrade"
+            frameborder="no"
+            scrolling="no"
+            :title="currentModalVideo.title"
+          />
+        </div>
+
+        <button @click="$modal.hide('video-modal')">
+          Close it
+        </button>
+      </div>
+    </modal>
   </div>
 </template>
 
 <script>
 import { Swiper } from 'swiper';
-import AppIcon from '~/components/AppIcon/AppIcon';
-import AppImage from '~/components/AppImage/AppImage';
+import { _disableScroll, _enableScroll } from '~/assets/js/scroll';
 import AppButton from '~/components/AppButton/AppButton';
 import AppButtonCircle from '~/components/AppButtonCircle/AppButtonCircle';
 import AppSliderPagination from '~/components/AppSliderPagination/AppSliderPagination';
+import AppImage from '~/components/AppImage/AppImage';
+import AppIcon from '~/components/AppIcon/AppIcon';
 
 export default {
   name: 'AppSliderVideo',
-  components: { AppSliderPagination, AppButtonCircle, AppButton, AppImage, AppIcon },
+  components: { AppIcon, AppImage, AppSliderPagination, AppButtonCircle, AppButton },
   data () {
     return {
       title: ['Что такое программа ', 'долгосрочных сбережений?'],
       text: 'Посмотрите серию коротких роликов. Мы собрали в них всё самое важное о программе',
+      currentModalVideoIdx: 0,
+
       items: [
         {
+          title: 'Зачем нужен ПДС',
           image: {
-            src: 'images/slider-video/image-5.jpg',
-            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/25b2c55d4af6239f.mp4/playlist.m3u8'
-          }
+            src: 'images/slider-video/image-5.jpg'
+          },
+          video: '25b2c55d4af6239f.mp4',
+          poster: '1470.jpg',
+          active: true
         },
         {
+          title: 'Сколько доплачивает государство',
           image: {
-            src: 'images/slider-video/image-4.jpg',
-            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/d2da3b23cb585e4b.mp4/playlist.m3u8'
-          }
+            src: 'images/slider-video/image-4.jpg'
+          },
+          video: 'd2da3b23cb585e4b.mp4',
+          poster: '1469.jpg',
+          active: false
         },
         {
+          title: 'Налоговый вычет',
           image: {
-            src: 'images/slider-video/image-3.jpg',
-            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/7f232fae7fe42721.mp4/playlist.m3u8'
-          }
+            src: 'images/slider-video/image-3.jpg'
+          },
+          video: '7f232fae7fe42721.mp4',
+          poster: '1468.jpg',
+          active: false
         },
         {
+          title: 'Что такое накопительная пенсия',
           image: {
-            src: 'images/slider-video/image-2.jpg',
-            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/595e3ed3e70f9809.mp4/playlist.m3u8'
-          }
+            src: 'images/slider-video/image-2.jpg'
+          },
+          video: '595e3ed3e70f9809.mp4',
+          poster: '1471.jpg',
+          active: false
         },
         {
+          title: 'Когда я получу сбережения',
           image: {
-            src: 'images/slider-video/image-1.jpg',
-            href: 'https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/6aa5a00ff4341217.mp4/playlist.m3u8'
-          }
+            src: 'images/slider-video/image-1.jpg'
+          },
+          video: '6aa5a00ff4341217.mp4',
+          poster: '1467.jpg',
+          active: false
         }
       ],
       action: {
@@ -128,7 +172,6 @@ export default {
         theme: 'gradient'
       },
 
-      iconPlay: '32/play',
       activeIndex: 0,
 
       activeImagesIndex: [],
@@ -163,6 +206,9 @@ export default {
         title: 'Вперед',
         theme: 'grey'
       };
+    },
+    currentModalVideo () {
+      return this.items[this.currentModalVideoIdx];
     }
   },
   mounted () {
@@ -296,6 +342,16 @@ export default {
       }
 
       timeline.play();
+    },
+    showModal (idx) {
+      _disableScroll();
+
+      this.currentModalVideoIdx = idx;
+
+      this.$modal.show('video-modal');
+    },
+    closedModal () {
+      _enableScroll();
     }
   }
 };

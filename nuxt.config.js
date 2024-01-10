@@ -19,6 +19,7 @@ export default {
     ],
     script: [
       { src: '/gtm.js', type: 'text/javascript', async: true }
+      // { src: '/promo/pds/gtm.js', type: 'text/javascript', async: true }
     ]
   },
 
@@ -52,6 +53,10 @@ export default {
     {
       src: '~plugins/aos.js',
       ssr: false
+    },
+    {
+      src: '~plugins/vue-js-modal.js',
+      ssr: false
     }
   ],
 
@@ -73,8 +78,8 @@ export default {
   ],
 
   server: {
-    host: '192.168.1.103', // TODO временно для тестирования
-    port: 8080
+    // host: '192.168.1.103', // TODO временно для тестирования
+    // port: 8080
   },
 
   svg: {

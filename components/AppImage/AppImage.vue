@@ -2,7 +2,7 @@
   <div class="app-image">
     <picture v-if="src">
       <source v-if="srcset" :srcset="srcset">
-      <img v-lazy-load :src="src" :alt="alt">
+      <img :v-lazy-load="!disableLazy" :src="src" :alt="alt">
     </picture>
   </div>
 </template>
@@ -29,6 +29,9 @@ export default {
     },
     alt () {
       return this.data.alt || '';
+    },
+    disableLazy () {
+      return this.data.disableLazy || false;
     }
   }
 };
