@@ -91,8 +91,8 @@
           />
         </div>
 
-        <button @click="$modal.hide('video-modal')">
-          Close it
+        <button type="button" class="modal-close" @click="$modal.hide('video-modal')">
+          <AppIcon name="24/close" />
         </button>
       </div>
     </modal>
