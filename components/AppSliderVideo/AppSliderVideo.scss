@@ -93,12 +93,13 @@
     @include media-breakpoint-up(lg) {
       flex-shrink: 1;
 
-      &:not(:last-child) {
+      &:nth-child(1) {
+        width: calc(50% - #{toRem(8)}) !important;
         margin-right: toRem(16);
       }
 
-      &:nth-child(1) {
-        width: calc(50% - #{toRem(8)}) !important;
+      &:nth-child(2) {
+        margin-right: toRem(16);
       }
 
       &:nth-child(2),

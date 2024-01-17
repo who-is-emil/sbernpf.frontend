@@ -36,7 +36,7 @@
                 class="app-footer__link-bottom"
                 target="_blank"
               >
-                {{ policy.text }}
+                <span v-html="policy.text" />
               </a>
             </div>
             <div class="app-footer__link-wrapper">
@@ -45,7 +45,7 @@
                 class="app-footer__link-bottom"
                 target="_blank"
               >
-                {{ information.text }}
+                <span v-html="information.text" />
               </a>
             </div>
             <div class="app-footer__link-wrapper">
@@ -54,7 +54,7 @@
                 class="app-footer__link-bottom"
                 target="_blank"
               >
-                {{ about.text }}
+                <span v-html="about.text" />
               </a>
             </div>
           </div>
@@ -111,11 +111,11 @@ export default {
         href: 'https://www.sberbank.ru/privacy/policy#pdn'
       },
       information: {
-        text: 'Информация, обязательная к размещению',
+        text: 'Информация, обязательная к&nbsp;размещению',
         href: 'https://www.sberbank.ru/ru/inform'
       },
       about: {
-        text: 'Раскрытие информации о банке как о профессиональном участнике рынка ценных бумаг',
+        text: 'Раскрытие информации о банке как о&nbsp;профессиональном участнике рынка ценных бумаг',
         href: 'https://www.sberbank.ru/ru/disclosure3921u'
       },
       textLeft: '© 1997—2023 ПАО Сбербанк. Россия, Москва, 117997, ул. Вавилова, 19. Генеральная лицензия на осуществление банковских операций от 11 августа 2015 года. Регистрационный номер — 1481.',

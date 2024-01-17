@@ -16,9 +16,12 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      // { rel: 'icon', type: 'image/x-icon', href: '/promo/pds/test/favicon.ico' }
+      // { rel: 'icon', type: 'image/x-icon', href: '/promo/pds/favicon.ico' }
     ],
     script: [
       { src: '/gtm.js', type: 'text/javascript', async: true }
+      // { src: '/promo/pds/test/gtm.js', type: 'text/javascript', async: true }
       // { src: '/promo/pds/gtm.js', type: 'text/javascript', async: true }
     ]
   },

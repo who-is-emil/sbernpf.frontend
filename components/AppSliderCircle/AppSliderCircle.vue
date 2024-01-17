@@ -60,7 +60,7 @@ export default {
       items: [
         {
           title: 'Ваши взносы',
-          value: '3 000 ₽',
+          value: '3000 ₽',
           text: 'в месяц',
           description: '12 ежемесячных взносов в году на 5 лет',
           icon: '24/plus'

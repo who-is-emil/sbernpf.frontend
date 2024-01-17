@@ -7,7 +7,7 @@
         <AppHero />
       </div>
     </div>
-    <div class="mb-lg-120 mb-md-144 mb-112">
+    <div class="mb-lg-128 mb-md-144 mb-112">
       <AppCategories />
     </div>
     <div class="mb-lg-120 mb-md-144 mb-112">

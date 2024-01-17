@@ -54,6 +54,7 @@
       }
 
       &__dropdown-menu {
+        top: calc(100% + #{toRem(8)});
         background-color: $color-dark-grey;
         border-radius: toRem(40);
         padding: toRem(16) toRem(24);
