@@ -6,6 +6,7 @@
     <button
       type="button"
       class="app-accordion__button"
+      :aria-expanded="ariaExpanded"
       @click="toggle"
     >
       {{ title }}
@@ -47,6 +48,13 @@ export default {
     },
     text () {
       return this.data.text || '';
+    },
+    ariaExpanded () {
+      if (this.active) {
+        return 'true';
+      }
+
+      return 'false';
     }
   },
   methods: {

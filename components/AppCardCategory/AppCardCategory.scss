@@ -34,6 +34,8 @@
     @supports (backdrop-filter: blur(#{toRem(32)})) {
       background: rgba(236, 246, 248, 0.5);
       backdrop-filter: blur(#{toRem(32)});
+      border-bottom-left-radius: toRem(32);
+      border-bottom-right-radius: toRem(32);
     }
 
     @include media-breakpoint-up(md) {

@@ -65,11 +65,11 @@
       }
     }
     @include media-breakpoint-only(md) {
-      padding: toRem(24) toRem(80) toRem(24) toRem(32);
+      padding: toRem(25) toRem(80) toRem(26) toRem(32);
 
       &:before,
       &:after {
-        right: toRem(45);
+        right: toRem(40);
       }
     }
   }

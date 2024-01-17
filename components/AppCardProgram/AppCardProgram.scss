@@ -74,10 +74,13 @@
   }
 
   &__action {
-    @include media-breakpoint-down(sm) {
-      .app-button {
-        width: 100%;
-      }
+    @include media-breakpoint-up(md) {
+      max-width: toRem(250);
+      width: 100%;
+    }
+
+    .app-button {
+      width: 100%;
     }
   }
 

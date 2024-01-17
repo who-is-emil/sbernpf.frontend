@@ -3,8 +3,7 @@
 
   position: relative;
   color: $color-black;
-  border-radius: toRem(32);
-  overflow: hidden;
+
 
   &__background {
     position: absolute;
@@ -14,10 +13,11 @@
     height: 100%;
     background: linear-gradient(261deg, #F0FFEE 2.39%, #AEFFA5 101.62%);
     overflow: hidden;
-  }
+    border-radius: toRem(32);
 
-  @include media-breakpoint-up(md) {
-    border-radius: toRem(48);
+    @include media-breakpoint-up(md) {
+      border-radius: toRem(48);
+    }
   }
 
   &__base {
@@ -30,6 +30,10 @@
     }
     @include media-breakpoint-only(md) {
       height: toRem(594);
+      margin-bottom: toRem(8);
+    }
+    @include media-breakpoint-down(sm) {
+      margin-bottom: toRem(4);
     }
   }
 

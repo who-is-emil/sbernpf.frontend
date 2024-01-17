@@ -113,6 +113,12 @@
         left: toRem(12);
       }
     }
+
+    #{$root}__item--has-checkbox & {
+      @include media-breakpoint-down(md) {
+        margin-right: 0;
+      }
+    }
   }
 
   &__actions {
@@ -127,7 +133,7 @@
       gap: toRem(16);
     }
     @include media-breakpoint-only(md) {
-      margin-top: toRem(96);
+      margin-top: toRem(48);
     }
   }
 

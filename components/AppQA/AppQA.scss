@@ -53,6 +53,9 @@
   }
 
   &__action {
+    @include media-breakpoint-only(md) {
+      margin-top: toRem(18);
+    }
     @include media-breakpoint-down(sm) {
       width: 100%;
 

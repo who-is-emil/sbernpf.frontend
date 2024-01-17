@@ -25,12 +25,15 @@
   &__content {
     position: relative;
     z-index: 1;
-    padding-top: toRem(64);
+    padding-top: toRem(56);
     padding-bottom: toRem(40);
 
     @include media-breakpoint-up(lg) {
       padding-top: toRem(88);
       padding-bottom: toRem(26);
+    }
+    @include media-breakpoint-only(md) {
+      padding-top: toRem(80);
     }
   }
 

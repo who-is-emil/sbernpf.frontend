@@ -167,6 +167,10 @@
     line-height: 1.26;
     color: $color-black;
 
+    @include media-breakpoint-down(md) {
+      @include text-body;
+    }
+
     @include hover {
       color: $color-green;
     }
