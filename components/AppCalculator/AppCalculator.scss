@@ -130,7 +130,6 @@
     @include media-breakpoint-up(md) {
       display: flex;
       align-items: center;
-      gap: toRem(16);
     }
     @include media-breakpoint-only(md) {
       margin-top: toRem(48);
@@ -146,6 +145,10 @@
 
     @include media-breakpoint-up(md) {
       width: toRem(220);
+
+      &:not(:last-child) {
+        margin-right: toRem(16);
+      }
     }
     @include media-breakpoint-down(sm) {
       &:not(:last-child) {

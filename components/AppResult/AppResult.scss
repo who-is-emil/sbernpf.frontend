@@ -124,10 +124,6 @@
     }
   }
 
-  &__cards {
-
-  }
-
   &__cards-list {
     @include media-breakpoint-up(lg) {
       display: flex;
@@ -202,11 +198,15 @@
   &__actions {
     @include media-breakpoint-up(md) {
       display: flex;
-      gap: toRem(16);
     }
   }
 
   &__action {
+    @include media-breakpoint-up(md) {
+      &:not(:last-child) {
+        margin-right: toRem(16);
+      }
+    }
     @include media-breakpoint-down(sm) {
       .app-button {
         width: 100%;
