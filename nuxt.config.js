@@ -20,6 +20,7 @@ export default {
       // { rel: 'icon', type: 'image/x-icon', href: '/promo/pds/favicon.ico' }
     ],
     script: [
+      // { src: 'https://polyfill.io/v3/polyfill.min.js' },
       { src: '/gtm.js', type: 'text/javascript', async: true }
       // { src: '/promo/pds/test/gtm.js', type: 'text/javascript', async: true }
       // { src: '/promo/pds/gtm.js', type: 'text/javascript', async: true }

@@ -43,6 +43,7 @@
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.5.1",
+    "event-source-polyfill": "^1.0.31",
     "nuxt-aos": "^1.2.1",
     "nuxt-svg-loader": "^1.2.0",
     "sass": "^1.32.6",
