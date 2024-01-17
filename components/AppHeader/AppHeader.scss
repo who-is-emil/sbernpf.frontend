@@ -219,7 +219,6 @@
     color: $color-black;
     border: 0;
     padding: 0;
-    gap: toRem(8);
 
     @include hover {
       color: rgba($color-black, 0.6);
@@ -236,6 +235,7 @@
       height: 2px;
       width: toRem(32);
       background-color: currentColor;
+      margin: toRem(4);
 
       @include defaultTransition(transform, color);
     }
