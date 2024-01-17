@@ -18,11 +18,7 @@
       width: toRem(1000);
       height: toRem(1000);
       border-radius: toRem(1000);
-      background: transparent;
-
-      @supports (background: radial-gradient(100% 50% at 50% 50%, rgba(#56FF43, 0.5) 0%, rgba(255, 255, 255, 0.00) 80%)) {
-        background: radial-gradient(100% 50% at 50% 50%, rgba(#56FF43, 0.5) 0%, rgba(255, 255, 255, 0.00) 80%);
-      }
+      background: radial-gradient(100% 50% at 50% 50%, rgba(#56FF43, 0.5) 0%, rgba(255, 255, 255, 0) 80%);
     }
     @include media-breakpoint-down(sm) {
       width: toRem(1000);
