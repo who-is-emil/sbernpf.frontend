@@ -38,7 +38,7 @@
 
             <div class="app-calculator__item">
               <div class="app-calculator__field">
-                <AppField v-model="sumValue" v-money="money" :data="sumField" />
+                <AppField v-model="sumValue" :data="sumField" />
               </div>
             </div>
 
@@ -86,7 +86,6 @@
 
 <script>
 import _debounce from 'lodash.debounce';
-import { VMoney } from 'v-money';
 import AppField from '~/components/FormFields/AppField/AppField';
 import AppButton from '~/components/AppButton/AppButton';
 import AppResult from '~/components/AppResult/AppResult';
@@ -95,17 +94,8 @@ import annuityData from '~/components/AppCalculator/annuityData';
 export default {
   name: 'AppCalculator',
   components: { AppResult, AppButton, AppField },
-  directives: { money: VMoney },
   data () {
     return {
-      money: {
-        decimal: '.',
-        thousands: ' ',
-        suffix: ' ₽',
-        precision: 0,
-        masked: false
-      },
-
       showResult: false,
       // Процент доходности
       ROI: 7,
@@ -189,9 +179,10 @@ export default {
         type: 'text',
         label: 'Сумма взноса в месяц',
         textLeft: '500 ₽',
-        onlyPositiveValue: true
+        onlyPositiveValue: true,
+        currency: true
       },
-      sumValue: 10000,
+      sumValue: '10 000 ₽',
 
       // Срок ежемесячных выплат
       periodField: {
@@ -211,13 +202,14 @@ export default {
         type: 'text',
         label: 'Сумма со счета ОПС',
         onlyPositiveValue: true,
+        currency: true,
         tooltip: {
           text: 'Сумма со счета ОПС',
           iconTheme: 'grey',
           icon: '24/info-stroke'
         }
       },
-      sumAccountValue: 25000,
+      sumAccountValue: '25 000 ₽',
 
       // Учитывать накопления ОПС
       OPSField: {

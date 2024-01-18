@@ -1,6 +1,7 @@
 <template>
   <div class="app-input">
     <input
+      v-if="!currency"
       :id="id"
       ref="inputRef"
       :type="type"
@@ -13,6 +14,22 @@
       @input="input"
       @copy.prevent="copyPastePrevent"
       @paste.prevent="copyPastePrevent"
+    >
+
+    <input
+      v-else
+      :id="id"
+      ref="inputRef"
+      :type="type"
+      :class="['app-input__input', focusClass]"
+      :placeholder="placeholder"
+      :value="value"
+      @keydown="checkInput"
+      @focusin="focusIn"
+      @focusout="focusOut"
+      @copy.prevent="copyPastePrevent"
+      @paste.prevent="copyPastePrevent"
+      @blur="blur"
     >
   </div>
 </template>
@@ -51,6 +68,9 @@ export default {
     },
     minValue () {
       return this.data.minValue || false;
+    },
+    currency () {
+      return this.data.currency;
     }
   },
   methods: {
@@ -76,6 +96,15 @@ export default {
     },
     focusOut () {
       this.focusClass = '';
+    },
+    blur (e) {
+      const parsedValue = parseInt(e.target.value.toString().replace(/\s/g, ''), 10);
+
+      if (parsedValue < 500) {
+        this.$emit('input', `${500} ₽`);
+      } else {
+        this.$emit('input', `${parsedValue.toLocaleString('fr').replace(/ /g, ' ')} ₽`);
+      }
     }
   }
 };
