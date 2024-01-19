@@ -80,6 +80,7 @@ export default {
           title: 'Гарантированная поддержка от&nbsp;государства',
           text: 'Государство увеличит ваши накопления в первые три года. Получайте ежегодно до 36 000 ₽. Узнайте, каким будет ваш дополнительный доход',
           image: {
+            alt: 'Гарантированная поддержка от государства',
             src: 'images/features/image-1.png'
           },
           active: true,
@@ -100,6 +101,7 @@ export default {
           title: 'Счет застрахован в АСВ',
           text: 'Агентство по страхованию вкладов защитит ваши личные сбережения на&nbsp;сумму до 2,8 млн Р, а также софинансирование от государства и сумму накопительной пенсии',
           image: {
+            alt: 'Счет застрахован в АСВ',
             src: 'images/features/image-2.png'
           }
         },
@@ -107,6 +109,7 @@ export default {
           title: 'Поддержка в сложных ситуациях',
           text: 'Оплатите дорогостоящее лечение или&nbsp;получите поддержку при потере кормильца',
           image: {
+            alt: 'Поддержка в сложных ситуациях',
             src: 'images/features/image-3.png'
           }
         },
@@ -119,6 +122,7 @@ export default {
             iconTheme: 'white-filled'
           },
           image: {
+            alt: 'Пенсионные накопления (ОПС) в ваших руках',
             src: 'images/features/image-4.png'
           },
           action: {
@@ -138,6 +142,7 @@ export default {
             iconTheme: 'white-filled'
           },
           image: {
+            alt: 'Дополнительный доход',
             src: 'images/features/image-5.png'
           }
         },
@@ -145,6 +150,7 @@ export default {
           title: 'Защита капитала',
           text: 'Доход от инвестирования ваших средств рассчитывается ежегодно&nbsp;и&nbsp;не&nbsp;может уйти в&nbsp;минус по&nbsp;итогам каждых пяти лет',
           image: {
+            alt: 'Защита капитала',
             src: 'images/features/image-6.png'
           }
         }

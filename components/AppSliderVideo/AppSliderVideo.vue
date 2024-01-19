@@ -121,6 +121,7 @@ export default {
         {
           title: 'Зачем нужен ПДС',
           image: {
+            alt: 'Зачем нужен ПДС',
             src: 'images/slider-video/image-5.jpg'
           },
           video: '25b2c55d4af6239f.mp4',
@@ -130,6 +131,7 @@ export default {
         {
           title: 'Сколько доплачивает государство',
           image: {
+            alt: 'Сколько доплачивает государство',
             src: 'images/slider-video/image-4.jpg'
           },
           video: 'd2da3b23cb585e4b.mp4',
@@ -139,6 +141,7 @@ export default {
         {
           title: 'Налоговый вычет',
           image: {
+            alt: 'Налоговый вычет',
             src: 'images/slider-video/image-3.jpg'
           },
           video: '7f232fae7fe42721.mp4',
@@ -148,6 +151,7 @@ export default {
         {
           title: 'Что такое накопительная пенсия',
           image: {
+            alt: 'Что такое накопительная пенсия',
             src: 'images/slider-video/image-2.jpg'
           },
           video: '595e3ed3e70f9809.mp4',
@@ -157,6 +161,7 @@ export default {
         {
           title: 'Когда я получу сбережения',
           image: {
+            alt: 'Когда я получу сбережения',
             src: 'images/slider-video/image-1.jpg'
           },
           video: '6aa5a00ff4341217.mp4',

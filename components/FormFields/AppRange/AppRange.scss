@@ -52,6 +52,10 @@
 
     &:focus {
       outline: none;
+
+      &:not(:disabled) {
+        background-color: $color-dark-grey-hover;
+      }
     }
 
     @include hover {

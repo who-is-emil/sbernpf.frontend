@@ -86,6 +86,7 @@ export default {
         }
       ],
       image: {
+        alt: 'Программа долгосрочных сбережений',
         src: 'images/hero/image-1.png',
         srcset: ['images/hero/image-1.png', 'images/hero/image-1@2x.png']
       }

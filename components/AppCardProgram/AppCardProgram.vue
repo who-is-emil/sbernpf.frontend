@@ -37,6 +37,7 @@ export default {
       },
       caption: '*Вы будете перенаправлены на сайт СберНПФ',
       image: {
+        alt: 'Узнайте первым о старте программы',
         src: 'images/card-program/image-1.png',
         srcset: ['images/card-program/image-1.png', 'images/card-program/image-1@2x.png']
       }

@@ -136,5 +136,15 @@
         }
       }
     }
+
+    .v-select:not(.vs--disabled).vs--open {
+      .vs__dropdown-toggle {
+        background-color: $color-dark-grey-hover;
+      }
+
+      .vs__selected {
+        opacity: 1;
+      }
+    }
   }
 }

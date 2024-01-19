@@ -33,6 +33,7 @@ export default {
         theme: 'gradient'
       },
       image: {
+        alt: 'Начните копить уже сегодня и приобретите полезную привычку',
         src: 'images/card-request/image-1.png',
         srcset: ['images/card-request/image-1.png', 'images/card-request/image-1@2x.png']
       }

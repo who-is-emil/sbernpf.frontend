@@ -41,6 +41,7 @@ export default {
       items: [
         {
           image: {
+            alt: 'молодым людям',
             src: 'images/card-category/image-1.png',
             srcset: ['images/card-category/image-1.png', 'images/card-category/image-1@2x.png']
           },
@@ -50,6 +51,7 @@ export default {
         },
         {
           image: {
+            alt: 'взрослым',
             src: 'images/card-category/image-2.png',
             srcset: ['images/card-category/image-2.png', 'images/card-category/image-2@2x.png']
           },
@@ -59,6 +61,7 @@ export default {
         },
         {
           image: {
+            alt: 'старшему поколению',
             src: 'images/card-category/image-3.png',
             srcset: ['images/card-category/image-3.png', 'images/card-category/image-3@2x.png']
           },

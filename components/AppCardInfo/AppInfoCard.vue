@@ -47,6 +47,7 @@ export default {
         }
       ],
       image: {
+        alt: 'Вы знаете, где находятся ваши пенсионные накопления?',
         src: 'images/card-info/image-1.png',
         srcset: ['images/card-info/image-1.png', 'images/card-info/image-1@2x.png']
       }
