@@ -7,10 +7,8 @@
     <div class="app-hero__base">
       <div class="app-hero__background" />
       <div class="app-hero__content">
-        <div class="app-hero__image">
-          <div data-aos="fade" data-aos-delay="100">
-            <AppImage :data="image" />
-          </div>
+        <div class="app-hero__image" data-aos="fade" data-aos-delay="100">
+          <AppImage :data="image" />
         </div>
 
         <div class="app-hero__info">
