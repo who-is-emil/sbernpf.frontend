@@ -368,6 +368,8 @@ export default {
     },
     closedModal () {
       _enableScroll();
+
+      window.dispatchEvent(new CustomEvent('st:refresh'));
     }
   }
 };

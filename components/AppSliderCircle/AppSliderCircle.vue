@@ -121,6 +121,12 @@ export default {
   mounted () {
     this.animation();
     this.initController();
+
+    window.addEventListener('st:refresh', () => {
+      this.controller.kill();
+      this.controller = null;
+      this.initController();
+    });
   },
   beforeDestroy () {
     this.controller.kill();
