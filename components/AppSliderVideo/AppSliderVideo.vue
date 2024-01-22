@@ -75,20 +75,23 @@
     <modal
       name="video-modal"
       @closed="closedModal"
+      @opened="openModal"
+      @before-close="beforeCloseModal"
     >
       <div class="modal-content">
         <div class="modal-frame">
-          <iframe
-            :src="`https://player.cdn.sber.cloud/aloha/players/basic_player_sbercloud1.html?account=kunuqupo80&amp;source=//sber-hls.cdnvideo.ru/sber-vod/_definst_/mp4:common/video/${currentModalVideo.video}/playlist.m3u8&amp;poster=https://sber.cdnvideo.ru/common/video/pds${currentModalVideo.poster}`"
-            loading="eager"
-            sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation"
-            allow="payment 'none'; fullscreen 'none'; geolocation 'none'; camera 'none'; microphone 'none'"
-            importance="high"
-            referrerpolicy="no-referrer-when-downgrade"
-            frameborder="no"
-            scrolling="no"
-            :title="currentModalVideo.title"
-          />
+          <vue-plyr ref="plyr">
+            <video
+              controls
+              crossorigin
+              playsinline
+              :data-poster="`${currentModalVideo.poster}`"
+            >
+              <source
+                :src="`${currentModalVideo.video}`"
+              />
+            </video>
+          </vue-plyr>
         </div>
 
         <button type="button" class="modal-close" @click="$modal.hide('video-modal')">
@@ -124,7 +127,7 @@ export default {
             alt: 'Зачем нужен ПДС',
             src: 'images/slider-video/image-5.jpg'
           },
-          video: '25b2c55d4af6239f.mp4',
+          video: 'https://sber.cdnvideo.ru/common/video/25b2c55d4af6239f.mp4',
           poster: '1470.jpg',
           active: true
         },
@@ -134,7 +137,7 @@ export default {
             alt: 'Сколько доплачивает государство',
             src: 'images/slider-video/image-4.jpg'
           },
-          video: 'd2da3b23cb585e4b.mp4',
+          video: 'https://sber.cdnvideo.ru/common/video/d2da3b23cb585e4b.mp4',
           poster: '1469.jpg',
           active: false
         },
@@ -144,7 +147,7 @@ export default {
             alt: 'Налоговый вычет',
             src: 'images/slider-video/image-3.jpg'
           },
-          video: '7f232fae7fe42721.mp4',
+          video: 'https://sber.cdnvideo.ru/common/video/7f232fae7fe42721.mp4',
           poster: '1468.jpg',
           active: false
         },
@@ -154,7 +157,7 @@ export default {
             alt: 'Что такое накопительная пенсия',
             src: 'images/slider-video/image-2.jpg'
           },
-          video: '595e3ed3e70f9809.mp4',
+          video: 'https://sber.cdnvideo.ru/common/video/595e3ed3e70f9809.mp4',
           poster: '1471.jpg',
           active: false
         },
@@ -164,7 +167,7 @@ export default {
             alt: 'Когда я получу сбережения',
             src: 'images/slider-video/image-1.jpg'
           },
-          video: '6aa5a00ff4341217.mp4',
+          video: 'https://sber.cdnvideo.ru/common/video/6aa5a00ff4341217.mp4',
           poster: '1467.jpg',
           active: false
         }
@@ -354,6 +357,14 @@ export default {
       this.currentModalVideoIdx = idx;
 
       this.$modal.show('video-modal');
+    },
+    openModal () {
+      const player = this.$refs.plyr.player;
+      player.play();
+    },
+    beforeCloseModal () {
+      const player = this.$refs.plyr.player;
+      player.destroy();
     },
     closedModal () {
       _enableScroll();

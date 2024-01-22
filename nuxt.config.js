@@ -61,6 +61,10 @@ export default {
     {
       src: '~plugins/vue-js-modal.js',
       ssr: false
+    },
+    {
+      src: '~plugins/vue-plyr.js',
+      ssr: false
     }
   ],
 
