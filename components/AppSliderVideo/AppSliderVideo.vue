@@ -105,6 +105,8 @@
 <script>
 import { Swiper } from 'swiper';
 import { _disableScroll, _enableScroll } from '~/assets/js/scroll';
+import { setVh } from '~/assets/js/vhDefinition';
+import { isMob } from '~/assets/js/breakpoints';
 import AppButton from '~/components/AppButton/AppButton';
 import AppButtonCircle from '~/components/AppButtonCircle/AppButtonCircle';
 import AppSliderPagination from '~/components/AppSliderPagination/AppSliderPagination';
@@ -173,9 +175,9 @@ export default {
         }
       ],
       action: {
-        title: 'Оставить заявку',
-        text: 'Оставить заявку',
-        href: 'https://npfsberbanka.ru/pds/?utm_source=sbersite&utm_medium=pdsportal&utm_campaign=getlead&utm_content=1#subscription',
+        title: 'Оформить договор',
+        text: 'Оформить договор',
+        href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         external: true,
         theme: 'gradient'
       },
@@ -223,6 +225,8 @@ export default {
     this.initSwiper();
 
     this.activeImagesIndex = this.items.map((_, idx) => idx);
+
+    setVh();
   },
   beforeDestroy () {
     this.sliderInstance.destroy();
@@ -361,6 +365,28 @@ export default {
     openModal () {
       const player = this.$refs.plyr.player;
       player.play();
+
+      player.on('enterfullscreen', () => {
+        const modalWrap = document.querySelector('.vm--modal');
+        if (modalWrap) {
+          modalWrap.classList.add('has-fullscreen');
+        };
+
+        setVh();
+      });
+
+      window.addEventListener('orientationchange', () => {
+        if (isMob) {
+          player.fullscreen.exit();
+        }
+      });
+
+      player.on('exitfullscreen', () => {
+        const modalWrap = document.querySelector('.vm--modal');
+        if (modalWrap) {
+          modalWrap.classList.remove('has-fullscreen');
+        };
+      });
     },
     beforeCloseModal () {
       const player = this.$refs.plyr.player;

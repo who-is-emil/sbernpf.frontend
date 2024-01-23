@@ -26,9 +26,9 @@ export default {
     return {
       title: ['Начните копить', 'уже сегодня и&nbsp;приобретите полезную привычку'],
       action: {
-        title: 'Оставить заявку',
-        text: 'Оставить заявку',
-        href: 'https://npfsberbanka.ru/pds/?utm_source=sbersite&utm_medium=pdsportal&utm_campaign=getlead&utm_content=1#subscription',
+        title: 'Оформить договор',
+        text: 'Оформить договор',
+        href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         external: true,
         theme: 'gradient'
       },

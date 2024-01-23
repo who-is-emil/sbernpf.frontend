@@ -32,7 +32,7 @@ export default {
       action: {
         title: 'Сообщить о запуске *',
         text: 'Сообщить о запуске *',
-        href: 'https://npfsberbanka.ru/pds/?utm_source=sbersite&utm_medium=pdsportal&utm_campaign=getlead&utm_content=1#subscription',
+        href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         external: true
       },
       caption: '*Вы будете перенаправлены на сайт СберНПФ',

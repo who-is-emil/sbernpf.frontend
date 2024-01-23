@@ -50,10 +50,10 @@ export default {
     return {
       title: ['Вопросы', 'ответы'],
       action: {
-        title: 'Оставить заявку',
-        text: 'Оставить заявку',
+        title: 'Оформить договор',
+        text: 'Оформить договор',
         external: true,
-        href: 'https://npfsberbanka.ru/pds/?utm_source=sbersite&utm_medium=pdsportal&utm_campaign=getlead&utm_content=1#subscription',
+        href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         theme: 'gradient'
       },
       items: [
