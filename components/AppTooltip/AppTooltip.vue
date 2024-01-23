@@ -14,7 +14,6 @@
   </span>
 </template>
 <script>
-import { isDesktop } from '~/assets/js/breakpoints';
 import AppIcon from '~/components/AppIcon/AppIcon';
 export default {
   name: 'AppTooltip',
@@ -33,7 +32,7 @@ export default {
       return this.data.text;
     },
     trigger () {
-      return this.data.trigger || isDesktop() ? 'mouseenter' : 'click';
+      return this.data.trigger || 'click';
     },
     theme () {
       return this.data.theme || 'white';
