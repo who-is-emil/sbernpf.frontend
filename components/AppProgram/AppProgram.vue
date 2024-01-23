@@ -37,7 +37,7 @@ export default {
         src: 'images/gradient/gradient-1.jpg'
       },
 
-      windowWidth: window.innerWidth
+      windowWidth: 0
     };
   },
   computed: {
@@ -46,6 +46,8 @@ export default {
     }
   },
   mounted () {
+    this.windowWidth = window.innerWidth;
+
     window.addEventListener('resize', () => {
       this.windowWidth = window.innerWidth;
     });
