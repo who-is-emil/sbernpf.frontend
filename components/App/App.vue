@@ -52,6 +52,7 @@
 
 <script>
 import _debounce from 'lodash.debounce';
+import { setUTM } from '~/assets/js/setUTM';
 import AppCalculator from '~/components/AppCalculator/AppCalculator';
 import AppCategories from '~/components/AppCategories/AppCategories';
 import AppHeader from '~/components/AppHeader/AppHeader';
@@ -90,6 +91,12 @@ export default {
       // TODO костыль, чтобы закрывать открытый typpy при свайпе на тач устройствах
       document.body.click();
     }, 200));
+
+    document.onreadystatechange = () => {
+      if (document.readyState === 'complete') {
+        setUTM();
+      }
+    };
   },
   methods: {
     resizeCheck () {
