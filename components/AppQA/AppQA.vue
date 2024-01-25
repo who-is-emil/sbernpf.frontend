@@ -50,8 +50,8 @@ export default {
     return {
       title: ['Вопросы', 'ответы'],
       action: {
-        title: 'Оформить договор',
-        text: 'Оформить договор',
+        title: 'Оформить программу',
+        text: 'Оформить программу',
         external: true,
         href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         theme: 'gradient'

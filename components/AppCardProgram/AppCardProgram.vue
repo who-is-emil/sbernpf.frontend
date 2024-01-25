@@ -28,7 +28,7 @@ export default {
   components: { AppImage, AppButton },
   data () {
     return {
-      title: ['Узнайте первым', 'о старте программы'],
+      title: ['Получите тройную выгоду', 'от ваших сбережений'],
       action: {
         title: 'Сообщить о запуске *',
         text: 'Сообщить о запуске *',
@@ -37,7 +37,7 @@ export default {
       },
       caption: '*Вы будете перенаправлены на сайт СберНПФ',
       image: {
-        alt: 'Узнайте первым о старте программы',
+        alt: 'Получите тройную выгоду от ваших сбережений',
         src: 'images/card-program/image-1.png',
         srcset: ['images/card-program/image-1.png', 'images/card-program/image-1@2x.png']
       }
