@@ -137,20 +137,20 @@
   }
 
   &__action {
-    width: 100%;
-
     .app-button {
       width: 100%;
     }
 
     @include media-breakpoint-up(md) {
-      width: toRem(220);
+      min-width: toRem(220);
 
       &:not(:last-child) {
         margin-right: toRem(16);
       }
     }
     @include media-breakpoint-down(sm) {
+      width: 100%;
+
       &:not(:last-child) {
         margin-bottom: toRem(16);
       }

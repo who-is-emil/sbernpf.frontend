@@ -28,6 +28,7 @@
 
     @include media-breakpoint-up(lg) {
       margin-bottom: toRem(32);
+      max-width: toRem(650);
     }
 
     span {
@@ -81,6 +82,15 @@
 
     .app-button {
       width: 100%;
+    }
+
+    &:not(:last-child) {
+      @include media-breakpoint-only(md) {
+        margin-bottom: toRem(56);
+      }
+      @include media-breakpoint-up(lg) {
+        margin-bottom: toRem(64);
+      }
     }
   }
 
