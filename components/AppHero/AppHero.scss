@@ -27,6 +27,7 @@
 
     @include media-breakpoint-up(lg) {
       height: calc(100vh - #{toRem(136)});
+      min-height: toRem(650);
     }
     @include media-breakpoint-only(md) {
       height: toRem(594);
