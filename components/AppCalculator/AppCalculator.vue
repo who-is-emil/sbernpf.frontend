@@ -86,6 +86,7 @@
 
 <script>
 import _debounce from 'lodash.debounce';
+import { setUTM } from '~/assets/js/setUTM';
 import AppField from '~/components/FormFields/AppField/AppField';
 import AppButton from '~/components/AppButton/AppButton';
 import AppResult from '~/components/AppResult/AppResult';
@@ -632,6 +633,9 @@ export default {
 
       return ending;
     }
+  },
+  updated () {
+    setUTM();
   }
 };
 </script>
