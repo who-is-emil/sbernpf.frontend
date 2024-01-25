@@ -26,8 +26,8 @@ export default {
     return {
       title: ['Начните копить', 'уже сегодня и&nbsp;приобретите полезную привычку'],
       action: {
-        title: 'Оформить договор',
-        text: 'Оформить договор',
+        title: 'Оформить программу',
+        text: 'Оформить программу',
         href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         external: true,
         theme: 'gradient'

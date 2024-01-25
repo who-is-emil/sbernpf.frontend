@@ -239,8 +239,8 @@ export default {
         },
         {
           name: 'request',
-          text: 'Оформить договор',
-          title: 'Оформить договор',
+          text: 'Оформить программу',
+          title: 'Оформить программу',
           external: true,
           href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner'
         }

@@ -51,8 +51,8 @@ export default {
       title: ['Из чего состоит', 'программа'],
       text: 'Расскажем на примере как&nbsp;удвоить сбережения с&nbsp;помощью господдержки',
       action: {
-        text: 'Оформить договор',
-        title: 'Оформить договор',
+        text: 'Оформить программу',
+        title: 'Оформить программу',
         theme: 'gradient',
         external: true,
         href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner'
