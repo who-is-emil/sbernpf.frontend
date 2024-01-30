@@ -15,14 +15,11 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      // { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' }
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       // { rel: 'icon', type: 'image/x-icon', href: '/promo/pds/test/favicon.ico' }
       // { rel: 'icon', type: 'image/x-icon', href: '/promo/pds/favicon.ico' }
     ],
     script: [
-      // { src: 'https://polyfill.io/v3/polyfill.min.js' },
-      // { src: './gtm.js', type: 'text/javascript', async: true }
       { src: '/gtm.js', type: 'text/javascript', async: true }
       // { src: '/promo/pds/test/gtm.js', type: 'text/javascript', async: true }
       // { src: '/promo/pds/gtm.js', type: 'text/javascript', async: true }
@@ -134,8 +131,6 @@ export default {
   },
 
   router: {
-    // base: process.env.NODE_ENV === 'production' ? '/sbernpf.frontend/dist/' : '/'
-    // base: './'
     base: '/'
     // base: '/promo/pds/test'
     // base: '/promo/pds'
