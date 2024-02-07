@@ -30,8 +30,8 @@ export default {
     return {
       title: ['Получите тройную выгоду', 'от ваших сбережений'],
       action: {
-        title: 'Сообщить о запуске *',
-        text: 'Сообщить о запуске *',
+        title: 'Оформить программу',
+        text: 'Оформить программу',
         href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         external: true
       },
