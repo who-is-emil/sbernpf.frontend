@@ -53,7 +53,7 @@ export default {
         title: 'Оформить программу',
         text: 'Оформить программу',
         external: true,
-        href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
+        href: 'https://www.sberbank.com/sms/calculationpensionall?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         theme: 'gradient'
       },
       items: [
