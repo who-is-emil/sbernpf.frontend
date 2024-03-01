@@ -32,7 +32,7 @@ export default {
       action: {
         title: 'Оформить программу',
         text: 'Оформить программу',
-        href: 'https://pds.npfsb.ru/login?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
+        href: 'https://www.sberbank.com/sms/calculationpensionall?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         external: true
       },
       caption: '*Вы будете перенаправлены на сайт СберНПФ',
