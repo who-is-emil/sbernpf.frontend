@@ -98,9 +98,14 @@ export default {
       this.focusClass = '';
     },
     blur (e) {
-      const parsedValue = parseInt(e.target.value.toString().replace(/\s/g, ''), 10);
+      let parsedValue;
+      if (e.target.value === '') {
+        parsedValue = 0;
+      } else {
+        parsedValue = parseInt(e.target.value.toString().replace(/\s/g, ''), 10);
+      }
 
-      if (parsedValue < 500) {
+      if (parsedValue < 500 && e.target.id !== 'sumAccount') {
         this.$emit('input', `${500} ₽`);
       } else {
         this.$emit('input', `${parsedValue.toLocaleString('fr').replace(/ /g, ' ')} ₽`);
