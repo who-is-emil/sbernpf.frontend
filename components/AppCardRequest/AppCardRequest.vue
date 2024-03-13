@@ -7,7 +7,7 @@
       </h2>
 
       <div class="app-card-request__action">
-        <AppButton :data="action" />
+        <AppButton :data="action" @click="clickAction" />
       </div>
     </div>
     <div class="app-card-request__image">
@@ -38,6 +38,12 @@ export default {
         srcset: ['images/card-request/image-1.png', 'images/card-request/image-1@2x.png']
       }
     };
+  },
+  methods: {
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
+    }
   }
 };
 </script>

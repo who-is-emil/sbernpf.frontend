@@ -14,7 +14,7 @@
 
         <div class="app-slider-video__base" data-aos="fade" data-aos-delay="200">
           <div class="app-slider-video__action">
-            <AppButton :data="action" />
+            <AppButton :data="action" @click="clickAction" />
           </div>
 
           <div class="app-slider-video__arrows">
@@ -396,6 +396,10 @@ export default {
       _enableScroll();
 
       window.dispatchEvent(new CustomEvent('st:refresh'));
+    },
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
     }
   }
 };

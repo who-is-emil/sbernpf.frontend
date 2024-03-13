@@ -8,7 +8,7 @@
         </span>
       </h2>
       <div class="app-card-program__action">
-        <AppButton :data="action" />
+        <AppButton :data="action" @click="clickAction" />
       </div>
       <p v-if="caption" class="app-card-program__caption">
         {{ caption }}
@@ -42,6 +42,12 @@ export default {
         srcset: ['images/card-program/image-1.png', 'images/card-program/image-1@2x.png']
       }
     };
+  },
+  methods: {
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
+    }
   }
 };
 </script>
