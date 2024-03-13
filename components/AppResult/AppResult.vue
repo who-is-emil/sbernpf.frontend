@@ -121,7 +121,7 @@
       <div class="app-result__actions">
         <div v-for="(item, idx) in actions" :key="idx" class="app-result__action">
           <template v-if="item.name === 'request'">
-            <AppButton :data="item" />
+            <AppButton :data="item" @click="clickAction" />
           </template>
 
           <template v-if="item.name === 'edit'">
@@ -257,6 +257,10 @@ export default {
       }
 
       return ending;
+    },
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
     }
   }
 };

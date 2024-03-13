@@ -71,7 +71,7 @@
               </template>
 
               <template v-if="action.name === 'request'">
-                <AppButton :data="action" />
+                <AppButton :data="action" @click="clickAction" />
               </template>
             </div>
           </div>
@@ -632,6 +632,10 @@ export default {
       }
 
       return ending;
+    },
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
     }
   },
   updated () {

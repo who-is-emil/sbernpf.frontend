@@ -9,7 +9,7 @@
         </h2>
 
         <div v-if="action" class="app-qa__action">
-          <AppButton :data="action" />
+          <AppButton :data="action" @click="clickAction" />
         </div>
       </div>
       <div class="app-qa__base">
@@ -206,6 +206,10 @@ export default {
   methods: {
     toggle () {
       this.restItemsShow = !this.restItemsShow;
+    },
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
     }
   }
 };

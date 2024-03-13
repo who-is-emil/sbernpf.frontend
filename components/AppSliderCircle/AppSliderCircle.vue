@@ -18,7 +18,7 @@
           </p>
 
           <div v-if="action" class="app-slider-circle__action">
-            <AppButton :data="action" />
+            <AppButton :data="action" @click="clickAction" />
           </div>
         </div>
       </div>
@@ -168,6 +168,10 @@ export default {
         invalidateOnRefresh: true,
         invalidateOnResize: true
       });
+    },
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
     }
   }
 };

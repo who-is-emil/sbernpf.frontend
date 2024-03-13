@@ -6,6 +6,7 @@
     :class="['app-button', theme, size]"
     :title="title"
     :target="external ? '_blank' : false"
+    @click="click"
   >
     <span class="app-button__text">{{ text }}</span>
   </a>

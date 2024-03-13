@@ -30,7 +30,7 @@
           </nav>
 
           <div class="app-header__action">
-            <AppButton :data="action" />
+            <AppButton :data="action" @click="clickAction" />
           </div>
         </div>
 
@@ -177,6 +177,10 @@ export default {
         _enableScroll();
         this.menuState = false;
       }
+    },
+    clickAction () {
+      const _tmr = window._tmr || (window._tmr = []);
+      _tmr.push({ type: 'reachGoal', id: 2866471, goal: 'click_apply-program' });
     }
   }
 };
