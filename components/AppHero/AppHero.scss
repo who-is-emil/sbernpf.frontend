@@ -55,8 +55,8 @@
       height: toRem(459);
     }
     @include media-breakpoint-down(sm) {
-      left: 50%;
-      transform: translateX(-50%);
+      left: 13%;
+      transform: translateX(-13%);
       bottom: toRem(-38);
       width: toRem(240);
       height: toRem(229);
