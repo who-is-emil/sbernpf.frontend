@@ -89,7 +89,7 @@ export default {
         text: 'Оформить программу',
         title: 'Оформить программу',
         external: true,
-        href: 'https://www.sberbank.com/sms/calculationpensionall?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
+        href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         size: 'small',
         theme: 'black'
       }

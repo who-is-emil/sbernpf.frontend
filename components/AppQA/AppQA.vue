@@ -53,7 +53,7 @@ export default {
         title: 'Оформить программу',
         text: 'Оформить программу',
         external: true,
-        href: 'https://www.sberbank.com/sms/calculationpensionall?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
+        href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         theme: 'gradient'
       },
       items: [
@@ -86,7 +86,7 @@ export default {
         {
           title: 'Как вступить в Программу долгосрочных сбережений (ПДС)?',
           text:
-            '<p>Шаг 1. Заключите договор долгосрочных сбережений с НПФ Сбербанка в 2024 г.<br>Онлайн или <a href="https://www.sberbank.com/ru/oib?tab=vsp" target="_blank" rel="nofollow">в отделениях Сбербанка.</a></p>' +
+            '<p>Шаг 1. Заключите договор со&nbsp;СберНПФ в 2024 году в&nbsp;СберБанк Онлайн, на&nbsp;сайте&nbsp;СберНПФ, <a href="https://www.sberbank.com/ru/oib?tab=vsp" target="_blank" rel="nofollow">отделениях&nbsp;Сбербанка</a> или&nbsp;пригласите&nbsp;выездного менеджера.</p>' +
             '<p>Шаг 2. Сделайте взнос не менее 2000 ₽ за календарный год.</p>' +
             '<p>Шаг 3. Вы можете перевести средства пенсионных накоплений (ОПС) в ПДС.</p>'
         },
