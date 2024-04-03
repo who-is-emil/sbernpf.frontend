@@ -52,7 +52,7 @@ export default {
       },
       items: [
         {
-          text: 'Заключите договор<br>со&nbsp;СберНПФ в 2024 году<br>Онлайн или <a href="https://www.sberbank.com/ru/oib?tab=vsp" target="_blank" rel="nofollow">в&nbsp;отделениях&nbsp;Сбербанка.</a>'
+          text: 'Заключите договор<br>со&nbsp;СберНПФ в 2024 году<br>в СберБанк Онлайн, на&nbsp;сайте&nbsp;СберНПФ, <a href="https://www.sberbank.com/ru/oib?tab=vsp" target="_blank" rel="nofollow">отделениях&nbsp;Сбербанка</a> или&nbsp;пригласите выездного менеджера'
         },
         {
           text: 'Сделайте взнос на&nbsp;сумму от&nbsp;2&nbsp;000 ₽. Делайте взносы регулярно'

@@ -35,7 +35,7 @@ export default {
         {
           title: 'Узнать в Сбербанк Онлайн',
           text: 'Узнать в Сбербанк Онлайн',
-          href: 'https://www.sberbank.com/sms/calculationpensionall',
+          href: 'https://sberbank.com/sms/promo_pds',
           theme: 'gradient',
           external: true
         },
