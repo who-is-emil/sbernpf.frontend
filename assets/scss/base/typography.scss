@@ -25,6 +25,10 @@ h4, .h4 {
   @include h4;
 }
 
+h5, .h5 {
+  @include h5;
+}
+
 .text-body {
   @include text-body;
 }
