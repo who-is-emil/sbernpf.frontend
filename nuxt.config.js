@@ -24,7 +24,7 @@ export default {
       // { src: '/promo/pds/test/gtm.js', type: 'text/javascript', async: true },
       // { src: '/promo/pds/gtm.js', type: 'text/javascript', async: true },
 
-      { src: '/top-mail-ru.js', type: 'text/javascript', async: true },
+      { src: '/top-mail-ru.js', type: 'text/javascript', async: true }
       // { src: '/promo/pds/test/top-mail-ru.js', type: 'text/javascript', async: true },
       // { src: '/promo/pds/top-mail-ru.js', type: 'text/javascript', async: true },
     ]
