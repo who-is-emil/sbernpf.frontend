@@ -4,7 +4,7 @@
     class="app-bonus"
   >
     <div class="app-bonus__top">
-      <h2 class="app-bonus__title">
+      <h2 class="app-bonus__title" data-aos="fade" data-aos-delay="100">
         <span v-for="(item, idx) in title" :key="idx">
           <span v-html="item" />
         </span>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="app-bonus__items">
-      <div v-for="(item, idx) in items" :key="idx" class="app-bonus__item">
+      <div v-for="(item, idx) in items" :key="idx" class="app-bonus__item" data-aos="fade" data-aos-delay="100">
         <div class="app-bonus__col">
           <div v-if="item.icon" class="app-bonus__icon">
             <AppIcon :name="item.icon" />
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="app-bonus__bottom">
+    <div class="app-bonus__bottom" data-aos="fade" data-aos-delay="100">
       <p v-if="text" class="app-bonus__bottom-text">
         <span v-html="text" />
       </p>

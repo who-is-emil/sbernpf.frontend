@@ -5,7 +5,7 @@
         <AppResult :data="result" @edit="resultToggle" />
       </div>
       <div v-else class="app-calculator__content">
-        <div class="app-calculator__top">
+        <div class="app-calculator__top" data-aos="fade" data-aos-delay="100">
           <h2 class="app-calculator__title">
             <span v-for="(item, idx) in title" :key="idx">
               {{ item }}
@@ -14,7 +14,7 @@
         </div>
         <div class="app-calculator__form">
           <div class="app-calculator__items">
-            <div class="app-calculator__item">
+            <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field app-calculator__field--switch">
                 <AppField v-model="genderValue" :data="genderField" />
               </div>
@@ -24,31 +24,31 @@
               </div>
             </div>
 
-            <div class="app-calculator__item">
+            <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
                 <AppField v-model="ageValue" :data="ageField" />
               </div>
             </div>
 
-            <div class="app-calculator__item">
+            <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
                 <AppField v-model="ageEndValue" :data="ageEndField" />
               </div>
             </div>
 
-            <div class="app-calculator__item">
+            <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
                 <AppField v-model="sumValue" :data="sumField" />
               </div>
             </div>
 
-            <div class="app-calculator__item">
+            <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
                 <AppField v-model="periodValue" :data="periodField" />
               </div>
             </div>
 
-            <div class="app-calculator__item app-calculator__item--has-checkbox">
+            <div class="app-calculator__item app-calculator__item--has-checkbox" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
                 <AppField v-model="sumAccountValue" :data="sumAccountField" />
               </div>
@@ -58,13 +58,13 @@
               </div>
             </div>
 
-            <div class="app-calculator__item">
+            <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
                 <AppField v-model="taxDeductionValue" :data="taxDeductionField" />
               </div>
             </div>
           </div>
-          <div class="app-calculator__actions">
+          <div class="app-calculator__actions" data-aos="fade" data-aos-delay="100">
             <div v-for="(action, idx) in actions" :key="idx" class="app-calculator__action">
               <template v-if="action.name === 'calculate'">
                 <AppButton :data="action" @click="resultToggle" />
@@ -76,7 +76,7 @@
             </div>
           </div>
         </div>
-        <div v-if="text" class="app-calculator__text">
+        <div v-if="text" class="app-calculator__text" data-aos="fade" data-aos-delay="100">
           <p>{{ text }}</p>
         </div>
       </div>

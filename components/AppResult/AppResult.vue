@@ -1,11 +1,11 @@
 <template>
   <div class="app-result">
-    <h2 class="app-result__title">
+    <h2 class="app-result__title" data-aos="fade" data-aos-delay="100">
       {{ title }}
     </h2>
 
     <div class="app-result__base">
-      <div class="app-result__total">
+      <div class="app-result__total" data-aos="fade" data-aos-delay="100">
         <p class="app-result__value app-result__value--big">
           {{ totalAmount }}
         </p>
@@ -20,7 +20,7 @@
         </p>
       </div>
 
-      <div class="app-result__items">
+      <div class="app-result__items" data-aos="fade" data-aos-delay="100">
         <p class="app-result__items-title h4">
           Из чего состоит итоговая сумма?
         </p>
@@ -69,7 +69,7 @@
       </div>
     </div>
 
-    <div class="app-result__cards">
+    <div class="app-result__cards" data-aos="fade" data-aos-delay="100">
       <p class="app-result__cards-title h4">
         Вы сможете выбрать один из видов выплат в {{ ageEndValue }}
       </p>
@@ -117,7 +117,7 @@
       </div>
     </div>
 
-    <div class="app-result__bottom">
+    <div class="app-result__bottom" data-aos="fade" data-aos-delay="100">
       <div class="app-result__actions">
         <div v-for="(item, idx) in actions" :key="idx" class="app-result__action">
           <template v-if="item.name === 'request'">
