@@ -35,7 +35,7 @@ export default {
         {
           title: 'Узнать в Сбербанк Онлайн',
           text: 'Узнать в Сбербанк Онлайн',
-          href: 'https://sberbank.com/sms/promo_pds',
+          href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
           theme: 'gradient',
           external: true
         },
