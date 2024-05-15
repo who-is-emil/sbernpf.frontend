@@ -75,7 +75,7 @@ export default {
           description: 'При соблюдении всех условий бонусы&nbsp;будут начислены с&nbsp;18.06.2024 по&nbsp;31.07.2024'
         }
       ],
-      text: 'Начисление бонусов доступно только участникам программы «СберСпасибо».<br>Если вы не являетесь участником, пройдите&nbsp;регистрацию в <a href="https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner" target="_blank" rel="nofollow">Программе</a>.',
+      text: '<a href="https://www.sberbank.com/common/img/uploaded/redirected/person/investments/docs/rules_pds_sberspasibo_sbol_2024.pdf" target="_blank" rel="nofollow">Полные правила акции</a>. Начисление бонусов доступно только участникам программы «СберСпасибо». Если вы не являетесь участником, пройдите&nbsp;регистрацию в&nbsp;<a href="https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner" target="_blank" rel="nofollow">Программе</a>.',
       action: {
         text: 'Участвовать',
         title: 'Участвовать',
