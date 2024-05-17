@@ -18,9 +18,7 @@
             </span>
           </h1>
 
-          <p v-if="text" class="app-hero__text" data-aos="fade" data-aos-delay="200">
-            {{ text }}
-          </p>
+          <p v-if="text" class="app-hero__text" data-aos="fade" data-aos-delay="200" v-html="text" />
         </div>
       </div>
     </div>
