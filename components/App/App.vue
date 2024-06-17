@@ -33,11 +33,11 @@
         <AppSteps />
       </div>
     </div>
-    <div class="mb-lg-176 mb-md-88 mb-80">
-      <div class="container">
-        <AppBonus />
-      </div>
-    </div>
+    <!--    <div class="mb-lg-176 mb-md-88 mb-80">-->
+    <!--      <div class="container">-->
+    <!--        <AppBonus />-->
+    <!--      </div>-->
+    <!--    </div>-->
     <div class="mb-lg-128 mb-md-96 mb-80">
       <div class="container">
         <AppCardProgram />
@@ -70,13 +70,13 @@ import AppCardInfo from '~/components/AppCardInfo/AppInfoCard';
 import AppCardLayout from '~/components/AppCardLayout/AppCardLayout';
 import AppHero from '~/components/AppHero/AppHero';
 import AppProgram from '~/components/AppProgram/AppProgram';
-import AppBonus from '~/components/AppBonus/AppBonus';
+// import AppBonus from '~/components/AppBonus/AppBonus';
 // import AppSliderVideo from '~/components/AppSliderVideo/AppSliderVideo';
 
 export default {
   name: 'App',
   components: {
-    AppBonus,
+    // AppBonus,
     /* AppSliderVideo, */
     AppProgram,
     AppHero,

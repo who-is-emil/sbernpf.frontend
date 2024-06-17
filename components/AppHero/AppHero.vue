@@ -59,13 +59,13 @@ export default {
           icon: '80/rub'
         },
         {
-          title: 'Примите участие в&nbsp;акции и&nbsp;получите бонусы СберСпасибо',
+          title: 'Храните сбережения в&nbsp;разных «корзинах»',
           action: {
-            text: 'Условия Акции',
-            title: 'Условия Акции',
+            text: 'Начать копить',
+            title: 'Начать копить',
             icon: '24/circle-arrow-right',
             href: '#',
-            target: '#bonus'
+            target: '#cardProgram'
           },
           icon: '80/mark'
         },
