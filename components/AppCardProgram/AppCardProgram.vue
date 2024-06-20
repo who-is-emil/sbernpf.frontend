@@ -35,7 +35,7 @@ export default {
         href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
         external: true
       },
-      caption: '*Вы будете перенаправлены на сайт СберНПФ',
+      caption: '',
       image: {
         alt: 'Получите тройную выгоду от ваших сбережений',
         src: 'images/card-program/image-1.png',
