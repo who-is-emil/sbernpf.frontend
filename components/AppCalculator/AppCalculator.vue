@@ -406,15 +406,15 @@ export default {
         // софинансирование в год
         const first = this.cofinancing;
 
-        const second = (Math.pow((1 + this.ROI / 100), Math.min(3, this.period / 12)) - 1) /
+        const second = (Math.pow((1 + this.ROI / 100), Math.min(10, this.period / 12)) - 1) /
           ((1 + this.ROI / 100) - 1) * (1 + this.ROI / 100);
 
-        const third = Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 4));
+        const third = Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 11));
 
         return first * second * third;
       }
 
-      const limit = Math.min(3, this.period / 12);
+      const limit = Math.min(10, this.period / 12);
       let sum = 0;
 
       for (let i = 1; i <= limit; i++) {
@@ -429,10 +429,10 @@ export default {
         }
 
         sum += (Math.min(36000, (this.sumPerYear + deduction) *
-          this.cofinancingRatio) * Math.pow((1 + this.ROI / 100), Math.min(3, this.period / 12) - i));
+          this.cofinancingRatio) * Math.pow((1 + this.ROI / 100), Math.min(10, this.period / 12) - i));
       }
 
-      return sum * Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 3));
+      return sum * Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 10));
     },
 
     // сумма за ОПС
