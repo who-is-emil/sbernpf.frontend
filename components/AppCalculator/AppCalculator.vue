@@ -228,7 +228,7 @@ export default {
         type: 'checkbox',
         text: 'Вкладывать налоговый вычет в программу'
       },
-      taxDeductionValue: true,
+      taxDeductionValue: false,
 
       actions: [
         {
