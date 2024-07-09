@@ -261,7 +261,21 @@ export default {
     // Процент - процент доходности(ROI) / 12 / 100
     percent () {
       return Math.pow(1 + this.ROI / 100, 1 / 12) - 1;
-      // return this.ROI / 12 / 100;
+    },
+
+    restMonths () {
+      // текущая дата
+      const currentDate = new Date();
+
+      // сколько месяцев осталось
+      return 12 - currentDate.getMonth();
+    },
+
+    // сумма вложений до конца года
+    restSum () {
+      const sumOfMonth = parseInt(this.sumValue.toString().replace(/\s/g, ''), 10);
+
+      return sumOfMonth * this.restMonths;
     },
 
     // Софинансирование в год = Меньшее(36 000 || Сумма взноса в год * коэффициент софинансирования государством)
@@ -271,9 +285,16 @@ export default {
       return Math.min(36000, calcMinValue);
     },
 
+    cofinancingFirstYear () {
+      const calcMinValue = this.restSum * this.cofinancingRatio;
+
+      return Math.min(36000, calcMinValue);
+    },
+
     // Сумма взноса в год = Сумма взносов в месяц * 12
     sumPerYear () {
       const formattedValue = parseInt(this.sumValue.toString().replace(/\s/g, ''), 10);
+
       return formattedValue * 12;
     },
 
@@ -300,21 +321,23 @@ export default {
       return (this.sumPerYear * this.period / 12);
     },
 
-    // Софинансирование государства = софинансирование * Меньшее(3 || Период участия).
+    // Софинансирование государства = софинансирование * Меньшее(10 || Период участия).
     stateCofinancing () {
       if (!this.taxDeductionValue) {
-        return Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) * Math.min(3, this.period / 12);
+        return Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) * Math.min(9, (this.period / 12) - 1) +
+          Math.min(36000, this.restSum * this.cofinancingRatio);
       }
 
       let res = 0;
-      const limit = Math.min(2, (this.period / 12) - 1);
+      const limit = Math.min(9, (this.period / 12) - 1);
 
       for (let i = 0; i <= limit; i++) {
         let sum;
 
         if (i === 0) {
           // первый налоговый вычет равен 0
-          sum = Math.min(36000, (this.sumPerYear + 0) * this.cofinancingRatio);
+          // должен учитываться текущий месяц
+          sum = Math.min(36000, this.restSum * this.cofinancingRatio);
         } else if (i === 1) {
           sum = Math.min(36000, ((this.sumPerYear + this.deduction) * this.cofinancingRatio));
         } else {
@@ -340,7 +363,7 @@ export default {
       return parseInt(this.sumAccountValue.toString().replace(/\s/g, ''), 10);
     },
 
-    // Налоговый вычет == Сумма за вычетов
+    // Налоговый вычет == Сумма за вычеты
     taxDeduction () {
       if (!this.taxDeductionValue) {
         return null;
@@ -351,8 +374,9 @@ export default {
     taxDeductionText () {
       if (!this.taxDeductionValue) {
         const res = ((Math.min(400000, this.sumPerYear)) * 0.13) * (this.period / 12);
-        const textFomat = this.formatNumberToCurrency(res);
-        return `Вы сможете вернуть 13% от суммы ваших личных взносов по договору долгосрочных сбережений на сумму ${textFomat} ₽`;
+        const textFormat = this.formatNumberToCurrency(res);
+
+        return `Вы сможете вернуть 13% от суммы ваших личных взносов по договору долгосрочных сбережений на сумму ${textFormat} ₽`;
       }
 
       return '';
@@ -373,14 +397,22 @@ export default {
       }
 
       let res = 0;
-      const limit = this.period / 12;
       let deduction = this.deduction;
+      const limit = this.period / 12;
 
-      for (let i = 1; i <= limit; i++) {
-        res += deduction * Math.pow(1 + this.ROI / 100, (this.period / 12) - i);
+      deduction = Math.min(400000, this.restSum) * 0.13;
+      res += deduction;
 
+      for (let i = 2; i <= limit; i++) {
         deduction = Math.min(400000, this.sumPerYear + deduction) * 0.13;
+
+        res += deduction + res * this.ROI / 100;
       }
+
+      // console.log(res);
+      deduction = Math.min(400000, (this.sumPerYear / 12) * (12 - this.restMonths) + deduction) * 0.13;
+
+      res += deduction + res * (Math.pow((1 + (Math.pow(1 + this.ROI / 100, 1 / 12) - 1)), 12 - this.restMonths) - 1);
 
       return res;
     },
@@ -403,36 +435,55 @@ export default {
     cofinancingSum () {
       // Если чекбокс Вкладывать налоговый вычет в программу не активен.
       if (!this.taxDeductionValue) {
-        // софинансирование в год
-        const first = this.cofinancing;
+        let limit = Math.min(10, this.period / 12);
+        let sum = 0;
 
-        const second = (Math.pow((1 + this.ROI / 100), Math.min(10, this.period / 12)) - 1) /
-          ((1 + this.ROI / 100) - 1) * (1 + this.ROI / 100);
+        sum += (Math.min(36000, this.restSum * this.cofinancingRatio));
 
-        const third = Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 11));
-
-        return first * second * third;
-      }
-
-      const limit = Math.min(10, this.period / 12);
-      let sum = 0;
-
-      for (let i = 1; i <= limit; i++) {
-        let deduction;
-
-        if (i === 1) {
-          deduction = 0;
-        } else if (i === 2) {
-          deduction = this.deduction;
-        } else {
-          deduction = Math.min(400000, (this.sumPerYear + this.deduction) * 0.13);
+        for (let i = 2; i <= limit; i++) {
+          sum += (Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) + sum * this.ROI / 100);
         }
 
-        sum += (Math.min(36000, (this.sumPerYear + deduction) *
-          this.cofinancingRatio) * Math.pow((1 + this.ROI / 100), Math.min(10, this.period / 12) - i));
+        limit = this.period / 12 - 10;
+
+        if (limit > 0) {
+          for (let i = 1; i <= limit; i++) {
+            sum += sum * this.ROI / 100;
+          }
+        }
+
+        sum += sum * (Math.pow((1 + (Math.pow(1 + this.ROI / 100, 1 / 12) - 1)), 12 - this.restMonths) - 1);
+
+        return sum;
       }
 
-      return sum * Math.pow((1 + this.ROI / 100), Math.max(0, this.period / 12 - 10));
+      let limit = Math.min(10, this.period / 12);
+      let sum = 0;
+      let deduction;
+
+      sum += (Math.min(36000, this.restSum * this.cofinancingRatio));
+
+      for (let i = 2; i <= limit; i++) {
+        if (i === 2) {
+          deduction = this.deduction;
+        } else {
+          deduction = Math.min(400000, (this.sumPerYear + deduction)) * 0.13;
+        }
+
+        sum += (Math.min(36000, (this.sumPerYear + deduction) * this.cofinancingRatio) + sum * this.ROI / 100);
+      }
+
+      limit = this.period / 12 - 10;
+
+      if (limit > 0) {
+        for (let i = 1; i <= limit; i++) {
+          sum += sum * this.ROI / 100;
+        }
+      }
+
+      sum += sum * (Math.pow((1 + (Math.pow(1 + this.ROI / 100, 1 / 12) - 1)), 12 - this.restMonths) - 1);
+
+      return sum;
     },
 
     // сумма за ОПС
@@ -453,17 +504,17 @@ export default {
 
         if (i === 1) {
           // первый налоговый вычет равен 0
-          currentDeduction = Math.min(400000, (this.sumPerYear + 0)) * 0.13;
-        } else if (i === 2) {
-          currentDeduction = Math.min(400000, (this.sumPerYear + this.deduction)) * 0.13;
+          currentDeduction = Math.min(400000, (this.restSum + 0)) * 0.13;
         } else {
           currentDeduction = Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13;
         }
 
-        sum += (Math.min(400000, (this.sumPerYear + prevDeduction)) * 0.13);
+        sum += currentDeduction;
 
         prevDeduction = currentDeduction;
       }
+
+      sum += Math.min(400000, (this.sumPerYear / 12) * (12 - this.restMonths) + prevDeduction) * 0.13;
 
       return sum;
     },
