@@ -265,7 +265,8 @@ export default {
 
     restMonths () {
       // текущая дата
-      const currentDate = new Date();
+      // const currentDate = new Date();
+      const currentDate = new Date(2024, 0, 1); // TODO временно
 
       // сколько месяцев осталось
       return 12 - currentDate.getMonth();
