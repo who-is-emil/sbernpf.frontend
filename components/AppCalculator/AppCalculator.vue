@@ -60,7 +60,7 @@
 
             <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
-                <AppField v-model="taxDeductionValue" :data="taxDeductionField" />
+                <AppField v-model="taxDeductionValueTemp" :data="taxDeductionField" />
               </div>
             </div>
           </div>
@@ -229,6 +229,7 @@ export default {
         text: 'Вкладывать налоговый вычет в программу'
       },
       taxDeductionValue: false,
+      taxDeductionValueTemp: false, // TODO временно. Надо будет убрать, скорее всего, в сентябре
 
       actions: [
         {
@@ -266,13 +267,13 @@ export default {
     restMonths () {
       // текущая дата
       // const currentDate = new Date();
-      const currentDate = new Date(2024, 0, 1); // TODO временно
 
       // сколько месяцев осталось
-      return 12 - currentDate.getMonth();
+      return 12; // TODO надо будет убрать вместе с taxDeductionValueTemp
+      // return 12 - currentDate.getMonth();
     },
 
-    // сумма вложений до конца года
+    // сумма вложений до конца года **
     restSum () {
       const sumOfMonth = parseInt(this.sumValue.toString().replace(/\s/g, ''), 10);
 
@@ -322,15 +323,15 @@ export default {
       return (this.sumPerYear * this.period / 12);
     },
 
-    // Софинансирование государства = софинансирование * Меньшее(10 || Период участия).
+    // Софинансирование государства = софинансирование * Меньшее(10 || Период участия). **
     stateCofinancing () {
       if (!this.taxDeductionValue) {
         const minPeriod = Math.min(10, (this.period / 12));
 
         if (minPeriod < 10) {
-          const factor = this.sumPerYear >= 36000 ? 1 : 0;
-
-          return Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) * (minPeriod + factor);
+          // const factor = this.sumPerYear >= 36000 ? 1 : 0;
+          // return Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) * (minPeriod + factor);
+          return Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) * minPeriod;
         } else {
           return Math.min(36000, (this.sumPerYear * this.cofinancingRatio)) * (minPeriod - 1) +
             Math.min(36000, (this.restSum * this.cofinancingRatio));
@@ -410,11 +411,12 @@ export default {
       return Math.min(400000, this.sumPerYear) * 0.13;
     },
 
+    // **
     firstYearDeduction () {
       return Math.min(400000, this.restSum) * 0.13;
     },
 
-    // сумма за вычет
+    // сумма за вычет **
     sumDeduction () {
       // Если чекбокс Вкладывать налоговый вычет в программу не активен.
       if (!this.taxDeductionValue) {
@@ -455,7 +457,7 @@ export default {
       return (first * second / third) * fourth;
     },
 
-    // сумма за софинансирование
+    // сумма за софинансирование **
     cofinancingSum () {
       // Если чекбокс Вкладывать налоговый вычет в программу не активен.
       if (!this.taxDeductionValue) {
@@ -525,7 +527,7 @@ export default {
       return this.pensionTransfer * (Math.pow(1 + this.ROI / 100, this.period / 12));
     },
 
-    // Сумма всех вычетов
+    // Сумма всех вычетов **
     sumDeductions () {
       // предыдущий вычет
       let prevDeduction = 0;
