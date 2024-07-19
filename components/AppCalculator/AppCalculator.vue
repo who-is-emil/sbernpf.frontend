@@ -60,7 +60,7 @@
 
             <div class="app-calculator__item" data-aos="fade" data-aos-delay="100">
               <div class="app-calculator__field">
-                <AppField v-model="taxDeductionValueTemp" :data="taxDeductionField" />
+                <AppField v-model="taxDeductionValue" :data="taxDeductionField" />
               </div>
             </div>
           </div>
