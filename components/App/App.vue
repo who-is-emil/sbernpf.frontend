@@ -7,6 +7,14 @@
         <AppHero />
       </div>
     </div>
+    <div class="mb-lg-112 mb-md-96 mb-80">
+      <AppInfo />
+    </div>
+    <div class="mb-lg-128 mb-md-144 mb-16">
+      <div class="container">
+        <AppCardInfo />
+      </div>
+    </div>
     <div class="mb-lg-128 mb-md-144 mb-112">
       <AppCategories />
     </div>
@@ -41,14 +49,6 @@
     <div class="mb-lg-128 mb-md-96 mb-80">
       <div class="container">
         <AppCardProgram />
-      </div>
-    </div>
-    <div class="mb-lg-112 mb-md-96 mb-80">
-      <AppInfo />
-    </div>
-    <div class="mb-lg-128 mb-md-144 mb-16">
-      <div class="container">
-        <AppCardInfo />
       </div>
     </div>
     <AppFooter />

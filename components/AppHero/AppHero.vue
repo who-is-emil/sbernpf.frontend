@@ -48,6 +48,17 @@ export default {
       text: 'Копите на любые цели и&nbsp;получайте поддержку от&nbsp;государства',
       items: [
         {
+          title: '«Разморозьте» пенсионные накопления и&nbsp;сделайте их&nbsp;частью своего капитала',
+          action: {
+            text: 'Рассчитать',
+            title: 'Рассчитать',
+            icon: '24/circle-arrow-right',
+            href: '#',
+            target: '#calculator'
+          },
+          icon: '80/up'
+        },
+        {
           title: 'Создайте финансовый фундамент для жизни',
           action: {
             text: 'Узнать больше',
@@ -68,17 +79,6 @@ export default {
             target: '#cardProgram'
           },
           icon: '80/mark'
-        },
-        {
-          title: 'Управляйте пенсионными накоплениями',
-          action: {
-            text: 'Рассчитать',
-            title: 'Рассчитать',
-            icon: '24/circle-arrow-right',
-            href: '#',
-            target: '#calculator'
-          },
-          icon: '80/up'
         }
       ],
       image: {
