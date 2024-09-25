@@ -67,7 +67,7 @@ export default {
   components: { AppTooltip, AppButtonText, CollapseTransition },
   data () {
     return {
-      title: ['Переведите замороженные накопления', 'на счет ПДС'],
+      title: ['Переведите накопления', 'на счет ПДС'],
       items: [
         {
           title: 'C 2002 по 2013 год в России действовала смешанная пенсионная система',

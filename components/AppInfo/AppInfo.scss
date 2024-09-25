@@ -62,7 +62,7 @@
 
     @include media-breakpoint-up(lg) {
       width: 50%;
-      padding-right: toRem(40);
+      padding-right: toRem(80);
       padding-left: toRem(32);
     }
     @include media-breakpoint-only(md) {
