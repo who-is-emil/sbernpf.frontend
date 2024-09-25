@@ -430,18 +430,13 @@ export default {
       deduction = Math.min(400000, this.restSum) * 0.13;
       res += deduction;
 
-      console.log(deduction);
-
       for (let i = 2; i <= limit; i++) {
         deduction = Math.min(400000, this.sumPerYear + deduction) * 0.13;
-        console.log(`${i}: ${deduction}`);
 
         res += deduction + res * this.ROI / 100;
       }
 
-      // deduction = Math.min(400000, (this.sumPerYear / 12) * (12 - this.restMonths) + deduction) * 0.13;
       deduction = 0;
-      // console.log(`итог: ${deduction}`);
 
       res += deduction + res * (Math.pow((1 + (Math.pow(1 + this.ROI / 100, 1 / 12) - 1)), 12 - this.restMonths) - 1);
 

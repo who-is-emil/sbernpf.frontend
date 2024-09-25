@@ -89,7 +89,7 @@
             >
               <source
                 :src="`${currentModalVideo.video}`"
-              />
+              >
             </video>
           </vue-plyr>
         </div>

@@ -2,9 +2,14 @@
   <div class="app">
     <AppHeader />
 
-    <div class="mb-lg-132 mb-md-64 mb-80">
+    <div class="mb-lg-120 mb-md-64 mb-80">
       <div class="container">
         <AppHero />
+      </div>
+    </div>
+    <div class="mb-lg-248 mb-md-80 mb-112">
+      <div class="container">
+        <AppPromo />
       </div>
     </div>
     <div class="mb-lg-112 mb-md-96 mb-80">
@@ -70,12 +75,14 @@ import AppCardInfo from '~/components/AppCardInfo/AppInfoCard';
 import AppCardLayout from '~/components/AppCardLayout/AppCardLayout';
 import AppHero from '~/components/AppHero/AppHero';
 import AppProgram from '~/components/AppProgram/AppProgram';
+import AppPromo from '~/components/AppPromo/AppPromo';
 // import AppBonus from '~/components/AppBonus/AppBonus';
 // import AppSliderVideo from '~/components/AppSliderVideo/AppSliderVideo';
 
 export default {
   name: 'App',
   components: {
+    AppPromo,
     // AppBonus,
     /* AppSliderVideo, */
     AppProgram,
