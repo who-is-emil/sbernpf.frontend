@@ -42,7 +42,7 @@ export default {
         {
           title: 'Подробнее о розыгрыше',
           text: 'Подробнее о розыгрыше',
-          href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
+          href: 'https://npfsberbanka.ru/auto2024/',
           external: true
         }
       ],
