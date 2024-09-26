@@ -29,8 +29,12 @@
           </nav>
 
           <div class="app-header__actions">
-            <div v-for="(action, idx) in actions" :key="idx" class="app-header__action">
-              <AppButton :data="action" @click="clickAction" />
+            <div v-if="actionLink" class="app-header__action">
+              <AppButton :data="actionLink" @click="clickAction" />
+            </div>
+
+            <div v-if="actionTarget" class="app-header__action">
+              <AppButton :data="actionTarget" @click="click" />
             </div>
           </div>
         </div>
@@ -78,24 +82,22 @@ export default {
           href: '#become'
         }
       ],
-      actions: [
-        {
-          text: 'Оформить программу',
-          title: 'Оформить программу',
-          external: true,
-          href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
-          size: 'small',
-          theme: 'black'
-        },
-        {
-          text: 'Участвовать в розыгрыше',
-          title: 'Участвовать в розыгрыше',
-          external: true,
-          href: '#promo',
-          target: '#promo',
-          size: 'small'
-        }
-      ]
+      actionLink: {
+        text: 'Оформить программу',
+        title: 'Оформить программу',
+        external: true,
+        href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
+        size: 'small',
+        theme: 'black'
+      },
+      actionTarget: {
+        text: 'Участвовать в розыгрыше',
+        title: 'Участвовать в розыгрыше',
+        external: true,
+        href: '#promo',
+        target: '#promo',
+        size: 'small'
+      }
     };
   },
   mounted () {
