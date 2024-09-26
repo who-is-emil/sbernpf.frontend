@@ -1,5 +1,5 @@
 <template>
-  <div class="app-promo" data-aos="fade" data-aos-delay="100">
+  <div id="promo" class="app-promo" data-aos="fade" data-aos-delay="100">
     <div class="app-promo__content">
       <h2 v-if="title" class="app-promo__title">
         <span v-for="(item, idx) in title" :key="idx" v-html="item" />

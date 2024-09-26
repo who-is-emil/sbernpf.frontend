@@ -20,7 +20,6 @@
                   href="#"
                   class="app-header__link"
                   :class="{'app-header__link--active' : item.active}"
-                  :data-target="item.href"
                   @click="click"
                 >
                   {{ item.text }}
@@ -29,8 +28,10 @@
             </ul>
           </nav>
 
-          <div class="app-header__action">
-            <AppButton :data="action" @click="clickAction" />
+          <div class="app-header__actions">
+            <div v-for="(action, idx) in actions" :key="idx" class="app-header__action">
+              <AppButton :data="action" @click="clickAction" />
+            </div>
           </div>
         </div>
 
@@ -61,10 +62,6 @@ export default {
       logoHref: 'https://www.sberbank.ru/',
       links: [
         {
-          text: 'О программе',
-          href: '#about'
-        },
-        {
           text: 'Преимущества',
           href: '#advantages'
         },
@@ -79,20 +76,26 @@ export default {
         {
           text: 'Стать участником',
           href: '#become'
-        },
-        {
-          text: 'Вопросы ответы',
-          href: '#qa'
         }
       ],
-      action: {
-        text: 'Оформить программу',
-        title: 'Оформить программу',
-        external: true,
-        href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
-        size: 'small',
-        theme: 'black'
-      }
+      actions: [
+        {
+          text: 'Оформить программу',
+          title: 'Оформить программу',
+          external: true,
+          href: 'https://sberbank.com/sms/promo_pds?utm_source=sbernpfsite&utm_medium=pdspage&utm_campaign=getpdscontract&utm_content=banner',
+          size: 'small',
+          theme: 'black'
+        },
+        {
+          text: 'Участвовать в розыгрыше',
+          title: 'Участвовать в розыгрыше',
+          external: true,
+          href: '#promo',
+          target: '#promo',
+          size: 'small'
+        }
+      ]
     };
   },
   mounted () {
