@@ -2,20 +2,22 @@
   <div class="app">
     <AppHeader />
 
-    <div class="mb-lg-120 mb-md-64 mb-80">
+    <div class="mb-lg-128 mb-md-64 mb-80">
       <div class="container">
         <AppHero />
       </div>
     </div>
-    <div class="mb-lg-248 mb-md-80 mb-112">
+
+    <div class="mb-lg-128 mb-md-96 mb-80">
       <div class="container">
         <AppPromo />
       </div>
     </div>
+
     <div class="mb-lg-112 mb-md-96 mb-80">
       <AppInfo />
     </div>
-    <div class="mb-lg-128 mb-md-144 mb-16">
+    <div class="mb-lg-128 mb-md-144 mb-80">
       <div class="container">
         <AppCardInfo />
       </div>
