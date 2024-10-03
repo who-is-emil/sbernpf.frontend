@@ -44,8 +44,8 @@ export default {
   data () {
     return {
       timer: false,
-      title: ['Программа', 'долгосрочных', 'сбережений'],
-      text: 'Копите на любые цели и&nbsp;получайте поддержку от&nbsp;государства',
+      title: ['Разморозьте', 'свои пенсионные', 'накопления'],
+      text: 'Переведите их на личный счет',
       items: [
         {
           title: '«Разморозьте» пенсионные накопления и&nbsp;сделайте их&nbsp;частью своего капитала',
@@ -82,9 +82,8 @@ export default {
         }
       ],
       image: {
-        alt: 'Программа долгосрочных сбережений',
-        src: 'images/hero/image-2.png',
-        srcset: ['images/hero/image-2.png', 'images/hero/image-2@2x.png']
+        src: 'images/hero/image-1.png',
+        alt: 'Разморозьте свои пенсионные накопления'
       }
     };
   },

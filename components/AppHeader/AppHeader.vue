@@ -96,7 +96,8 @@ export default {
         external: true,
         href: '#promo',
         target: '#promo',
-        size: 'small'
+        size: 'small',
+        theme: 'gradient'
       }
     };
   },

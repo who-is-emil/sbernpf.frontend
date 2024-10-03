@@ -48,7 +48,7 @@ export default {
       ],
       image: {
         alt: '',
-        src: 'images/promo/image-1.png'
+        src: 'images/promo/image-2.png'
       }
     };
   }

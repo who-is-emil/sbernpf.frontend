@@ -4,7 +4,6 @@
   position: relative;
   color: $color-black;
 
-
   &__background {
     position: absolute;
     top: 0;
@@ -49,17 +48,16 @@
       height: toRem(664);
     }
     @include media-breakpoint-only(md) {
-      right: 0;
-      bottom: toRem(-76);
-      width: toRem(480);
-      height: toRem(459);
+      right: toRem(-22);
+      bottom: toRem(-128);
+      width: toRem(595);
+      height: toRem(568);
     }
     @include media-breakpoint-down(sm) {
-      left: 13%;
-      transform: translateX(-13%);
-      bottom: toRem(-38);
-      width: toRem(240);
-      height: toRem(229);
+      bottom: toRem(-80);
+      left: toRem(-28);
+      width: toRem(320);
+      height: toRem(306);
     }
   }
 
