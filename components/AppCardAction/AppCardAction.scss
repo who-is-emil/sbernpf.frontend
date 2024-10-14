@@ -32,6 +32,9 @@
       min-height: toRem(72);
       max-width: toRem(270);
     }
+    @include media-breakpoint-only(md) {
+      padding-right: toRem(80);
+    }
     @include media-breakpoint-down(sm) {
       max-width: toRem(200);
     }

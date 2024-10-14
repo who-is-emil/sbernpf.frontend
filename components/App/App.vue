@@ -14,6 +14,10 @@
       </div>
     </div>
 
+    <div class="mb-lg-128 mb-md-96 mb-80">
+      <AppDeposits />
+    </div>
+
     <div class="mb-lg-112 mb-md-96 mb-80">
       <AppInfo />
     </div>
@@ -78,12 +82,14 @@ import AppCardLayout from '~/components/AppCardLayout/AppCardLayout';
 import AppHero from '~/components/AppHero/AppHero';
 import AppProgram from '~/components/AppProgram/AppProgram';
 import AppPromo from '~/components/AppPromo/AppPromo';
+import AppDeposits from '~/components/AppDeposits/AppDeposits';
 // import AppBonus from '~/components/AppBonus/AppBonus';
 // import AppSliderVideo from '~/components/AppSliderVideo/AppSliderVideo';
 
 export default {
   name: 'App',
   components: {
+    AppDeposits,
     AppPromo,
     // AppBonus,
     /* AppSliderVideo, */
