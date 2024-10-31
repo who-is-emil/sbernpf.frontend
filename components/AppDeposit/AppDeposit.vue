@@ -1,5 +1,5 @@
 <template>
-  <div class="app-deposit">
+  <div class="app-deposit" data-aos="fade" data-aos-delay="100">
     <div class="app-deposit__container">
       <div class="app-deposit__content">
         <h2 v-if="title" class="app-deposit__title">
